@@ -10,6 +10,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Asset Management System</title>
@@ -22,6 +23,7 @@ if (!isset($_SESSION['loggedin'])) {
     </script>
     <link rel="icon" type="image/x-icon" href="white.png">
 </head>
+
 <body>
     <!-- create table that showing the list of assets in database -->
     <?php include 'nav.php'; ?>
@@ -35,9 +37,10 @@ if (!isset($_SESSION['loggedin'])) {
                             <th>Asset Tag</th>
                             <th>Brand</th>
                             <th>Model</th>
+                            <th>Equipment Name</th>
                             <th>Serial Number</th>
                             <th>Status</th>
-                            <th>Equipment Name</th>
+                            <th>Date Acquired</th>
                             <th>Location</th>
                             <th>Actions</th>
                         </tr>
@@ -53,9 +56,10 @@ if (!isset($_SESSION['loggedin'])) {
                                 <td>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["brand"] . "</td>
                                 <td>" . $row["model"] . "</td>
+                                <td>" . $row["equipment_name"] . "</td>
                                 <td>" . $row["serial_number"] . "</td>
                                 <td>" . $row["status"] . "</td>
-                                <td>" . $row["equipment_name"] . "</td>
+                                <td>" . $row["date_acquired"] . "</td>
                                 <td>" . $row["location"] . "</td>
                                 <td>
                                     <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
@@ -69,6 +73,12 @@ if (!isset($_SESSION['loggedin'])) {
                         ?>
                     </tbody>
                 </table>
+                <script>
+                if (window.print) {
+                    document.write(
+                        '<form><input type=button name=print value="Print Page"onClick="window.print()"></form>');
+                }
+                </script>
                 <a href="insert_asset.php" class="btn btn-primary">Add Asset</a>
             </div>
         </div>
