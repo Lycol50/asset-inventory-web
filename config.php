@@ -58,12 +58,28 @@ if($mysqli === false){
     // insert superadmin user
     $superadmin_hash = password_hash("superadmin", PASSWORD_DEFAULT);
     $superadmin_reset_code = substr(md5("superadmin"), 0, 13);
-    $sql3 = "INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `pass_word`, `password_reset_code`, `created_at`, `account_type`) VALUES
-    (1, 'superadmin', 'superadmin', 'superadmin', $superadmin_hash, $superadmin_reset_code, '2020-07-01 00:00:00', 'superadmin');";
-    if ($mysqli->query($sql3) === TRUE) {
-        // echo "Table created successfully";
-    } else {
-        echo "Error creating table: " . $mysqli->error;
+    $sql3 = "INSERT INTO users (`id`, `username`, `firstname`, `lastname`, `pass_word`, `password_reset_code`, `created_at`, `account_type`) VALUES
+    (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, 'superadmin');";
+    if ($stmt = $mysqli->prepare($sql3)) {
+        $stmt->bind_param("ssssss", $param_id, $param_username, $param_firstname, $param_lastname, $param_pass_word, $param_password_reset_code);
+        
+        // set parameters
+        $param_id = 1;
+        $param_username = "superadmin";
+        $param_firstname = "superadmin";
+        $param_lastname = "superadmin";
+        $param_pass_word = $superadmin_hash;
+        $param_password_reset_code = $superadmin_reset_code;
+
+        // attempt to execute the prepared statement
+        if ($stmt->execute()) {
+            // redirect to login page
+            // echo "<script>alert('Register Completed! Please login.')</script>";
+            // header("location: login.php");
+        } else {
+            echo "Something went wrong. Please try again later.";
+        }
     }
+    $stmt->close();
 }
 ?>
