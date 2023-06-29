@@ -58,7 +58,7 @@ if($mysqli === false){
     // insert superadmin user
     $superadmin_hash = password_hash("superadmin", PASSWORD_DEFAULT);
     $superadmin_reset_code = substr(md5("superadmin"), 0, 13);
-    $sql3 = "INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `pass_word`, `password_reset_code`, `created_at`, account_type) VALUES
+    $sql3 = "INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `pass_word`, `password_reset_code`, `created_at`, `account_type`) VALUES
     (1, 'superadmin', 'superadmin', 'superadmin', $superadmin_hash, $superadmin_reset_code, '2020-07-01 00:00:00', 'superadmin');";
     if ($mysqli->query($sql3) === TRUE) {
         // echo "Table created successfully";
