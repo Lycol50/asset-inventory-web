@@ -21,6 +21,11 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    <script media="print">
+        .noprint {
+            display: none;
+        }
+    </script>
     <link rel="icon" type="image/x-icon" href="white.png">
 </head>
 
@@ -73,12 +78,7 @@ if (!isset($_SESSION['loggedin'])) {
                         ?>
                     </tbody>
                 </table>
-                <script>
-                if (window.print) {
-                    document.write(
-                        '<form><input type=button name=print value="Print Page"onClick="window.print()"></form>');
-                }
-                </script>
-                <a href="insert_asset.php" class="btn btn-primary">Add Asset</a>
+                <input type="button" onclick="window.print()" value="Print Table (this button becomes invisible)" class="noprint"/>
+                <a href="insert_asset.php" class="btn btn-primary noprint">Add Asset</a>
             </div>
         </div>
