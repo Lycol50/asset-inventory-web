@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
                             $_SESSION["firstname"] = $firstname;
                             $_SESSION["lastname"] = $lastname;
-                            $_SESSION["account"] = $account_type;
+                            $_SESSION["account_type"] = $account_type;
                             
                             // redirect user to welcome page
                             header("location: dashboard.php");
