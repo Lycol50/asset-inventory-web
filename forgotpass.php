@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 header("location: login.php");
                                 exit();
                             } else {
-                                echo "Oops! Something went wrong. Please try again later.";
+                                $password_reset_err = "Invalid Password Reset Code.";
                             }
                         }
                     }
