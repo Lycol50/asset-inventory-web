@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             // password is correct, so start a new session
                             session_start();
 
-                            $sql2 = "SELECT account_type FROM users WHERE username = ?";
+                            $sql2 = "SELECT account_type FROM users WHERE id = '$id'";
                             $result = $mysqli->query($sql2);
                             $row = $result->fetch_assoc();
                             
