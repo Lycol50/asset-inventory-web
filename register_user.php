@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($firstname_err) && empty($lastname_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
         
         // prepare an insert statement
-        $sql = "INSERT INTO users (firstname, lastname, username, pass_word, password_reset_code, account_type) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (firstname, lastname, username, pass_word, password_reset_code, account_type) VALUES (?, ?, ?, ?, ?, ?)";
         
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
