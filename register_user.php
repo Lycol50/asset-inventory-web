@@ -135,10 +135,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+<?php include 'nav.php'; ?>
     <div class="container">
         <div class="row">
             <div class="col">
-                <?php include 'nav.php'; ?>
                 <h1>Register to the system</h1>
                 <p>Please fill to register user.</p>
 
