@@ -133,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label class="form-label">Password Reset Code</label>
                     <input type="password" name="password_reset" class="form-control"><br>
                     <input type="submit" class="btn btn-primary mb-3" value="Reset Password">
-                    <button type="button" class="btn btn-link mb-3" onclick="window.location.href='login.php';">Remeber Password?</button>
+                    <button type="button" class="btn btn-link mb-3" onclick="window.location.href='login.php';">Remember Password?</button>
                 </form>
             </div>
         </div>
