@@ -9,7 +9,7 @@ if (isset($_SESSION['loggedin'])) {
 		header("location: dashboard.php");
 	}
 	else {
-        exit;
+        return true;
     }
 	exit;
 }
