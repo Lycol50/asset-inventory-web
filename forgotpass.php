@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="invalid-feedback"><?php echo $username_err; ?></span>
                     <label class="form-label">New Password</label>
                     <input type="password" name="new_password" class="form-control">
-                    <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
                     <label class="form-label">Password Reset Code</label>
                     <input type="password" name="password_reset" class="form-control">
                     <span class="invalid-feedback"><?php echo $password_reset_err; ?></span><br>
