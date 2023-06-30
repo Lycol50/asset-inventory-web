@@ -22,9 +22,16 @@ if (!isset($_SESSION['loggedin'])) {
     </script>
     <link rel="icon" type="image/x-icon" href="white.png">
 </head>
-<body>
-	<?php include 'nav.php'; ?>
-	<h1>This is a dashboard</h1>
-</body>
-</html>
 
+<body>
+    <?php include 'nav.php'; ?>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>This is a dashboard</h1>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
