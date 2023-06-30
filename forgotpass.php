@@ -121,9 +121,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($password_recovered)) {
                     echo '<div class="alert alert-success">' . $password_recovered . '</div>';
                 }
+
+                if (isset($password_reset_err)) {
+                    echo '<div class="alert alert-danger">' . $password_reset_err . '</div>';
+                }
                 ?>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
                     <label class="form-label">Username</label>
                     <input type="text" name="username" class="form-control">
                     <span class="invalid-feedback"><?php echo $username_err; ?></span>
@@ -132,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="invalid-feedback"><?php echo $password_err; ?></span>
                     <label class="form-label">Password Reset Code</label>
                     <input type="password" name="password_reset" class="form-control">
-                    <span class="invalid-feedback"><?php echo $password_reset_err; ?></span><br>
+                    <br>
                     <input type="submit" class="btn btn-primary mb-3" value="Reset Password">
                     <button type="button" class="btn btn-link mb-3" onclick="window.location.href='login.php';">Remember Password?</button>
                 </form>
