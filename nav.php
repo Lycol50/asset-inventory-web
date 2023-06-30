@@ -11,7 +11,7 @@ $register = '<a class="nav-item nav-link" href="register_user.php">Register User
       <a class="nav-item nav-link active" href="/">Home</a>
       <a class="nav-item nav-link" href="assets.php">List Assets</a>
       <a class="nav-item nav-link" href="insert_asset.php">Insert Asset</a>
-      <?php if ($_SESSION['account_type'] === 'superadmin') { echo $register; } ?>
+      <?php if ($_SESSION['account_type'] === "superadmin") { echo $register; } ?>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
