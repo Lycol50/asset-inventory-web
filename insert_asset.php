@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssssssisss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag);
+            $stmt->bind_param("ssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag);
 
             // set parameters
             $param_brand = $brand;

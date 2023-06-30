@@ -37,7 +37,7 @@ if($mysqli === false){
         `status` varchar(255) NOT NULL,
         `equipment_name` varchar(255) NOT NULL,
         `location` varchar(255) NOT NULL,
-        `price_value` int(255) NOT NULL,
+        `price_value` varchar(255) NOT NULL,
         `date_acquired` varchar(255) NOT NULL,
         `remarks` varchar(255) NOT NULL,
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
