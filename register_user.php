@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h1>Register to the system</h1>
                 <p>Please fill to register user.</p>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
                     <label class="form-label">Username</label>
                     <input type="text" name="username" class="form-control">
                     <span class="invalid-feedback"><?php echo $username_err; ?></span>
