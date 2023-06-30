@@ -1,6 +1,7 @@
 <?php
 include 'config.php';
 
+session_start();
 if (isset($_SESSION['loggedin'])) {
 	if($_SESSION['account'] == "user"){
         // js alert you dont have permission to access this page
