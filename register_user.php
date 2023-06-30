@@ -135,7 +135,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-<?php include 'nav.php'; ?>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -164,6 +163,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <option value="user">User</option>
                     </select><br>
                     <input type="submit" class="btn btn-primary mb-3" value="Register">
+                    <input type="reset" class="btn btn-secondary mb-3" value="Reset">
+                    <a href="dashboard.php" class="btn btn-secondary mb-3">Go to Dashboard</a>
                 </form>
             </div>
         </div>
