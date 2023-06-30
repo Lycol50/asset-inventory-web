@@ -8,6 +8,9 @@ if (isset($_SESSION['loggedin'])) {
         echo "<script>alert('You do not have permission to access this page.')</script>";
 		header("location: dashboard.php");
 	}
+	else {
+        exit;
+    }
 	exit;
 }
 
