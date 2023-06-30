@@ -50,6 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             session_start();
 
                             $sql2 = "SELECT account_type FROM users WHERE username = ?";
+                            $result = $mysqli->query($sql2);
+                            $row = $result->fetch_assoc();
                             
                             // store data in session variables
                             $_SESSION["loggedin"] = true;
@@ -57,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
                             $_SESSION["firstname"] = $firstname;
                             $_SESSION["lastname"] = $lastname;
-                            $_SESSION["account_type"] = $account_type;
+                            $_SESSION["account_type"] = $row['account_type'];
                             
                             // redirect user to welcome page
                             header("location: dashboard.php");
