@@ -69,6 +69,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $date_acquired = trim($_POST["date_acquired"]);
     }
+
+    // check if remarks is empty
+    if (empty(trim($_POST["remarks"]))) {
+        $remarks_err = "Please enter remarks.";
+    } else {
+        $remarks = trim($_POST["remarks"]);
+    }
     
     function generateRandomLetter($length = 1) {
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
