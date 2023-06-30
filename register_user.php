@@ -3,14 +3,17 @@ include 'config.php';
 
 session_start();
 if (isset($_SESSION['loggedin'])) {
-	if($_SESSION['account'] == "user"){
+	if($_SESSION['account_type'] == "user"){
         // js alert you dont have permission to access this page
         echo "<script>alert('You do not have permission to access this page.')</script>";
 		header("location: dashboard.php");
 	}
-	elseif($_SESSION['account'] == "superadmin"){
-		exit;
-	}
+	elseif($_SESSION['account_type'] == "admin"){
+		echo "<script>alert('You do not have permission to access this page.')</script>";
+		header("location: dashboard.php");
+	}else {
+        exit;
+    }
 	exit;
 }
 

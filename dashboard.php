@@ -28,7 +28,7 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>This is a dashboard</h1>
+                <h1>Dashboard</h1>
             </div>
         </div>
     </div>
