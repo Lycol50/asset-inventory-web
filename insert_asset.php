@@ -69,15 +69,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $date_acquired = trim($_POST["date_acquired"]);
     }
+    
+    function generateRandomLetter($length = 1) {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    $asset_number = "ICNG-" . substr($date_acquired, 0, 4) . "-" . substr(md5($serial_number), 0, 4) . generateRandomLetter();
 
     // submit everything to db
     if (empty($brand_err) && empty($model_err) && empty($serial_number_err) && empty($status_err) && empty($equipment_name_err) && empty($location_err) && empty($price_value_err) && empty($date_acquired_err)) {
         // prepare an insert statement
-        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks, asset_tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks);
+            $stmt->bind_param("sssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag);
 
             // set parameters
             $param_brand = $brand;
@@ -89,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_price_value = $price_value;
             $param_date_acquired = $date_acquired;
             $param_remarks = $remarks;
-            $asset_tag = "Info-" . substr(md5($serial_number), 0, 13);
+            $param_asset_tag = $asset_number;
 
             // attempt to execute the prepared statement
             if ($stmt->execute()) {
