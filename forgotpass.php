@@ -75,6 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 exit();
                             } else {
                                 $password_reset_err = "Invalid Password Reset Code.";
+                                exit();
                             }
                         }
                     }
