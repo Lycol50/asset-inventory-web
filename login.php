@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" name="pass_word" class="form-control">
                     <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
                     <input type="submit" class="btn btn-primary mb-3" value="Login">
-                    <button type="button" class="btn btn-link mb-3" onclick="">Forgot Password?</button>
+                    <button type="button" class="btn btn-link mb-3" onclick="forgotpass.php">Forgot Password?</button>
                 </form>
             </div>
         </div>
