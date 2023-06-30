@@ -131,9 +131,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" name="new_password" class="form-control">
                     <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
                     <label class="form-label">Password Reset Code</label>
-                    <input type="password" name="password_reset" class="form-control">
-                    <input type="submit" class="btn btn-primary mb-3" value="Login">
-                    <button type="button" class="btn btn-link mb-3" onclick="">Forgot Password?</button>
+                    <input type="password" name="password_reset" class="form-control"><br>
+                    <input type="submit" class="btn btn-primary mb-3" value="Reset Password">
+                    <button type="button" class="btn btn-link mb-3" onclick="window.location.href='login.php';">Remeber Password?</button>
                 </form>
             </div>
         </div>
