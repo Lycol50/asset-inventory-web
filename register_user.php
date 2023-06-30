@@ -161,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" name="confirm_password" class="form-control">
                     <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span><br>
                     <label class="form-label">User Type</label>
-                    <select name="user_type" class="form-select">
+                    <select name="account_type" class="form-select">
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                     </select><br>
