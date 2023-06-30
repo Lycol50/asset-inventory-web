@@ -108,8 +108,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // attempt to execute the prepared statement
             if ($stmt->execute()) {
                 // redirect to login page
-                echo "<script>alert('Register Completed! Please login.')</script>";
-                header("location: login.php");
+                echo "<script>alert('User $firstname $lastname has been registered.')</script>";
+                header("register_user.php");
             } else {
                 echo "Something went wrong. Please try again later.";
             }
