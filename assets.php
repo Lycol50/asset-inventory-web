@@ -79,7 +79,7 @@ if (!isset($_SESSION['loggedin'])) {
                         ?>
                     </tbody>
                 </table>
-                <input type="button" onclick="window.print()" value="Print Table (this button becomes invisible)" class="noprint"/>
+                <input type="button" onclick="window.print()" value="Print Everything" class="noprint"/>
                 <a href="insert_asset.php" class="btn btn-primary noprint">Add Asset</a>
             </div>
         </div>
