@@ -8,7 +8,7 @@ $register = '<a class="nav-item nav-link" href="register_user.php">Register User
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/">Home</a>
+      <a class="nav-item nav-link" href="/">Home</a>
       <a class="nav-item nav-link" href="assets.php">List Assets</a>
       <a class="nav-item nav-link" href="insert_asset.php">Insert Asset</a>
       <?php if ($_SESSION['account_type'] === "superadmin") { echo $register; } ?>

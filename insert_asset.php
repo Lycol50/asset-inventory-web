@@ -2,8 +2,12 @@
 include 'config.php';
 session_start();
 
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: login.php');
+if (isset($_SESSION['loggedin'])) {
+	if($_SESSION['account'] == "user"){
+        // js alert you dont have permission to access this page
+        echo "<script>alert('You do not have permission to access this page.')</script>";
+		header("location: dashboard.php");
+	}
 	exit;
 }
 
