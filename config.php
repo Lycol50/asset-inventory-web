@@ -29,7 +29,7 @@ if($mysqli === false){
 
     // create table for assets
     $sql2 = "CREATE TABLE IF NOT EXISTS `assets` (
-        `id` int(255) NOT NULL,
+        `id` int(255) NOT NULL AUTO_INCREMENT,
         `brand` varchar(255) NOT NULL,
         `model` varchar(255) NOT NULL,
         `serial_number` varchar(255) NOT NULL,
