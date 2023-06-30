@@ -7,14 +7,15 @@ if (isset($_SESSION['loggedin'])) {
         // js alert you dont have permission to access this page
         echo "<script>alert('You do not have permission to access this page.')</script>";
 		header("location: dashboard.php");
+        exit;
 	}
 	elseif($_SESSION['account_type'] == "admin"){
 		echo "<script>alert('You do not have permission to access this page.')</script>";
 		header("location: dashboard.php");
+        exit;
 	}else {
         exit;
     }
-	exit;
 }
 
 $firstname = $lastname = $username = $password = $confirm_password = "";
