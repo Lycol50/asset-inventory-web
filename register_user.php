@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="firstname" class="form-control">
                     <span class="invalid-feedback"><?php echo $firstname_err; ?></span>
                     <label class="form-label">Last Name</label>
-                    <input type="text" name="firstname" class="form-control">
+                    <input type="text" name="lastname" class="form-control">
                     <span class="invalid-feedback"><?php echo $lastname_err; ?></span>
                     <label class="form-label">Password</label>
                     <input type="password" name="password" class="form-control">
