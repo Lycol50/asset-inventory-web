@@ -51,7 +51,7 @@ if (!isset($_SESSION['loggedin'])) {
                     var table = document.getElementById('assetsTable');
                     var rows = table.getElementsByTagName('tr');
 
-                    for (var i = 0; i < rows.length; i++) {
+                    for (var i = 1; i < rows.length; i++) {
                         var found = false;
                         var cells = rows[i].getElementsByTagName('td');
 
