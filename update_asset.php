@@ -18,6 +18,36 @@ $brand = $model = $serial_number = $status = $equipment_name = $location_asset =
 
 $brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $assettype_err = $remarks_err = "";
 
+// get the asset id from the url parameter
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM assets WHERE id = ?";
+    if ($stmt = $mysqli->prepare($sql)) {
+        $stmt->bind_param("i", $id);
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($result->num_rows == 1) {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+                $asset_type = $row['asset_type'];
+                $brand = $row['brand'];
+                $model = $row['model'];
+                $serial_number = $row['serial_number'];
+                $status = $row['status'];
+                $equipment_name = $row['equipment_name'];
+                $location_asset = $row['location_asset'];
+                $price_value = $row['price_value'];
+                $date_acquired = $row['date_acquired'];
+                $remarks = $row['remarks'];
+            } else {
+                echo "<script>alert('Something went wrong. Please try again!')</script>";
+            }
+        } else {
+            echo "<script>alert('Something went wrong. Please try again!')</script>";
+        }
+    }
+    $stmt->close();
+}
+
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -101,8 +131,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return $randomString;
     }
 
-    $asset_number = "ICNG-" . substr($date_acquired, 0, 4) . "-" . substr(md5($serial_number), 0, 4) . generateRandomLetter();
+    // $asset_number = "ICNG-" . substr($date_acquired, 0, 4) . "-" . substr(md5($serial_number), 0, 4) . generateRandomLetter();
 
+    // remove functionality to upload documents because it is impossible to reupdate the documents
     /* prepare to upload documents to server with foreach
     $target_dir = "uploads/";
     $filenames = array_filter($_FILES['documents']['name']);
@@ -112,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $targetFilePath = $targetDir . $filename;
             move_uploaded_file($_FILES["documents"]["tmp_name"][$key], $targetFilePath);
         }
-    }*/
+    }
     
     $countfiles = count($_FILES['documents']['name']);
     $totalFileUploaded = 0;
@@ -135,19 +166,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $totalFileUploaded++;
              }
         }
-   }
+   } */
     
     // submit everything to db
     if (empty($brand_err) && empty($model_err) && empty($serial_number_err) && empty($status_err) && empty($equipment_name_err) && empty($location_err) && empty($price_value_err) && empty($date_acquired_err) && empty($assettype_err)) {
         // prepare an insert statement
-        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location_asset, price_value, date_acquired, remarks, asset_tag, asset_type, documents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location_asset, price_value, date_acquired, remarks, asset_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents);
+            $stmt->bind_param("ssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_type);
 
             // set parameters
-            $param_documents = implode(",", $_FILES['documents']['name']);
             $param_asset_type = $asset_type;
             $param_brand = $brand;
             $param_model = $model;
@@ -158,7 +188,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_price_value = $price_value;
             $param_date_acquired = $date_acquired;
             $param_remarks = $remarks;
-            $param_asset_tag = $asset_number;
 
             // attempt to execute the prepared statement
             if ($stmt->execute()) {
@@ -198,9 +227,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Add Asset</h1>
+                <h1>Update Asset</h1>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" enctype='multipart/form-data'>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
                     <label for="asset_type">Asset Type</label>
                     <select name="asset_type" id="asset_type"
                         class="form-control <?php echo (!empty($assettype_err)) ? 'is-invalid' : ''; ?>"
@@ -263,9 +292,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         value="<?php echo $date_acquired; ?>">
                     <span class="invalid-feedback"><?php echo $date_acquired_err; ?></span>
                     <br>
-                    <label for="documents">Documents</label>
+                    <!-- <label for="documents">Documents</label>
                     <input type="file" name="documents[]" id="documents" class="form-control" multiple>
-                    <br>
+                    <br> -->
                     <label for="remarks">Remarks</label>
                     <input type="text" name="remarks" id="remarks"
                         class="form-control <?php echo (!empty($remarks_err)) ? 'is-invalid' : ''; ?>"
