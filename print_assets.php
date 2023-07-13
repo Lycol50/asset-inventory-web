@@ -35,7 +35,7 @@ $selectedAssets = $_GET['selectedAssets'];
 $assetTags = explode(',', $selectedAssets);
 
 // Example usage
-$logoPath = 'path/to/custom/logo.png';
+$logoPath = 'logo_info.png';
 
 // Generate PDF and print
 generatePDFAndPrint($logoPath, $assetTags);
