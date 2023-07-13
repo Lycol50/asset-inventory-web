@@ -22,7 +22,7 @@ $brand = $model = $serial_number = $status = $equipment_name = $location = $pric
 $brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $assettype_err = $remarks_err = $document_err ="";
 
 // Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (!empty($_SERVER["REQUEST_METHOD"] == "POST")) {
 
     // check if asset type is empty
     if (empty(trim($_POST["asset_type"]))) {
@@ -186,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col">
                 <h1>Add Asset</h1>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" enctype="multipart/form-data">
                     <label for="asset_type">Asset Type</label>
                     <select name="asset_type" id="asset_type" class="form-control <?php echo (!empty($assettype_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $asset_type; ?>">
                         <option value="Office Equipment">Office Equipment</option>
