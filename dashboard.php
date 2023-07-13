@@ -77,12 +77,22 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">Date and Time</div>
                     <div class="card-body d-flex flex-column">
-                        <h3 class="card-title"><?php echo new DateTime('H:i:s a' . strtotime($values['start_date_'.$j.'-'.$i]));;?></h3>
+                        <h3 class="card-title"><div id="timeNow"></div></h3>
                         <h5 class="card-text">Today is <?php echo date("l, F j, Y");?></h5>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+        var d = new Date(<?php date_default_timezone_set('UTC'); echo strtotime('now')*1000 ?>);
+        (function foo(){
+            d.setTime(d.getTime()+1000);
+            var clientTime = d.getHours() + ":"  + d.getMinutes() + ":" + d.getSeconds() + " " + (d.getHours() >= 12 ? 'pm' : 'am');
+            //alert(clientTime);
+            document.getElementById("timeNow").innerHTML = clientTime;
+            setTimeout(foo, 1000); // refresh time every 1 second
+        })();
+    </script>
 </body>
 
 </html>
