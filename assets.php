@@ -35,9 +35,9 @@ if (!isset($_SESSION['loggedin'])) {
                 <h1>Assets</h1>
                 <!-- serch bar for assets use js for this-->
                 <input type="text" id="searchInput" class="form-control form-control-lg d-print-none"
-                    placeholder="Search for an asset...">
+                    placeholder="Search for an asset..."><br>
                 <!-- insert dropdown for asset type and use the js below for sorting -->
-                <select id="assetType" class="form-select form-select-lg d-print-none">
+                <select id="assetType" class="form-select form-select d-print-none">
                     <option value="">All</option>
                     <option value="Office Equipment">Office Equipment</option>
                     <option value="Furnitures and Fixtures">Furnitures and Fixtures</option>
