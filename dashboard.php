@@ -33,7 +33,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
-                        <h5 class="card-text mb-4">All Assets in this building</h5>
+                        <h5 class="card-text">All Assets in this building</h5>
                     </div>
                 </div>
             </div>
