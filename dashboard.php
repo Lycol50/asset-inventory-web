@@ -148,12 +148,6 @@ $total_disposed = $row['total'];
         </div>
 </body>
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col">
                 <p class="text-center">© <?php echo date("Y");?> - Asset Management System</p>
-            </div>
-        </div>
-    </div>
 </footer>
 </html>
