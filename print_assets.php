@@ -1,3 +1,6 @@
+<?php
+require('fpdf/fpdf.php');
+
 // Function to generate PDF and print immediately
 function generatePDFAndPrint($logoPath, $assetTags)
 {
@@ -29,3 +32,4 @@ function generatePDFAndPrint($logoPath, $assetTags)
     // Initiate print immediately
     echo "<script type='text/javascript'>window.print();</script>";
 }
+?>
