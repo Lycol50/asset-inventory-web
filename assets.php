@@ -98,7 +98,7 @@ if (!isset($_SESSION['loggedin'])) {
                         <table class="table table-striped table-bordered border-start" id="assetsTable">
                             <thead>
                                 <tr>
-                                    <th>Select</th>
+                                    <th class="d-print-none">Select</th>
                                     <th>Asset Tag</th>
                                     <th>Asset Type</th>
                                     <th>Brand</th>
@@ -128,10 +128,10 @@ if (!isset($_SESSION['loggedin'])) {
                                     while ($row = $result->fetch_assoc()) {
                                         $documents_row = $row["documents"];
                                         echo "<tr>
-                                            <td>
+                                            <td class='d-print-none'>
                                                 <input type='checkbox' name='selectedAssets[]' value='" . $row["asset_tag"] . "'>
                                             </td>
-                                            <td style='font-family:'Consolas','Courier New', monospac'>" . $row["asset_tag"] . "</td>
+                                            <td style='font-family:'Consolas','Courier New', monospace'>" . $row["asset_tag"] . "</td>
                                             <td>" . $row["asset_type"] . "</td>
                                             <td>" . $row["brand"] . "</td>
                                             <td>" . $row["model"] . "</td>
@@ -159,7 +159,7 @@ if (!isset($_SESSION['loggedin'])) {
                                 ?>
                             </tbody>
                         </table>
-                        <input type="submit" name="printAssets" value="Print Selected for Asset Tag" class="d-print-none btn btn-primary" />
+                        <!-- <input type="submit" name="printAssets" value="Print Selected for Asset Tag" class="d-print-none btn btn-primary" /> -->
                         <input type="button" onclick="window.print()" value="Print Asset Data" class="d-print-none btn btn-primary" />
                         <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
                     </div>
