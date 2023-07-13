@@ -36,12 +36,26 @@ if (!isset($_SESSION['loggedin'])) {
                 <!-- serch bar for assets use js for this-->
                 <input type="text" id="searchInput" class="form-control form-control-lg d-print-none"
                     placeholder="Search for an asset...">
+                <!-- insert dropdown for asset type and use the js below for sorting -->
+                <select id="assetType" class="form-select form-select-lg d-print-none">
+                    <option value="">All</option>
+                    <option value="Office Equipment">Office Equipment</option>
+                    <option value="Furnitures and Fixtures">Furnitures and Fixtures</option>
+                    <option value="Aircon Equipment">Aircon Equipment</option>
+                </select>
                 <script>
                 // Get references to the input field
                 var searchInput = document.getElementById('searchInput');
+                var assetType = document.getElementById('assetType');
 
                 // Add an input event listener to the search input
                 searchInput.addEventListener('input', function() {
+                    var searchQuery = searchInput.value;
+                    searchAssets(searchQuery);
+                });
+
+                // Add an input event listener to the asset type dropdown
+                assetType.addEventListener('input', function() {
                     var searchQuery = searchInput.value;
                     searchAssets(searchQuery);
                 });
