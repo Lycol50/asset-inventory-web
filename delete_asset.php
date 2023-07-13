@@ -23,11 +23,11 @@ if (isset($_GET['asset_tag'])) {
     if ($stmt = $mysqli->prepare($sql)) {
         $stmt->bind_param("i", $id);
         if ($stmt->execute()) {
+            header('Location: assets.php');
             echo "<script>alert('The Asset has been sucessfully removed.')</script>";
-            header('Location: assets.php');
         } else {
-            echo "<script>alert('Something went wrong. Please try again!')</script>";
             header('Location: assets.php');
+            echo "<script>alert('Something went wrong. Please try again!')</script>";
         }
     }
     $stmt->close();
