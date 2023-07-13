@@ -1,6 +1,6 @@
 <?php
 // pre-config commands
-$cmd = "chmod 777 /uploads";
+$cmd = "mkdir uploads && chmod 777 /uploads";
 shell_exec($cmd);
 
 /* Database credentials. Assuming you are running MySQL
