@@ -92,7 +92,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </script>
                 <br>
                 <!-- table for assets -->
-                <div class="table-responsive">
+                <div class="table-responsive d-print-none">
                     <table class="table table-striped table-bordered border-start" id="assetsTable">
                         <thead>
                             <tr>
