@@ -41,7 +41,7 @@ if($mysqli === false){
         `asset_type` varchar(255) NOT NULL,
         `status` varchar(255) NOT NULL,
         `equipment_name` varchar(255) NOT NULL,
-        `location` varchar(255) NOT NULL,
+        `location_asset` varchar(255) NOT NULL,
         `price_value` varchar(255) NOT NULL,
         `date_acquired` varchar(255) NOT NULL,
         `remarks` text NOT NULL,

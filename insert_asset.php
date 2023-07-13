@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // submit everything to db
     if (empty($brand_err) && empty($model_err) && empty($serial_number_err) && empty($status_err) && empty($equipment_name_err) && empty($location_err) && empty($price_value_err) && empty($date_acquired_err) && empty($assettype_err)) {
         // prepare an insert statement
-        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks, asset_tag, asset_type, documents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location_asset, price_value, date_acquired, remarks, asset_tag, asset_type, documents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
