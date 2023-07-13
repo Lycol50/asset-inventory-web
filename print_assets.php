@@ -1,8 +1,9 @@
 <?php
 include 'config.php';
 $assetTags = array();
-if (isset($_POST['print'])) {
-    $assetTags = $_POST['assetTags'];
+// get asset tags from url parameter
+if (isset($_GET['asset_tags'])) {
+    $assetTags = explode(",", $_GET['asset_tags']);
 }
 
 ?>
