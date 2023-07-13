@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <br>
                     <input type="hidden" name="asset_tag" value="<?php echo $row['asset_tag']; ?>"> <!-- Hidden field for asset_tag -->
                     <input type="submit" class="btn btn-primary" value="Submit">
-                    <a href="dashboard.php" class="btn btn-secondary ml-2">Cancel</a>
+                    <a href="assets.php" class="btn btn-secondary ml-2">Cancel</a>
                 </form>
             </div>
         </div>
