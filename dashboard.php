@@ -28,24 +28,25 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="container">
         <h1>Dashboard</h1><br>
         <div class="row row-cols-1 row-cols-md-2">
-                <div class="col">
-                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem; text-align:center;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title">Primary card title</h3>
-                            <h5 class="card-text">All Assets in this building</h5>
-                        </div>
+            <div class="col">
+                <div class="card text-white bg-primary mb-3" style="max-width: 20rem; text-align:center;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">Primary card title</h3>
+                        <h5 class="card-text">All Assets in this building</h5>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title">Primary card title</h3>
-                            <h5 class="card-text">In Use Assets in this building</h5>
-                        </div>
+            </div>
+            <div class="col">
+                <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
+                    <div class="card-header">Header</div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">Primary card title</h3>
+                        <h5 class="card-text">In Use Assets in this building</h5>
                     </div>
                 </div>
+            </div>
+            <div class="col">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
@@ -53,6 +54,8 @@ if (!isset($_SESSION['loggedin'])) {
                         <h5 class="card-text">In Storage Assets in this building</h5>
                     </div>
                 </div>
+            </div>
+            <div class="col">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
@@ -60,6 +63,8 @@ if (!isset($_SESSION['loggedin'])) {
                         <h5 class="card-text">For Repair Assets in this building</h5>
                     </div>
                 </div>
+            </div>
+            <div class="col">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
@@ -67,6 +72,8 @@ if (!isset($_SESSION['loggedin'])) {
                         <h5 class="card-text">For Disposal Assets in this building</h5>
                     </div>
                 </div>
+            </div>
+            <div class="col">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
