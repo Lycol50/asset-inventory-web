@@ -34,12 +34,12 @@ if (!isset($_SESSION['loggedin'])) {
             <div class="col">
                 <h1>Assets</h1>
                 <!-- serch bar for assets use js for this-->
-                <input type="text" id="searchInput" class="form-control .form-control-lg" placeholder="Search for an asset...">
-                <button id="searchButton">Search</button>
+                <input type="text" id="searchInput" class="form-control form-control-lg"
+                    placeholder="Search for an asset...">
+
                 <script>
-                // Get references to the input field and search button
+                // Get references to the input field
                 var searchInput = document.getElementById('searchInput');
-                var searchButton = document.getElementById('searchButton');
 
                 // Add an input event listener to the search input
                 searchInput.addEventListener('input', function() {
@@ -53,16 +53,8 @@ if (!isset($_SESSION['loggedin'])) {
                     var rows = table.getElementsByTagName('tr');
 
                     for (var i = 0; i < rows.length; i++) {
-                        var assetName1 = rows[i].getElementsByTagName('td')[0];
-                        var assetName2 = rows[i].getElementsByTagName('td')[1];
-                        var assetName3 = rows[i].getElementsByTagName('td')[2];
-                        var assetName4 = rows[i].getElementsByTagName('td')[3];
-                        var assetName5 = rows[i].getElementsByTagName('td')[4];
-                        var assetName6 = rows[i].getElementsByTagName('td')[5];
-                        var assetName7 = rows[i].getElementsByTagName('td')[6];
-                        var assetName8 = rows[i].getElementsByTagName('td')[8];
-                        if (assetName0 || assetName1 || assetName2 || assetName3 || assetName4 || assetName5 ||
-                            assetName6 || assetName8) {
+                        var assetName = rows[i].getElementsByTagName('td')[0];
+                        if (assetName) {
                             var name = assetName.textContent || assetName.innerText;
                             if (name.toLowerCase().indexOf(query.toLowerCase()) > -1) {
                                 rows[i].style.display = '';
