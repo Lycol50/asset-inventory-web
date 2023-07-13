@@ -26,7 +26,7 @@ $brand = $model = $serial_number = $status = $equipment_name = $location = $pric
 $brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $assettype_err = $remarks_err = "";
 
 // Processing form data when form is submitted
-if(isset($_POST['submit'])){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // check if asset type is empty
     if (empty(trim($_POST["asset_type"]))) {
