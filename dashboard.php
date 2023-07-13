@@ -28,7 +28,7 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="container">
     <h1>Dashboard</h1><br>
         <div class="row row-cols-1 row-cols-md-3">
-            <div class="col d-flex align-items-stretch">
+            <div class="col-sm-6 d-flex align-items-stretch">
                 <div class="card text-white bg-primary mb-3" style="text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
                     </div>
                 </div>
             </div>
-            <div class="col d-flex align-items-stretch">
+            <div class="col-sm-6 d-flex align-items-stretch">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
@@ -46,7 +46,7 @@ if (!isset($_SESSION['loggedin'])) {
                     </div>
                 </div>
             </div>
-            <div class="col d-flex align-items-stretch">
+            <div class="col-sm-6 d-flex align-items-stretch">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
@@ -55,7 +55,7 @@ if (!isset($_SESSION['loggedin'])) {
                     </div>
                 </div>
             </div>
-            <div class="col d-flex align-items-stretch">
+            <div class="col-sm-6 d-flex align-items-stretch">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
@@ -64,7 +64,7 @@ if (!isset($_SESSION['loggedin'])) {
                     </div>
                 </div>
             </div>
-            <div class="col d-flex align-items-stretch">
+            <div class="col-sm-6 d-flex align-items-stretch">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
@@ -73,7 +73,7 @@ if (!isset($_SESSION['loggedin'])) {
                     </div>
                 </div>
             </div>
-            <div class="col d-flex align-items-stretch">
+            <div class="col-sm-6 d-flex align-items-stretch">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
