@@ -77,12 +77,12 @@ if (!isset($_SESSION['loggedin'])) {
                                     $param = $row["documents"];
                                     $array = explode(",", $param);
                                     foreach ($array as $document) {
-                                        echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a>&nbsp;";
+                                        echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
                                     }
                                 echo "</td>
                                 <td class='d-print-none'>
-                                    <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
-                                    <a href='delete_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a>
+                                    <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
+                                    <a href='delete_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
                                 </td>
                                 </tr>";
                             }
