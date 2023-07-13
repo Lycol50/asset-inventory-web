@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $countfiles = count($_FILES['documents']['name']);
     $totalFileUploaded = 0;
     for($i=0;$i<$countfiles;$i++){
-        $filename = $_FILES['file']['name'][$i];
+        $filename = $_FILES['documents']['name'][$i];
 
         ## Location
         $location = "uploads/".$filename;
@@ -138,10 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ## Check file extension
         if(in_array(strtolower($extension), $valid_extensions)) {
              ## Upload file
-             if(move_uploaded_file($_FILES['file']['tmp_name'][$i],$location)){
-
-                  echo "file name : ".$filename."<br/>";
-
+             if(move_uploaded_file($_FILES['documents']['tmp_name'][$i],$location)){
                   $totalFileUploaded++;
              }
         }
