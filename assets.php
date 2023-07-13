@@ -7,8 +7,6 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
-$array = explode(",", $row["documents"]);
-
 function linktodocument ($param) {
     echo "<a href='uploads/$param' target='_blank'>$param</a><br>";
 }
@@ -59,6 +57,7 @@ function linktodocument ($param) {
                         // include 'config.php';
                         $sql = "SELECT * FROM assets";
                         $result = $mysqli->query($sql);
+                        $array = explode(",", $row["documents"]);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>
@@ -72,7 +71,7 @@ function linktodocument ($param) {
                                 <td>" . $row["date_acquired"] . "</td>
                                 <td>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["location_asset"] . "</td>
-                                <td>" . linktodocument($array) . "</td>
+                                <td>" . foreach ($array as $key){linktodocument($key);} . "</td>
                                 <td class='d-print-none'>
                                     <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
                                     <a href='delete_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a>
