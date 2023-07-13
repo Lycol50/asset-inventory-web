@@ -226,8 +226,7 @@ if(isset($_POST['submit'])){
                     <span class="invalid-feedback"><?php echo $date_acquired_err; ?></span>
                     <br>
                     <label for="documents">Documents</label>
-                    <input type="file" name="documents[]" id="documents" class="form-control <?php echo (!empty($documents_err)) ? 'is-invalid' : ''; ?>" multiple>
-                    <span class="invalid-feedback"><?php echo $documents_err; ?></span>
+                    <input type="file" name="documents[]" id="documents" class="form-control" multiple>
                     <br>
                     <label for="remarks">Remarks</label>
                     <input type="text" name="remarks" id="remarks" class="form-control <?php echo (!empty($remarks_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $remarks; ?>">
