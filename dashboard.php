@@ -31,9 +31,9 @@ if (!isset($_SESSION['loggedin'])) {
             <div class="col d-flex align-items-stretch">
                 <div class="card text-white bg-primary mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
-                    <div class="card-body flex-column">
+                    <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
-                        <h5 class="card-text">All Assets in this building</h5>
+                        <h5 class="card-text mb-4">All Assets in this building</h5>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
-                        <h5 class="card-text">In Use Assets in this building</h5>
+                        <h5 class="card-text mb-4">In Use Assets in this building</h5>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
-                        <h5 class="card-text">In Storage Assets in this building</h5>
+                        <h5 class="card-text mb-4">In Storage Assets in this building</h5>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
-                        <h5 class="card-text">For Repair Assets in this building</h5>
+                        <h5 class="card-text mb-4">For Repair Assets in this building</h5>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
-                        <h5 class="card-text">For Disposal Assets in this building</h5>
+                        <h5 class="card-text mb-4">For Disposal Assets in this building</h5>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
-                        <h5 class="card-text">Total Assets in this building</h5>
+                        <h5 class="card-text mb-4">Total Assets in this building</h5>
                     </div>
                 </div>
             </div>
