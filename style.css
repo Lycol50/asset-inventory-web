@@ -43,7 +43,7 @@ body::-webkit-scrollbar-button {
 
 @media print {
         .noprint {
-            display: none !important;
+            display: block !important;
             visibility: hidden !important;
         }
 }
