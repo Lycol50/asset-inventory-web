@@ -23,6 +23,7 @@ if (!isset($_SESSION['loggedin'])) {
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <link rel="icon" type="image/x-icon" href="white.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -32,7 +33,35 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="row">
             <div class="col">
                 <h1>Assets</h1>
-                <table class="table table-striped">
+                <!-- serch bar for assets use js for this-->
+                <input type="text" id="searchInput" placeholder="Search for an asset...">
+                <button id="searchButton">Search</button>
+                <script>
+                document.getElementById('searchButton').addEventListener('click', function() {
+                    var searchQuery = document.getElementById('searchInput').value;
+                    searchAssets(searchQuery);
+                });
+
+                function searchAssets(query) {
+                    var table = document.getElementById('assetsTable');
+                    var rows = table.getElementsByTagName('tr');
+
+                    for (var i = 0; i < rows.length; i++) {
+                        var assetName = rows[i].getElementsByTagName('td')[0];
+                        if (assetName) {
+                            var name = assetName.textContent || assetName.innerText;
+                            if (name.indexOf(query) > -1) {
+                                rows[i].style.display = '';
+                            } else {
+                                rows[i].style.display = 'none';
+                            }
+                        }
+                    }
+                }
+                </script>
+                <br>
+                <!-- table for assets -->
+                <table class="table table-striped" id="assetsTable">
                     <thead>
                         <tr>
                             <th>Asset Tag</th>
@@ -91,7 +120,8 @@ if (!isset($_SESSION['loggedin'])) {
                         ?>
                     </tbody>
                 </table>
-                <input type="button" onclick="window.print()" value="Print Everything" class="d-print-none btn btn-primary"/>
+                <input type="button" onclick="window.print()" value="Print Everything"
+                    class="d-print-none btn btn-primary" />
                 <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
             </div>
         </div>
