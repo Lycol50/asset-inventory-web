@@ -57,7 +57,6 @@ function linktodocument ($param) {
                         // include 'config.php';
                         $sql = "SELECT * FROM assets";
                         $result = $mysqli->query($sql);
-                        $array = explode(",", $row["documents"]);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>
@@ -74,6 +73,7 @@ function linktodocument ($param) {
                                 <td>
                                 <?php
                                     foreach ($array as $value) {
+                                        $array = explode(",", $row["documents"]);
                                         linktodocument($value);
                                     }
                                 ?>
