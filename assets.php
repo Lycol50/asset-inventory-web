@@ -31,8 +31,8 @@ function showdocuments ($param) {
     </script>
     <script media="print">
         .noprint {
-            display: none;
-            visibility: hidden;
+            display: none !important;
+            visibility: hidden !important;
         }
     </script>
     <link rel="icon" type="image/x-icon" href="white.png">
@@ -91,7 +91,7 @@ function showdocuments ($param) {
                         ?>
                     </tbody>
                 </table>
-                <input type="button" onclick="window.print()" value="Print Everything" class="btn btn-primary noprint"/>
-                <a href="insert_asset.php" class="btn btn-primary noprint">Add Asset</a>
+                <input type="button" onclick="window.print()" value="Print Everything" class="noprint btn btn-primary"/>
+                <a href="insert_asset.php" class="noprint btn btn-primary">Add Asset</a>
             </div>
         </div>
