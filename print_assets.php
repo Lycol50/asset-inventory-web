@@ -8,28 +8,43 @@ function generatePDFAndPrint($logoPath, $assetTags)
     $pdf = new FPDF();
     
     // Add a new page
-    $pdf->AddPage();
+    $pdf->AddPage('P', array(8.5, 11));
     
     // Set font
     $pdf->SetFont('Arial', '', 12);
     
+    // Set logo position and size
+    $pdf->Image($logoPath, 1, 1, 2);
     
-    // Set Y position for asset tags
-    $yPosition = 15;
-    $xPosition = 7; // Adjust the x-axis position here
-
-    // Output asset tags
+    // Set table parameters
+    $tableWidth = 6.5; // Adjust the table width here
+    $cellHeight = 0.5; // Adjust the cell height here
+    $cellMargin = 0.2; // Adjust the cell margin here
+    
+    // Set initial position for table
+    $xPosition = 4; // Adjust the x-axis position here
+    $yPosition = 1; // Adjust the y-axis position here
+    
+    // Output asset tags in a table format
     foreach ($assetTags as $assetTag) {
+        // Set position for current cell
         $pdf->SetXY($xPosition, $yPosition);
-        $pdf->SetX($xPosition); // Set the x-position explicitly
-        // Set logo
-        $pdf->Image($logoPath, 10, 10, 30);
-        $pdf->Cell(0, 10, $assetTag, 0, 1);
-        $yPosition += 10; // Increase Y position for the next asset tag
-        $xPosition += 10; // Increase Y position for the next asset tag
+        
+        // Output asset tag cell
+        $pdf->Cell($tableWidth, $cellHeight, $assetTag, 1, 1, 'C');
+        
+        // Update y-position for the next cell
+        $yPosition += $cellHeight + $cellMargin;
+        
+        // Check if reaching the end of the page
+        if ($yPosition + $cellHeight + $cellMargin > 11) {
+            // Add a new page
+            $pdf->AddPage('P', array(8.5, 11));
+            
+            // Reset y-position for the new page
+            $yPosition = 1;
+        }
     }
-
-
     
     // Output PDF
     $pdf->Output('I', 'Asset_Tags.pdf');
