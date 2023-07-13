@@ -28,7 +28,7 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="container">
         <div class="row">
             <h1>Dashboard</h1>
-            <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+            <div class="card text-white bg-primary mb-3" style="max-width: 20rem; text-align:center;">
                 <div class="card-header">Header</div>
                 <div class="card-body">
                     <h3 class="card-title">Primary card title</h3>
