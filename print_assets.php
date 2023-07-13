@@ -18,19 +18,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body style="text-align:center">
     <div class="container">
         <div class="row">
             <div class="col">
-                <img src="logo_info.png" alt="logo" class="logo">
+                <img src="logo_info.png" alt="logo" class="logo" width="100px">
                 <p>Asset Tag </p>
             </div>
             <div class="col">
-                <img src="logo_info.png" alt="logo" class="logo">
+                <img src="logo_info.png" alt="logo" width="100px">
                 <p>Asset Tag </p>
             </div>
             <div class="col">
-                <img src="logo_info.png" alt="logo" class="logo">
+                <img src="logo_info.png" alt="logo" width="100px">
                 <p>Asset Tag </p>
             </div>
         </div>
