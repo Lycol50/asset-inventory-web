@@ -75,12 +75,12 @@ $row = mysqli_fetch_array($result);
                     <label for="asset_type">Asset Type</label>
                     <select name="asset_type" id="asset_type" class="form-control">
                         <option value="Office Equipment"
-                            <?php if ($asset_type === 'Office Equipment') echo 'selected'; ?>>Office Equipment</option>
+                            <?php if ($row['asset_type'] === 'Office Equipment') echo 'selected'; ?>>Office Equipment</option>
                         <option value="Furnitures and Fixtures"
-                            <?php if ($asset_type === 'Furnitures and Fixtures') echo 'selected'; ?>>Furnitures and
+                            <?php if ($row['asset_type'] === 'Furnitures and Fixtures') echo 'selected'; ?>>Furnitures and
                             Fixtures</option>
                         <option value="Aircon Equipment"
-                            <?php if ($asset_type === 'Aircon Equipment') echo 'selected'; ?>>Aircon Equipment</option>
+                            <?php if ($row['asset_type'] === 'Aircon Equipment') echo 'selected'; ?>>Aircon Equipment</option>
                     </select>
                     <br>
                     <label for="brand">Brand</label>
@@ -97,12 +97,12 @@ $row = mysqli_fetch_array($result);
                     <br>
                     <label for="status">Status</label>
                     <select name="status" id="status" class="form-control">
-                        <option value="Available" <?php if ($status === 'Available') echo 'selected'; ?>>Available
+                        <option value="Available" <?php if ($row['status'] === 'Available') echo 'selected'; ?>>Available
                         </option>
-                        <option value="In Use" <?php if ($status === 'In Use') echo 'selected'; ?>>In Use</option>
-                        <option value="For Repair" <?php if ($status === 'For Repair') echo 'selected'; ?>>For Repair
+                        <option value="In Use" <?php if ($row['status'] === 'In Use') echo 'selected'; ?>>In Use</option>
+                        <option value="For Repair" <?php if ($row['status'] === 'For Repair') echo 'selected'; ?>>For Repair
                         </option>
-                        <option value="For Disposal" <?php if ($status === 'For Disposal') echo 'selected'; ?>>For
+                        <option value="For Disposal" <?php if ($row['status'] === 'For Disposal') echo 'selected'; ?>>For
                             Disposal</option>
                     </select>
                     <br>
