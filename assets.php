@@ -81,7 +81,7 @@ function showdocuments ($param) {
                                 </tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='8'><center>No Data Avaliable</center></td></tr>";
+                            echo "<tr><td colspan='10'><center>No Data Avaliable</center></td></tr>";
                         }
                         ?>
                     </tbody>
