@@ -167,8 +167,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 ?>
                             </tbody>
                         </table>
-                        <input type="submit" name="printAssets" value="Print Selected" class="d-print-none btn btn-primary" />
-                        <input type="button" onclick="window.print()" value="Print Everything" class="d-print-none btn btn-primary" />
+                        <input type="submit" name="printAssets" value="Print Selected for Asset Tag" class="d-print-none btn btn-primary" />
+                        <input type="button" onclick="window.print()" value="Print Asset Data" class="d-print-none btn btn-primary" />
                         <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
                     </div>
                 </form>
