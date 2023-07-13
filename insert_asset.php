@@ -22,7 +22,7 @@ $brand = $model = $serial_number = $status = $equipment_name = $location = $pric
 $brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $assettype_err = $remarks_err = $document_err ="";
 
 // Processing form data when form is submitted
-if (!empty($_SERVER["REQUEST_METHOD"] == "POST")) {
+if(isset($_POST['submit'])){
 
     // check if asset type is empty
     if (empty(trim($_POST["asset_type"]))) {
@@ -129,12 +129,13 @@ if (!empty($_SERVER["REQUEST_METHOD"] == "POST")) {
                     $targetFilePath = $targetDir . $filename;
 
                     if(move_uploaded_file($_FILES["documents"]["tmp_name"][$key], $targetFilePath)) {
-                        $param_documents = implode("|", $filenames);
+                        
                     }
                 }
             }
 
             // set parameters
+            $param_documents = implode(",", $filenames);
             $param_asset_type = $asset_type;
             $param_brand = $brand;
             $param_model = $model;
