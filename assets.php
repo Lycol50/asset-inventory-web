@@ -76,7 +76,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </script>
                 <br>
                 <!-- table for assets -->
-                <table class="table table-striped table-bordered border-dark" id="assetsTable">
+                <table class="table table-striped table-bordered border-start" id="assetsTable">
                     <thead>
                         <tr>
                             <th>Asset Tag</th>
