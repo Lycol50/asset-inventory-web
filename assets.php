@@ -72,9 +72,7 @@ function linktodocument ($param) {
                                 <td>" . $row["date_acquired"] . "</td>
                                 <td>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["location_asset"] . "</td>
-                                <?php foreach($array as $key=>$value): ?>
-                                <td> <?= linktodocument($key); ?> </td>
-                                <?php endforeach; ?>
+                                <td>" . linktodocument($array) . "</td>
                                 <td class='d-print-none'>
                                     <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
                                     <a href='delete_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a>
