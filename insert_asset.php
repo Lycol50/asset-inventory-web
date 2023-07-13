@@ -107,7 +107,7 @@ if(isset($_POST['submit'])){
 
     $asset_number = "ICNG-" . substr($date_acquired, 0, 4) . "-" . substr(md5($serial_number), 0, 4) . generateRandomLetter();
 
-    // prepare to upload documents to server with foreach
+    /* prepare to upload documents to server with foreach
     $target_dir = "uploads/";
     $filenames = array_filter($_FILES['documents']['name']);
     if (!empty($filenames)) {
@@ -116,7 +116,34 @@ if(isset($_POST['submit'])){
             $targetFilePath = $targetDir . $filename;
             move_uploaded_file($_FILES["documents"]["tmp_name"][$key], $targetFilePath);
         }
-    }
+    }*/
+
+    $countfiles = count($_FILES['documents']['name']);
+    $totalFileUploaded = 0;
+    for($i=0;$i<$countfiles;$i++){
+        $filename = $_FILES['file']['name'][$i];
+
+        ## Location
+        $location = "uploads/".$filename;
+        $extension = pathinfo($location,PATHINFO_EXTENSION);
+        $extension = strtolower($extension);
+
+        ## File upload allowed extensions
+        $valid_extensions = array("jpg","jpeg","png","pdf","docx");
+
+        $response = 0;
+        ## Check file extension
+        if(in_array(strtolower($extension), $valid_extensions)) {
+             ## Upload file
+             if(move_uploaded_file($_FILES['file']['tmp_name'][$i],$location)){
+
+                  echo "file name : ".$filename."<br/>";
+
+                  $totalFileUploaded++;
+             }
+        }
+
+   }
     
     // submit everything to db
     if (empty($brand_err) && empty($model_err) && empty($serial_number_err) && empty($status_err) && empty($equipment_name_err) && empty($location_err) && empty($price_value_err) && empty($date_acquired_err) && empty($assettype_err)) {
@@ -143,7 +170,7 @@ if(isset($_POST['submit'])){
 
             // attempt to execute the prepared statement
             if ($stmt->execute()) {
-                echo '<script>alert("Asset added successfully.");</script>';
+                echo '<script>alert("Asset added successfully\nTotal File uploaded : "' . $totalFileUploaded . '");</script>';
             } else {
                 echo '<script>alert("Something went wrong.");</script>';
             }
@@ -180,9 +207,12 @@ if(isset($_POST['submit'])){
             <div class="col">
                 <h1>Add Asset</h1>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" enctype="multipart/form-data">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off"
+                    enctype="multipart/form-data">
                     <label for="asset_type">Asset Type</label>
-                    <select name="asset_type" id="asset_type" class="form-control <?php echo (!empty($assettype_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $asset_type; ?>">
+                    <select name="asset_type" id="asset_type"
+                        class="form-control <?php echo (!empty($assettype_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $asset_type; ?>">
                         <option value="Office Equipment">Office Equipment</option>
                         <option value="Furnitures and Fixtures">Furnitures and Fixtures</option>
                         <option value="Aircon Equipment">Aircon Equipment</option>
@@ -190,19 +220,27 @@ if(isset($_POST['submit'])){
                     <span class="invalid-feedback"><?php echo $assettype_err; ?></span>
                     <br>
                     <label for="brand">Brand</label>
-                    <input type="text" name="brand" id="brand" class="form-control <?php echo (!empty($brand_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $brand; ?>">
+                    <input type="text" name="brand" id="brand"
+                        class="form-control <?php echo (!empty($brand_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $brand; ?>">
                     <span class="invalid-feedback"><?php echo $brand_err; ?></span>
                     <br>
                     <label for="model">Model</label>
-                    <input type="text" name="model" id="model" class="form-control <?php echo (!empty($model_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $model; ?>">
+                    <input type="text" name="model" id="model"
+                        class="form-control <?php echo (!empty($model_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $model; ?>">
                     <span class="invalid-feedback"><?php echo $model_err; ?></span>
                     <br>
                     <label for="serial_number">Serial Number</label>
-                    <input type="text" name="serial_number" id="serial_number" class="form-control <?php echo (!empty($serial_number_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $serial_number; ?>">
+                    <input type="text" name="serial_number" id="serial_number"
+                        class="form-control <?php echo (!empty($serial_number_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $serial_number; ?>">
                     <span class="invalid-feedback"><?php echo $serial_number_err; ?></span>
                     <br>
                     <label for="status">Status</label>
-                    <select name="status" id="status" class="form-control <?php echo (!empty($status_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $status; ?>">
+                    <select name="status" id="status"
+                        class="form-control <?php echo (!empty($status_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $status; ?>">
                         <option value="Available">Available</option>
                         <option value="In Use">In Use</option>
                         <option value="For Repair">For Repair</option>
@@ -211,25 +249,35 @@ if(isset($_POST['submit'])){
                     <span class="invalid-feedback"><?php echo $status_err; ?></span>
                     <br>
                     <label for="equipment_name">Equipment Name</label>
-                    <input type="text" name="equipment_name" id="equipment_name" class="form-control <?php echo (!empty($equipment_name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $equipment_name; ?>">
+                    <input type="text" name="equipment_name" id="equipment_name"
+                        class="form-control <?php echo (!empty($equipment_name_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $equipment_name; ?>">
                     <span class="invalid-feedback"><?php echo $equipment_name_err; ?></span>
                     <br>
                     <label for="location">Location</label>
-                    <input type="text" name="location" id="location" class="form-control <?php echo (!empty($location_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $location; ?>">
+                    <input type="text" name="location" id="location"
+                        class="form-control <?php echo (!empty($location_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $location; ?>">
                     <br>
                     <label for="price_value">Price Value</label>
-                    <input type="text" name="price_value" id="price_value" class="form-control <?php echo (!empty($price_value_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $price_value; ?>">
+                    <input type="text" name="price_value" id="price_value"
+                        class="form-control <?php echo (!empty($price_value_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $price_value; ?>">
                     <span class="invalid-feedback"><?php echo $price_value_err; ?></span>
                     <br>
                     <label for="date_acquired">Date Acquired</label>
-                    <input type="date" name="date_acquired" id="date_acquired" class="form-control <?php echo (!empty($date_acquired_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $date_acquired; ?>">
+                    <input type="date" name="date_acquired" id="date_acquired"
+                        class="form-control <?php echo (!empty($date_acquired_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $date_acquired; ?>">
                     <span class="invalid-feedback"><?php echo $date_acquired_err; ?></span>
                     <br>
                     <label for="documents">Documents</label>
                     <input type="file" name="documents[]" id="documents" class="form-control" multiple>
                     <br>
                     <label for="remarks">Remarks</label>
-                    <input type="text" name="remarks" id="remarks" class="form-control <?php echo (!empty($remarks_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $remarks; ?>">
+                    <input type="text" name="remarks" id="remarks"
+                        class="form-control <?php echo (!empty($remarks_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $remarks; ?>">
                     <span class="invalid-feedback"><?php echo $remarks_err; ?></span>
                     <br>
                     <input type="submit" class="btn btn-primary" value="Submit">
@@ -239,4 +287,5 @@ if(isset($_POST['submit'])){
         </div>
     </div>
 </body>
+
 </html>
