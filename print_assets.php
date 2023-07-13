@@ -18,14 +18,16 @@ function generatePDFAndPrint($logoPath, $assetTags)
     
     // Set Y position for asset tags
     $yPosition = 15;
-    $xPosition = 40; // Adjust the x-axis position here
+    $xPosition = 50; // Adjust the x-axis position here
 
     // Output asset tags
     foreach ($assetTags as $assetTag) {
         $pdf->SetXY($xPosition, $yPosition);
-        $pdf->Cell(0, 10, $assetTag, 0, 1, 'L', $xPosition);
+        $pdf->SetX($xPosition); // Set the x-position explicitly
+        $pdf->Cell(0, 10, $assetTag, 0, 1);
         $yPosition += 10; // Increase Y position for the next asset tag
     }
+
 
     
     // Output PDF
