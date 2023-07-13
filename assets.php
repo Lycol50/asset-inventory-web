@@ -35,9 +35,11 @@ if (!isset($_SESSION['loggedin'])) {
                 <h1>Assets</h1>
                 <!-- serch bar for assets use js for this-->
                 <input type="text" id="searchInput" class="form-control .form-control-lg" placeholder="Search for an asset...">
+                <button id="searchButton">Search</button>
                 <script>
                 // Get references to the input field and search button
                 var searchInput = document.getElementById('searchInput');
+                var searchButton = document.getElementById('searchButton');
 
                 // Add an input event listener to the search input
                 searchInput.addEventListener('input', function() {
