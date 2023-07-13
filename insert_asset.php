@@ -132,7 +132,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(in_array(strtolower($extension), $valid_extensions)) {
         ## Upload file
         if(move_uploaded_file($_FILES['documents']['tmp_name'][$i],$location)){
-        $totalFileUploaded++;
+            array_push($filename, $filename_array);
+            $totalFileUploaded++;
         }
       }
    }
@@ -147,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents);
 
             // set parameters
-            $param_documents = implode(",", $filename);
+            $param_documents = implode(",", $filename_array);
             $param_asset_type = $asset_type;
             $param_brand = $brand;
             $param_model = $model;
