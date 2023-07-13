@@ -7,6 +7,14 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Handle the form submission
+    $selectedAssets = $_POST['selectedAssets'];
+    
+    // Redirect to the print page with the selected asset tags
+    header('Location: print_assets.php?selectedAssets=' . urlencode(implode(',', $selectedAssets)));
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -93,70 +101,77 @@ if (!isset($_SESSION['loggedin'])) {
                 </script>
                 <br>
                 <!-- table for assets -->
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered border-start" id="assetsTable">
-                        <thead>
-                            <tr>
-                                <th>Asset Tag</th>
-                                <th>Asset Type</th>
-                                <th>Brand</th>
-                                <th>Model</th>
-                                <th>Equipment Name</th>
-                                <th>Serial Number</th>
-                                <th>Status</th>
-                                <th>Date Acquired</th>
-                                <th>Location</th>
-                                <th>Documents</th>
-                                <th class="d-print-none">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                        // include 'config.php';
-                        $sql = "SELECT * FROM assets";
-                        $result = $mysqli->query($sql);
-                        function showdocuments ($param) {
-                            $array = explode(",", $param);
-                            foreach ($array as $document) {
-                                echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary target='_blank'>$document</a>&nbsp;";
-                            }
-                        }
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $documents_row = $row["documents"];
-                                echo "<tr>
-                                <td style='font-family:consolas'>" . $row["asset_tag"] . "</td>
-                                <td>" . $row["asset_type"] . "</td>
-                                <td>" . $row["brand"] . "</td>
-                                <td>" . $row["model"] . "</td>
-                                <td>" . $row["equipment_name"] . "</td>
-                                <td>" . $row["serial_number"] . "</td>
-                                <td>" . $row["status"] . "</td>
-                                <td>" . $row["date_acquired"] . "</td>
-                                <td>" . $row["location_asset"] . "</td>
-                                <td>";
-                                    $param = $row["documents"];
+                <form method="POST" action="">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered border-start" id="assetsTable">
+                            <thead>
+                                <tr>
+                                    <th>Select</th>
+                                    <th>Asset Tag</th>
+                                    <th>Asset Type</th>
+                                    <th>Brand</th>
+                                    <th>Model</th>
+                                    <th>Equipment Name</th>
+                                    <th>Serial Number</th>
+                                    <th>Status</th>
+                                    <th>Date Acquired</th>
+                                    <th>Location</th>
+                                    <th>Documents</th>
+                                    <th class="d-print-none">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                // include 'config.php';
+                                $sql = "SELECT * FROM assets";
+                                $result = $mysqli->query($sql);
+                                function showdocuments($param)
+                                {
                                     $array = explode(",", $param);
                                     foreach ($array as $document) {
-                                        echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
+                                        echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary target='_blank'>$document</a>&nbsp;";
                                     }
-                                echo "</td>
-                                <td class='d-print-none'>
-                                    <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                    <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
-                                </td>
-                                </tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='100%'><center>No Data Avaliable</center></td></tr>";
-                        }
-                        ?>
-                        </tbody>
-                    </table>
-                    <input type="button" onclick="window.print()" value="Print Everything"
-                        class="d-print-none btn btn-primary" />
-                    <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
-                </div>
+                                }
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $documents_row = $row["documents"];
+                                        echo "<tr>
+                                            <td>
+                                                <input type='checkbox' name='selectedAssets[]' value='" . $row["asset_tag"] . "'>
+                                            </td>
+                                            <td style='font-family:'Consolas','Courier New', monospac'>" . $row["asset_tag"] . "</td>
+                                            <td>" . $row["asset_type"] . "</td>
+                                            <td>" . $row["brand"] . "</td>
+                                            <td>" . $row["model"] . "</td>
+                                            <td>" . $row["equipment_name"] . "</td>
+                                            <td>" . $row["serial_number"] . "</td>
+                                            <td>" . $row["status"] . "</td>
+                                            <td>" . $row["date_acquired"] . "</td>
+                                            <td>" . $row["location_asset"] . "</td>
+                                            <td>";
+                                            $param = $row["documents"];
+                                            $array = explode(",", $param);
+                                            foreach ($array as $document) {
+                                                echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
+                                            }
+                                        echo "</td>
+                                            <td class='d-print-none'>
+                                                <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
+                                                <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
+                                            </td>
+                                        </tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td colspan='100%'><center>No Data Avaliable</center></td></tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                        <input type="submit" name="printAssets" value="Print Selected" class="d-print-none btn btn-primary" />
+                        <input type="button" onclick="window.print()" value="Print Everything" class="d-print-none btn btn-primary" />
+                        <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
