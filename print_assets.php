@@ -14,10 +14,10 @@ function generatePDFAndPrint($logoPath, $assetTags)
     $pdf->SetFont('Arial', '', 12);
     
     // Set logo
-    $pdf->Image($logoPath, 5, 5, 30);
+    $pdf->Image($logoPath, 10, 10, 30);
     
     // Set Y position for asset tags
-    $yPosition = 20;
+    $yPosition = 10;
     
     // Output asset tags
     foreach ($assetTags as $assetTag) {
