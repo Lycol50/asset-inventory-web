@@ -6,6 +6,32 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: login.php');
 	exit;
 }
+
+// count all asset, in use assets, in storage assets, for repair assets, and disposed assets
+$sql = "SELECT COUNT(*) AS total FROM assets";
+$result = mysqli_query($mysqli, $sql);
+$row = mysqli_fetch_assoc($result);
+$total_assets = $row['total'];
+
+$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'In Use'";
+$result = mysqli_query($mysqli, $sql);
+$row = mysqli_fetch_assoc($result);
+$total_in_use = $row['total'];
+
+$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'In Storage'";
+$result = mysqli_query($mysqli, $sql);
+$row = mysqli_fetch_assoc($result);
+$total_in_storage = $row['total'];
+
+$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'For Repair'";
+$result = mysqli_query($mysqli, $sql);
+$row = mysqli_fetch_assoc($result);
+$total_for_repair = $row['total'];
+
+$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'Disposed'";
+$result = mysqli_query($mysqli, $sql);
+$row = mysqli_fetch_assoc($result);
+$total_disposed = $row['total'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +93,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="card text-white bg-primary mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">All Assets</div>
                     <div class="card-body d-flex flex-column">
-                        <h3 class="card-title">Primary card title</h3>
+                        <h3 class="card-title"><?php echo $total_assets; ?></h3>
                         <h5 class="card-text">All Assets in this building</h5>
                     </div>
                 </div>
@@ -76,7 +102,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">In Use</div>
                     <div class="card-body d-flex flex-column">
-                        <h3 class="card-title">Primary card title</h3>
+                        <h3 class="card-title"><?php echo $total_in_use; ?></h3>
                         <h5 class="card-text">In Use Assets in this building</h5>
                     </div>
                 </div>
@@ -85,7 +111,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">In Storage</div>
                     <div class="card-body d-flex flex-column">
-                        <h3 class="card-title">Primary card title</h3>
+                        <h3 class="card-title"><?php echo $total_in_storage; ?></h3>
                         <h5 class="card-text">In Storage Assets in this building</h5>
                     </div>
                 </div>
@@ -94,7 +120,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">For Repair</div>
                     <div class="card-body d-flex flex-column">
-                        <h3 class="card-title">Primary card title</h3>
+                        <h3 class="card-title"><?php echo $total_for_repair; ?></h3>
                         <h5 class="card-text">For Repair Assets in this building</h5>
                     </div>
                 </div>
@@ -103,7 +129,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">For Disposal</div>
                     <div class="card-body d-flex flex-column">
-                        <h3 class="card-title">Primary card title</h3>
+                        <h3 class="card-title"><?php echo $total_disposed; ?></h3>
                         <h5 class="card-text">For Disposal Assets in this building</h5>
                     </div>
                 </div>
@@ -115,11 +141,19 @@ if (!isset($_SESSION['loggedin'])) {
                         <h3 class="card-title">
                             <div id="servertime"></div>
                         </h3>
-                        <h5 class="card-text">Today is <?php echo date("l, F j, Y");?></h5>
+                        <h5 class="card-text">This is the Server Time</h5>
                     </div>
                 </div>
             </div>
         </div>
 </body>
-
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="text-center">© <?php echo date("Y");?> - Asset Management System</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>
