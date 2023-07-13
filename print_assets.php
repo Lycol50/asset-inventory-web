@@ -32,4 +32,16 @@ function generatePDFAndPrint($logoPath, $assetTags)
     // Initiate print immediately
     echo "<script type='text/javascript'>window.print();</script>";
 }
-?>
+
+
+// Get the selected asset tags from the URL
+$selectedAssets = $_GET['selectedAssets'];
+
+// Convert the selected asset tags to an array
+$assetTags = explode(',', $selectedAssets);
+
+// Example usage
+$logoPath = 'logo_info.png';
+
+// Generate PDF and print
+generatePDFAndPrint($logoPath, $assetTags);
