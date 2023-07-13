@@ -74,6 +74,7 @@ if (!isset($_SESSION['loggedin'])) {
                                 <td>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["location_asset"] . "</td>
                                 <td>";
+                                    $param = $row["documents"];
                                     $array = explode(",", $param);
                                     foreach ($array as $document) {
                                         echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a>&nbsp;";
