@@ -92,7 +92,8 @@ if (!isset($_SESSION['loggedin'])) {
                 </script>
                 <br>
                 <!-- table for assets -->
-                    <table class="table table-striped table-bordered border-start table-responsive" id="assetsTable">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered border-start" id="assetsTable">
                         <thead>
                             <tr>
                                 <th>Asset Tag</th>
@@ -151,6 +152,7 @@ if (!isset($_SESSION['loggedin'])) {
                         ?>
                         </tbody>
                     </table>
+                </div>
                 <input type="button" onclick="window.print()" value="Print Everything" class="d-print-none btn btn-primary"/>
                 <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
             </div>
