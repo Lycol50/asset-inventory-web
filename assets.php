@@ -36,7 +36,6 @@ if (!isset($_SESSION['loggedin'])) {
                 <!-- serch bar for assets use js for this-->
                 <input type="text" id="searchInput" class="form-control form-control-lg"
                     placeholder="Search for an asset...">
-
                 <script>
                 // Get references to the input field
                 var searchInput = document.getElementById('searchInput');
@@ -141,3 +140,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
             </div>
         </div>
+    </div>
+</body>
+
+</html>
