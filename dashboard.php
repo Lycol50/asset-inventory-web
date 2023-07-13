@@ -108,7 +108,7 @@ $total_disposed = $row['total'];
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
+                <div class="card text-white bg-info mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">In Storage</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title"><?php echo $total_in_storage; ?></h3>
@@ -117,7 +117,7 @@ $total_disposed = $row['total'];
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
+                <div class="card text-white bg-warning mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">For Repair</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title"><?php echo $total_for_repair; ?></h3>
@@ -126,7 +126,7 @@ $total_disposed = $row['total'];
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
+                <div class="card text-white bg-warning mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">For Disposal</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title"><?php echo $total_disposed; ?></h3>
@@ -135,7 +135,7 @@ $total_disposed = $row['total'];
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
+                <div class="card text-white bg-dark mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">Date and Time</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">
