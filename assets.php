@@ -50,17 +50,11 @@ if (!isset($_SESSION['loggedin'])) {
 
                 // Add an input event listener to the search input
                 searchInput.addEventListener('input', function() {
-                    var searchQuery = searchInput.value;
-                    var selectedAssetType = assetType.value;
-                    searchAssets(searchQuery, selectedAssetType);
-                });
-
-                // Add a change event listener to the asset type dropdown
-                assetType.addEventListener('change', function() {
-                    var searchQuery = searchInput.value;
-                    var selectedAssetType = assetType.value;
-                    searchAssets(searchQuery, selectedAssetType);
-                });
+                    assetType.addEventListener('change', function() {
+                        var searchQuery = searchInput.value;
+                        var selectedAssetType = assetType.value;
+                        searchAssets(searchQuery, selectedAssetType);
+                }});
 
                 // Function to search assets
                 function searchAssets(query, assetType) {
