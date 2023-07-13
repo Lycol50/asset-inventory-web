@@ -7,11 +7,10 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
-function showdocuments ($param) {
-    $array = explode(",", $param);
-    foreach ($array as $document) {
-        echo "<a href='uploads/$document' target='_blank'>$document</a>&nbsp;";
-    }
+$array = explode(",", $row["documents"]);
+
+function linktodocument ($param) {
+    echo "<a href='uploads/$param' target='_blank'>$param</a><br>";
 }
 
 ?>
@@ -72,8 +71,10 @@ function showdocuments ($param) {
                                 <td>" . $row["status"] . "</td>
                                 <td>" . $row["date_acquired"] . "</td>
                                 <td>" . $row["asset_tag"] . "</td>
-                                <td>" . $row["location"] . "</td>
-                                <td>" . showdocuments($row["documents"]) . "</td>
+                                <td>" . $row["location_asset"] . "</td>
+                                <?php foreach($array as $key=>$value): ?>
+                                <td> <?= linktodocument($key); ?> </td>
+                                <?php endforeach; ?>
                                 <td class='d-print-none'>
                                     <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
                                     <a href='delete_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a>
