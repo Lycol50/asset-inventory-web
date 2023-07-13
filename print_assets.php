@@ -13,8 +13,6 @@ function generatePDFAndPrint($logoPath, $assetTags)
     // Set font
     $pdf->SetFont('Arial', '', 12);
     
-    // Set logo
-    $pdf->Image($logoPath, 10, 10, 30);
     
     // Set Y position for asset tags
     $yPosition = 15;
@@ -24,8 +22,11 @@ function generatePDFAndPrint($logoPath, $assetTags)
     foreach ($assetTags as $assetTag) {
         $pdf->SetXY($xPosition, $yPosition);
         $pdf->SetX($xPosition); // Set the x-position explicitly
+        // Set logo
+        $pdf->Image($logoPath, 10, 10, 30);
         $pdf->Cell(0, 10, $assetTag, 0, 1);
         $yPosition += 10; // Increase Y position for the next asset tag
+        $xPosition += 10; // Increase Y position for the next asset tag
     }
 
 
