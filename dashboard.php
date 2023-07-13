@@ -73,15 +73,6 @@ if (!isset($_SESSION['loggedin'])) {
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body d-flex flex-column">
-                        <h3 class="card-title">Primary card title</h3>
-                        <h5 class="card-text">Total Assets in this building</h5>
-                    </div>
-                </div>
-            </div>
         </div>
 </body>
 
