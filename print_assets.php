@@ -3,7 +3,7 @@ include 'config.php';
 $assetTags = array();
 // get asset tags array from url parameter
 if (isset($_GET['asset_tags'])) {
-    $assetTags = explode("&", $_GET['asset_tags']);
+    $assetTags = explode("?", $_GET['asset_tags']);
 }
 
 ?>

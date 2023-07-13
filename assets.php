@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selectedAssets = $_POST['selectedAssets'];
     
     // Redirect to the print page with the selected asset tags
-    header('Location: print_assets.php?selectedAssets=' . urlencode(implode('&', $selectedAssets)));
+    header('Location: print_assets.php?selectedAssets=' . urlencode(implode('?', $selectedAssets)));
     exit;
 }
 ?>
