@@ -127,14 +127,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ## File upload allowed extensions
         $valid_extensions = array("jpg","jpeg","png","pdf","docx");
 
-        $response = 0;
-        ## Check file extension
-        if(in_array(strtolower($extension), $valid_extensions)) {
+        ## Check filename if duplicate
+        if(file_exists($location)){
+            $filename = time().$filename;
+            $location = "uploads/".$filename;
+
+            $response = 0;
+            ## Check file extension
+             if(in_array(strtolower($extension), $valid_extensions)) {
              ## Upload file
              if(move_uploaded_file($_FILES['documents']['tmp_name'][$i],$location)){
                   $totalFileUploaded++;
              }
-        }
+          }
+        } else {
+            $response = 0;
+            ## Check file extension
+             if(in_array(strtolower($extension), $valid_extensions)) {
+             ## Upload file
+             if(move_uploaded_file($_FILES['documents']['tmp_name'][$i],$location)){
+                  $totalFileUploaded++;
+             }
+          }
+      }
    }
     
     // submit everything to db
@@ -200,7 +215,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col">
                 <h1>Add Asset</h1>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" enctype='multipart/form-data'>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off"
+                    enctype='multipart/form-data'>
                     <label for="asset_type">Asset Type</label>
                     <select name="asset_type" id="asset_type"
                         class="form-control <?php echo (!empty($assettype_err)) ? 'is-invalid' : ''; ?>"
