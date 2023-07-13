@@ -21,7 +21,7 @@ if (isset($_GET['asset_tag'])) {
     $id = $_GET['asset_tag'];
     $sql = "DELETE FROM assets WHERE asset_tag = ?";
     if ($stmt = $mysqli->prepare($sql)) {
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("s", $id);
         if ($stmt->execute()) {
             header('Location: assets.php');
             echo "<script>alert('The Asset has been sucessfully removed.')</script>";
