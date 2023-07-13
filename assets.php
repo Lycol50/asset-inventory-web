@@ -58,7 +58,7 @@ function showdocuments ($param) {
                             <th>Date Acquired</th>
                             <th>Location</th>
                             <th>Documents</th>
-                            <th>Actions</th>
+                            <th class="noprint">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,7 +79,7 @@ function showdocuments ($param) {
                                 <td>" . $row["date_acquired"] . "</td>
                                 <td>" . $row["asset_tag"] . "</td>
                                 <td>" . showdocuments($row["documents"]) . "</td>
-                                <td>
+                                <td class='noprint'>
                                     <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
                                     <a href='delete_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a>
                                 </td>
