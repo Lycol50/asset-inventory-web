@@ -12,6 +12,10 @@ if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "supe
     echo "<script>alert('You do not have permission to access this page.')</script>";
 }
 
+// show results from database using the url parameter
+$result = mysqli_query($mysqli, "SELECT * FROM assets WHERE asset_tag = '".$_GET['asset_tag']."'");
+$row = mysqli_fetch_array($result);
+
 // parse update data to mysql
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE assets SET brand=?, model=?, serial_number=?, asset_tag=?, asset_type=?, status=?, equipment_name=?, location_asset=?, price_value=?, date_acquired=?, remarks=? WHERE asset_tag=?";
@@ -41,10 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $stmt->close();
 }
-
-// show results from database using the url parameter
-$result = mysqli_query($mysqli, "SELECT * FROM assets WHERE asset_tag = '".$_GET['asset_tag']."'");
-$row = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
