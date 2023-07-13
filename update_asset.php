@@ -14,8 +14,6 @@ if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "supe
 
 
 // insert variables for asset
-$brand = $model = $serial_number = $status = $equipment_name = $location_asset = $price_value = $date_acquired = $remarks = $asset_type = "";
-
 $brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $assettype_err = $remarks_err = "";
 
 // get the asset id from the url parameter
