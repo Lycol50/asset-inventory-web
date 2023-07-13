@@ -153,8 +153,7 @@ if (!isset($_SESSION['loggedin'])) {
                         ?>
                         </tbody>
                     </table>
-                    <input type="button" onclick="window.print()" value="Print Everything"
-                        class="d-print-none btn btn-primary" />
+                    <input type="button" onclick="window.print()" value="Print Everything" class="d-print-none btn btn-primary"/>
                     <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
                 </div>
             </div>
