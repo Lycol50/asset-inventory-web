@@ -32,6 +32,7 @@ function showdocuments ($param) {
     <script media="print">
         .noprint {
             display: none;
+            visibility: hidden;
         }
     </script>
     <link rel="icon" type="image/x-icon" href="white.png">

@@ -18,6 +18,7 @@ if (isset($_SESSION['loggedin'])) {
 
 // insert variables for asset
 $brand = $model = $serial_number = $status = $equipment_name = $location = $price_value = $date_acquired = $remarks = $asset_type = "";
+$filenames = "none";
 
 $brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $assettype_err = $remarks_err = $document_err ="";
 
@@ -30,7 +31,6 @@ if(isset($_POST['submit'])){
     } else {
         $asset_type = trim($_POST["asset_type"]);
     }
-
 
     // check if brand is empty
     if (empty(trim($_POST["brand"]))) {
@@ -110,26 +110,22 @@ if(isset($_POST['submit'])){
     // prepare to upload documents to server with foreach
     $target_dir = "uploads/";
     $filenames = array_filter($_FILES['documents']['name']);
+    if (!empty($filenames)) {
+        foreach ($_FILES['documents']['name'] as $key=>$val) {
+            $filename = basename($_FILES['files']['name'][$key]); 
+            $targetFilePath = $targetDir . $filename;
+            move_uploaded_file($_FILES["documents"]["tmp_name"][$key], $targetFilePath);
+        }
+    }
     
     // submit everything to db
-    if (empty($brand_err) && empty($model_err) && empty($serial_number_err) && empty($status_err) && empty($equipment_name_err) && empty($location_err) && empty($price_value_err) && empty($date_acquired_err)) {
+    if (empty($brand_err) && empty($model_err) && empty($serial_number_err) && empty($status_err) && empty($equipment_name_err) && empty($location_err) && empty($price_value_err) && empty($date_acquired_err) && empty($assettype_err)) {
         // prepare an insert statement
         $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks, asset_tag, asset_type, documents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
-            // upload documents to server
-            
-
             // bind variables to the prepared statement as parameters
             $stmt->bind_param("sssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents);
-
-            if (!empty($filenames)) {
-                foreach ($_FILES['documents']['name'] as $key=>$val) {
-                    $filename = basename($_FILES['files']['name'][$key]); 
-                    $targetFilePath = $targetDir . $filename;
-                    move_uploaded_file($_FILES["documents"]["tmp_name"][$key], $targetFilePath);
-                }
-            }
 
             // set parameters
             $param_documents = implode(",", $filenames);
@@ -220,6 +216,7 @@ if(isset($_POST['submit'])){
                     <br>
                     <label for="location">Location</label>
                     <input type="text" name="location" id="location" class="form-control <?php echo (!empty($location_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $location; ?>">
+                    <br>
                     <label for="price_value">Price Value</label>
                     <input type="text" name="price_value" id="price_value" class="form-control <?php echo (!empty($price_value_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $price_value; ?>">
                     <span class="invalid-feedback"><?php echo $price_value_err; ?></span>
@@ -227,7 +224,6 @@ if(isset($_POST['submit'])){
                     <label for="date_acquired">Date Acquired</label>
                     <input type="date" name="date_acquired" id="date_acquired" class="form-control <?php echo (!empty($date_acquired_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $date_acquired; ?>">
                     <span class="invalid-feedback"><?php echo $date_acquired_err; ?></span>
-                    <br>
                     <br>
                     <label for="documents">Documents</label>
                     <input type="file" name="documents[]" id="documents" class="form-control <?php echo (!empty($documents_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $documents; ?>" multiple>
