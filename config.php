@@ -1,7 +1,7 @@
 <?php
 // pre-config commands
 $cmd = "mkdir uploads && chmod 777 /uploads";
-shell_exec($cmd);
+system($cmd);
 
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
