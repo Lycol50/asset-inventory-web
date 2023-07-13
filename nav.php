@@ -1,5 +1,6 @@
 <?php
 $register = '<a class="nav-item nav-link" href="register_user.php">Register User</a>';
+$insert_asset = '<a class="nav-item nav-link" href="insert_asset.php">Insert Asset</a>';
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark noprint">
   <a class="navbar-brand" href="#" style="font-family: Kanit, sans-serif;">Asset Management System</a>
@@ -10,7 +11,7 @@ $register = '<a class="nav-item nav-link" href="register_user.php">Register User
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="/">Home</a>
       <a class="nav-item nav-link" href="assets.php">List Assets</a>
-      <a class="nav-item nav-link" href="insert_asset.php">Insert Asset</a>
+      <?php if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") { echo $insert_asset; } ?>
       <?php if ($_SESSION['account_type'] === "superadmin") { echo $register; } ?>
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>

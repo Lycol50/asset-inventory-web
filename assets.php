@@ -7,6 +7,13 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+function showdocuments ($param) {
+    $array = explode(",", $param);
+    foreach ($array as $document) {
+        echo "<a href='uploads/$document' target='_blank'>$document</a>&nbsp;";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +48,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <thead>
                         <tr>
                             <th>Asset Tag</th>
+                            <th>Asset Type</th>
                             <th>Brand</th>
                             <th>Model</th>
                             <th>Equipment Name</th>
@@ -48,6 +56,7 @@ if (!isset($_SESSION['loggedin'])) {
                             <th>Status</th>
                             <th>Date Acquired</th>
                             <th>Location</th>
+                            <th>Documents</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -60,13 +69,15 @@ if (!isset($_SESSION['loggedin'])) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>
                                 <td>" . $row["asset_tag"] . "</td>
+                                <td>" . $row["asset_type"] . "</td>
                                 <td>" . $row["brand"] . "</td>
                                 <td>" . $row["model"] . "</td>
                                 <td>" . $row["equipment_name"] . "</td>
                                 <td>" . $row["serial_number"] . "</td>
                                 <td>" . $row["status"] . "</td>
                                 <td>" . $row["date_acquired"] . "</td>
-                                <td>" . $row["location"] . "</td>
+                                <td>" . $row["asset_tag"] . "</td>
+                                <td>" . showdocuments($row["documents"]) . "</td>
                                 <td>
                                     <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
                                     <a href='delete_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a>
@@ -79,7 +90,7 @@ if (!isset($_SESSION['loggedin'])) {
                         ?>
                     </tbody>
                 </table>
-                <input type="button" onclick="window.print()" value="Print Everything" class="noprint"/>
+                <input type="button" onclick="window.print()" value="Print Everything" class="btn btn-primary noprint"/>
                 <a href="insert_asset.php" class="btn btn-primary noprint">Add Asset</a>
             </div>
         </div>

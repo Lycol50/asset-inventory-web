@@ -17,12 +17,27 @@ if (isset($_SESSION['loggedin'])) {
 }
 
 // insert variables for asset
-$brand = $model = $serial_number = $status = $equipment_name = $location = $price_value = $date_acquired = $remarks = "";
+$brand = $model = $serial_number = $status = $equipment_name = $location = $price_value = $date_acquired = $remarks = $asset_type = "";
 
-$brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $remarks_err = "";
+$brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $assettype_err = $remarks_err = $document_err ="";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // check if asset type is empty
+    if (empty(trim($_POST["asset_type"]))) {
+        $assettype_err = "Please enter asset type.";
+    } else {
+        $asset_type = trim($_POST["asset_type"]);
+    }
+
+    // check if documents is empty
+    if (empty(trim($_POST["documents"]))) {
+        $documents_err = "Please insert documents.";
+    } else {
+        $documents = trim($_POST["documents"]);
+    }
+
     // check if brand is empty
     if (empty(trim($_POST["brand"]))) {
         $brand_err = "Please enter brand.";
@@ -98,16 +113,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $asset_number = "ICNG-" . substr($date_acquired, 0, 4) . "-" . substr(md5($serial_number), 0, 4) . generateRandomLetter();
 
+    // prepare to upload documents to server with foreach
+    $target_dir = "uploads/";
+    $filenames = array_filter($_FILES['documents']['name']);
+    
     // submit everything to db
     if (empty($brand_err) && empty($model_err) && empty($serial_number_err) && empty($status_err) && empty($equipment_name_err) && empty($location_err) && empty($price_value_err) && empty($date_acquired_err)) {
         // prepare an insert statement
-        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks, asset_tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks, asset_tag, asset_type, documents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
+            // upload documents to server
+            
+
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag);
+            $stmt->bind_param("ssssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents);
+
+            if (!empty($filenames)) {
+                foreach ($_FILES['documents']['name'] as $key=>$val) {
+                    $filename = basename($_FILES['files']['name'][$key]); 
+                    $targetFilePath = $targetDir . $filename;
+
+                    if(move_uploaded_file($_FILES["documents"]["tmp_name"][$key], $targetFilePath)) {
+                        $param_documents = implode(",", $filenames);
+                    }
+                }
+            }
 
             // set parameters
+            $param_asset_type = $asset_type;
             $param_brand = $brand;
             $param_model = $model;
             $param_serial_number = $serial_number;
@@ -121,7 +155,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // attempt to execute the prepared statement
             if ($stmt->execute()) {
-                // redirect to dashboard
                 echo '<script>alert("Asset added successfully.");</script>';
             } else {
                 echo "Something went wrong. Please try again later.";
@@ -159,8 +192,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col">
                 <h1>Add Asset</h1>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
-                <label for="brand">Brand</label>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off" enctype="multipart/form-data">
+                    <label for="asset_type">Asset Type</label>
+                    <select name="asset_type" id="asset_type" class="form-control <?php echo (!empty($assettype_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $asset_type; ?>">
+                        <option value="Office Equipment">Office Equipment</option>
+                        <option value="Furnitures and Fixtures">Furnitures and Fixtures</option>
+                        <option value="Aircon Equipment">Aircon Equipment</option>
+                    </select>
+                    <span class="invalid-feedback"><?php echo $assettype_err; ?></span>
+                    <br>
+                    <label for="brand">Brand</label>
                     <input type="text" name="brand" id="brand" class="form-control <?php echo (!empty($brand_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $brand; ?>">
                     <span class="invalid-feedback"><?php echo $brand_err; ?></span>
                     <br>
@@ -194,6 +235,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="date_acquired">Date Acquired</label>
                     <input type="date" name="date_acquired" id="date_acquired" class="form-control <?php echo (!empty($date_acquired_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $date_acquired; ?>">
                     <span class="invalid-feedback"><?php echo $date_acquired_err; ?></span>
+                    <br>
+                    <br>
+                    <label for="documents">Documents</label>
+                    <input type="file" name="documents[]" id="documents" class="form-control <?php echo (!empty($document_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $document; ?>" multiple>
+                    <span class="invalid-feedback"><?php echo $document_err; ?></span>
                     <br>
                     <label for="remarks">Remarks</label>
                     <input type="text" name="remarks" id="remarks" class="form-control <?php echo (!empty($remarks_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $remarks; ?>">
