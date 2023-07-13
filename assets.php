@@ -7,14 +7,6 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Handle the form submission
-    $selectedAssets = $_POST['selectedAssets'];
-    
-    // Redirect to the print page with the selected asset tags
-    header('Location: print_assets.php?selectedAssets=' . urlencode(implode('?', $selectedAssets)));
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </script>
                 <br>
                 <!-- table for assets -->
-                <form method="POST" action="">
+                <form method="POST" action="print_assets.php">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered border-start" id="assetsTable">
                             <thead>

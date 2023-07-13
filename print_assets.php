@@ -1,10 +1,14 @@
 <?php
-include 'config.php';
-$assetTags = array();
-// get asset tags array from url parameter
-if (isset($_GET['asset_tags'])) {
-    $assetTags = explode(",", $_GET['asset_tags']);
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: login.php');
+    exit;
 }
+
+include 'config.php';
+
+$assetTags = $_POST['printAssets'];
+
 
 ?>
 
@@ -29,8 +33,8 @@ if (isset($_GET['asset_tags'])) {
     <div class="container">
         <div class="row">
             <div class="col">
-                <img src="logo_info.png" alt="logo" class="logo" width="100px">
                 <?php foreach ($assetTags as $assetTag) { ?>
+                    <img src="logo_info.png" alt="logo" class="logo" width="100px">
                     <p><?php echo $assetTag; ?></p>
                 <?php } ?>
             </div>
