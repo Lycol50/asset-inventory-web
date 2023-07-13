@@ -34,7 +34,7 @@ if (!isset($_SESSION['loggedin'])) {
             <div class="col">
                 <h1>Assets</h1>
                 <!-- serch bar for assets use js for this-->
-                <input type="text" id="searchInput" class="form-control form-control-lg"
+                <input type="text" id="searchInput" class="form-control form-control-lg "d-print-none"
                     placeholder="Search for an asset...">
                 <script>
                 // Get references to the input field
