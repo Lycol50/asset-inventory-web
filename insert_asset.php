@@ -114,14 +114,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // submit everything to db
     if (empty($brand_err) && empty($model_err) && empty($serial_number_err) && empty($status_err) && empty($equipment_name_err) && empty($location_err) && empty($price_value_err) && empty($date_acquired_err)) {
         // prepare an insert statement
-        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks, asset_tag, asset_type, documents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks, asset_tag, asset_type, documents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // upload documents to server
             
 
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents);
+            $stmt->bind_param("sssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents);
 
             if (!empty($filenames)) {
                 foreach ($_FILES['documents']['name'] as $key=>$val) {
