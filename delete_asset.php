@@ -4,8 +4,9 @@ require_once('config.php');
 session_start();
 
 //check if already logged in
-if (!$user->is_logged_in()) {
-    header('Location: login.php');
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: login.php');
+	exit;
 }
 
 // check if user has permission to view only admin or superadmin can view this page
