@@ -84,7 +84,7 @@ if (!isset($_SESSION['loggedin'])) {
             </div>
         </div>
         <script>
-        var d = new Date(<?php date_default_timezone_set('UTC'); echo strtotime('now')*1000 ?>);
+        var d = new Date(<?php echo strtotime('now')*1000 ?>);
         (function foo(){
             d.setTime(d.getTime()+1000);
             var clientTime = d.getHours() + ":"  + d.getMinutes() + ":" + d.getSeconds() + " " + (d.getHours() >= 12 ? 'pm' : 'am');
