@@ -18,9 +18,8 @@ if (isset($_SESSION['loggedin'])) {
 
 // insert variables for asset
 $brand = $model = $serial_number = $status = $equipment_name = $location = $price_value = $date_acquired = $remarks = $asset_type = "";
-$filenames = "none";
 
-$brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $assettype_err = $remarks_err = $document_err ="";
+$brand_err = $model_err = $serial_number_err = $status_err = $equipment_name_err = $location_err = $price_value_err = $date_acquired_err = $assettype_err = $remarks_err = "";
 
 // Processing form data when form is submitted
 if(isset($_POST['submit'])){
@@ -118,7 +117,7 @@ if(isset($_POST['submit'])){
         }
     }*/
 
-    $countfiles = count($_FILES['documents']['name']);
+    /* $countfiles = count($_FILES['documents']['name']);
     $totalFileUploaded = 0;
     for($i=0;$i<$countfiles;$i++){
         $filename = $_FILES['file']['name'][$i];
@@ -142,20 +141,19 @@ if(isset($_POST['submit'])){
                   $totalFileUploaded++;
              }
         }
-
-   }
+   } */
     
     // submit everything to db
     if (empty($brand_err) && empty($model_err) && empty($serial_number_err) && empty($status_err) && empty($equipment_name_err) && empty($location_err) && empty($price_value_err) && empty($date_acquired_err) && empty($assettype_err)) {
         // prepare an insert statement
-        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks, asset_tag, asset_type, documents) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO assets (brand, model, serial_number, status, equipment_name, location, price_value, date_acquired, remarks, asset_tag, asset_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents);
+            $stmt->bind_param("ssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type);
 
             // set parameters
-            $param_documents = implode(",", $_FILES['documents']['name']);
+            //$param_documents = implode(",", $_FILES['documents']['name']);
             $param_asset_type = $asset_type;
             $param_brand = $brand;
             $param_model = $model;
@@ -207,8 +205,7 @@ if(isset($_POST['submit'])){
             <div class="col">
                 <h1>Add Asset</h1>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off"
-                    enctype="multipart/form-data">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
                     <label for="asset_type">Asset Type</label>
                     <select name="asset_type" id="asset_type"
                         class="form-control <?php echo (!empty($assettype_err)) ? 'is-invalid' : ''; ?>"
@@ -271,9 +268,9 @@ if(isset($_POST['submit'])){
                         value="<?php echo $date_acquired; ?>">
                     <span class="invalid-feedback"><?php echo $date_acquired_err; ?></span>
                     <br>
-                    <label for="documents">Documents</label>
+                    <!--- <label for="documents">Documents</label>
                     <input type="file" name="documents[]" id="documents" class="form-control" multiple>
-                    <br>
+                    <br> --->
                     <label for="remarks">Remarks</label>
                     <input type="text" name="remarks" id="remarks"
                         class="form-control <?php echo (!empty($remarks_err)) ? 'is-invalid' : ''; ?>"
