@@ -63,7 +63,7 @@ if (!isset($_SESSION['loggedin'])) {
                             while ($row = $result->fetch_assoc()) {
                                 $documents_row = $row["documents"];
                                 echo "<tr>
-                                <td>" . $row["asset_tag"] . "</td>
+                                <td style='font-family:consolas'>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["asset_type"] . "</td>
                                 <td>" . $row["brand"] . "</td>
                                 <td>" . $row["model"] . "</td>
