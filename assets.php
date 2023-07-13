@@ -74,7 +74,7 @@ function linktodocument ($param) {
                                 <td>
                                 <?php
                                     $array = explode(',', $documents_row);
-                                    foreach ($array as $value) {
+                                    foreach ($array as $key => $value) {
                                         linktodocument($value);
                                     }
                                 ?>
