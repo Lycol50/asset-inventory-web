@@ -7,13 +7,6 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
-function showdocuments ($param) {
-    $array = explode(",", $param);
-    foreach ($array as $document) {
-        echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary target='_blank'>$document</a>&nbsp;";
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +53,12 @@ function showdocuments ($param) {
                         // include 'config.php';
                         $sql = "SELECT * FROM assets";
                         $result = $mysqli->query($sql);
+                        function showdocuments ($param) {
+                            $array = explode(",", $param);
+                            foreach ($array as $document) {
+                                echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary target='_blank'>$document</a>&nbsp;";
+                            }
+                        }
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 $documents_row = $row["documents"];
