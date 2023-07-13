@@ -76,24 +76,25 @@ if (!isset($_SESSION['loggedin'])) {
                 </script>
                 <br>
                 <!-- table for assets -->
-                <table class="table table-striped table-bordered border-start" id="assetsTable">
-                    <thead>
-                        <tr>
-                            <th>Asset Tag</th>
-                            <th>Asset Type</th>
-                            <th>Brand</th>
-                            <th>Model</th>
-                            <th>Equipment Name</th>
-                            <th>Serial Number</th>
-                            <th>Status</th>
-                            <th>Date Acquired</th>
-                            <th>Location</th>
-                            <th>Documents</th>
-                            <th class="d-print-none">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered border-start" id="assetsTable">
+                        <thead>
+                            <tr>
+                                <th>Asset Tag</th>
+                                <th>Asset Type</th>
+                                <th>Brand</th>
+                                <th>Model</th>
+                                <th>Equipment Name</th>
+                                <th>Serial Number</th>
+                                <th>Status</th>
+                                <th>Date Acquired</th>
+                                <th>Location</th>
+                                <th>Documents</th>
+                                <th class="d-print-none">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                         // include 'config.php';
                         $sql = "SELECT * FROM assets";
                         $result = $mysqli->query($sql);
@@ -133,11 +134,12 @@ if (!isset($_SESSION['loggedin'])) {
                             echo "<tr><td colspan='100%'><center>No Data Avaliable</center></td></tr>";
                         }
                         ?>
-                    </tbody>
-                </table>
-                <input type="button" onclick="window.print()" value="Print Everything"
-                    class="d-print-none btn btn-primary" />
-                <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
+                        </tbody>
+                    </table>
+                    <input type="button" onclick="window.print()" value="Print Everything"
+                        class="d-print-none btn btn-primary" />
+                    <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
+                </div>
             </div>
         </div>
     </div>
