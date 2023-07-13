@@ -59,6 +59,7 @@ function linktodocument ($param) {
                         $result = $mysqli->query($sql);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
+                                $documents_row = $row["documents"];
                                 echo "<tr>
                                 <td>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["asset_type"] . "</td>
@@ -72,8 +73,8 @@ function linktodocument ($param) {
                                 <td>" . $row["location_asset"] . "</td>
                                 <td>
                                 <?php
+                                    $array = explode(',', $documents_row);
                                     foreach ($array as $value) {
-                                        $array = explode(",", $row["documents"]);
                                         linktodocument($value);
                                     }
                                 ?>
