@@ -71,7 +71,6 @@ if (!isset($_SESSION['loggedin'])) {
                                 <td>" . $row["serial_number"] . "</td>
                                 <td>" . $row["status"] . "</td>
                                 <td>" . $row["date_acquired"] . "</td>
-                                <td>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["location_asset"] . "</td>
                                 <td>";
                                     $param = $row["documents"];
