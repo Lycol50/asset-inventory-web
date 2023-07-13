@@ -7,9 +7,9 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 
-if ($_SESSION['account_type'] !== "admin" || $_SESSION['account_type'] !== "superadmin") {
-    echo "<script>alert('You do not have permission to access this page.')</script>";
+if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "superadmin") {
     header('Location: dashboard.php');
+    echo "<script>alert('You do not have permission to access this page.')</script>";
 }
 
 

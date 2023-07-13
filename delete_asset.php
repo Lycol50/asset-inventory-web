@@ -9,8 +9,10 @@ if (!$user->is_logged_in()) {
 }
 
 // check if user has permission to view only admin or superadmin can view this page
-if ($_SESSION['account_type'] !== "admin" || $_SESSION['account_type'] !== "superadmin") {
+if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "superadmin") {
     header('Location: assets.php');
+    echo "<script>alert('You do not have permission to access this page.')</script>";
+    exit;
 }
 
 // delete the the asset id from database using the url parameter
