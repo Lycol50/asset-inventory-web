@@ -41,7 +41,7 @@ if($mysqli === false){
         `price_value` varchar(255) NOT NULL,
         `date_acquired` varchar(255) NOT NULL,
         `remarks` varchar(255) NOT NULL,
-        `documents` varchar(255) NOT NULL,
+        `documents` text NOT NULL,
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (`id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
