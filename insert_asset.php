@@ -117,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $countfiles = count($_FILES['documents']['name']);
     $totalFileUploaded = 0;
     for($i=0;$i<$countfiles;$i++){
-        $filename = $_FILES['documents']['name'][$i];
+        $filename = time()."_".$_FILES['documents']['name'][$i];
 
         ## Location
         $location = "uploads/".$filename;
@@ -127,28 +127,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ## File upload allowed extensions
         $valid_extensions = array("jpg","jpeg","png","pdf","docx");
 
-        ## Check filename if duplicate
-        if(file_exists($location)){
-            $filename = time().$filename;
-            $location = "uploads/".$filename;
-
-            $response = 0;
-            ## Check file extension
-             if(in_array(strtolower($extension), $valid_extensions)) {
-             ## Upload file
-             if(move_uploaded_file($_FILES['documents']['tmp_name'][$i],$location)){
-                  $totalFileUploaded++;
-             }
-          }
-        } else {
-            $response = 0;
-            ## Check file extension
-             if(in_array(strtolower($extension), $valid_extensions)) {
-             ## Upload file
-             if(move_uploaded_file($_FILES['documents']['tmp_name'][$i],$location)){
-                  $totalFileUploaded++;
-             }
-          }
+        $response = 0;
+        ## Check file extension
+        if(in_array(strtolower($extension), $valid_extensions)) {
+        ## Upload file
+        if(move_uploaded_file($_FILES['documents']['tmp_name'][$i],$location)){
+        $totalFileUploaded++;
+        }
       }
    }
     
@@ -162,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents);
 
             // set parameters
-            $param_documents = implode(",", $_FILES['documents']['name']);
+            $param_documents = implode(",", time()."_".$_FILES['documents']['name']);
             $param_asset_type = $asset_type;
             $param_brand = $brand;
             $param_model = $model;
