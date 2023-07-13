@@ -68,9 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // check if location is empty
     if (empty(trim($_POST["location_asset"]))) {
-        $equipment_name_err = "Please enter location.";
+        $location_err = "Please enter location.";
     } else {
-        $location = trim($_POST["location_asset"]);
+        $location_asset = trim($_POST["location_asset"]);
     }
 
     // check if price value is empty
@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_serial_number = $serial_number;
             $param_status = $status;
             $param_equipment_name = $equipment_name;
-            $param_location = $location;
+            $param_location = $location_asset;
             $param_price_value = $price_value;
             $param_date_acquired = $date_acquired;
             $param_remarks = $remarks;
@@ -251,7 +251,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="location">Location</label>
                     <input type="text" name="location_asset" id="location_asset"
                         class="form-control <?php echo (!empty($location_err)) ? 'is-invalid' : ''; ?>"
-                        value="<?php echo $location; ?>">
+                        value="<?php echo $location_asset; ?>">
                     <br>
                     <label for="price_value">Price Value</label>
                     <input type="text" name="price_value" id="price_value"
