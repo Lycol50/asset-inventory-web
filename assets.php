@@ -7,12 +7,6 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
-function showdocuments($param) {
-    $array = explode(",", $param);
-    foreach ($array as $document) {
-        echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a>&nbsp;";
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +74,10 @@ function showdocuments($param) {
                                 <td>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["location_asset"] . "</td>
                                 <td>";
-                                    showdocuments($row["documents"]);
+                                    $array = explode(",", $param);
+                                    foreach ($array as $document) {
+                                        echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a>&nbsp;";
+                                    }
                                 echo "</td>
                                 <td class='d-print-none'>
                                     <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
