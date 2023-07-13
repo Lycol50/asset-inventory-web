@@ -44,24 +44,26 @@ if (!isset($_SESSION['loggedin'])) {
                     <option value="Aircon Equipment">Aircon Equipment</option>
                 </select>
                 <script>
-                // Get references to the input field
+                // Get references to the input field and asset type dropdown
                 var searchInput = document.getElementById('searchInput');
                 var assetType = document.getElementById('assetType');
 
                 // Add an input event listener to the search input
                 searchInput.addEventListener('input', function() {
                     var searchQuery = searchInput.value;
-                    searchAssets(searchQuery);
+                    var selectedAssetType = assetType.value;
+                    searchAssets(searchQuery, selectedAssetType);
                 });
 
-                // Add an input event listener to the asset type dropdown
+                // Add a change event listener to the asset type dropdown
                 assetType.addEventListener('change', function() {
                     var searchQuery = searchInput.value;
-                    searchAssets(searchQuery);
+                    var selectedAssetType = assetType.value;
+                    searchAssets(searchQuery, selectedAssetType);
                 });
 
                 // Function to search assets
-                function searchAssets(query) {
+                function searchAssets(query, assetType) {
                     var table = document.getElementById('assetsTable');
                     var rows = table.getElementsByTagName('tr');
 
@@ -73,7 +75,8 @@ if (!isset($_SESSION['loggedin'])) {
                             // Check only the specified columns (0, 1, 2, 3, 4, 5, 6, and 8)
                             if ([0, 1, 2, 3, 4, 5, 6, 8].includes(j)) {
                                 var name = cells[j].textContent || cells[j].innerText;
-                                if (name.toLowerCase().indexOf(query.toLowerCase()) > -1) {
+                                if ((name.toLowerCase().indexOf(query.toLowerCase()) > -1) &&
+                                    (assetType === '' || assetType === cells[2].textContent)) {
                                     found = true;
                                     break;
                                 }
