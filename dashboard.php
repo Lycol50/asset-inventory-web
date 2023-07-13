@@ -29,7 +29,7 @@ if (!isset($_SESSION['loggedin'])) {
         <h1>Dashboard</h1><br>
         <div class="row row-cols-2 row-cols-md-2">
             <div class="col">
-                <div class="card text-white bg-primary mb-3" style="max-width: 20rem; text-align:center;">
+                <div class="card text-white bg-primary mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
@@ -38,7 +38,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
+                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
+                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
@@ -56,7 +56,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
+                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
@@ -65,7 +65,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
+                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
@@ -74,7 +74,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
+                <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">Header</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">Primary card title</h3>
