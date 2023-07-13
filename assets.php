@@ -56,7 +56,7 @@ if (!isset($_SESSION['loggedin'])) {
                 });
 
                 // Add a change event listener to the asset type dropdown
-                
+                assetType.addEventListener('change', function() {
                     var searchQuery = searchInput.value;
                     var selectedAssetType = assetType.value;
                     searchAssets(searchQuery, selectedAssetType);
