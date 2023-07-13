@@ -18,7 +18,7 @@ function generatePDFAndPrint($logoPath, $assetTags)
     
     // Set Y position for asset tags
     $yPosition = 15;
-    $xPosition = 50;
+    $xPosition = 100;
     
     // Output asset tags
     foreach ($assetTags as $assetTag) {
