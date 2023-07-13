@@ -31,6 +31,7 @@ if (!isset($_SESSION['loggedin'])) {
     <?php include 'nav.php'; ?>
     <div class="container">
         <div class="row">
+            <div class="col">
                 <h1>Assets</h1>
                 <!-- serch bar for assets use js for this-->
                 <input type="text" id="searchInput" class="form-control form-control-lg d-print-none"
@@ -139,6 +140,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
             </div>
         </div>
+    </div>
 </body>
 
 </html>
