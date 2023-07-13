@@ -72,6 +72,7 @@ function showdocuments ($param) {
                                 <td>" . $row["status"] . "</td>
                                 <td>" . $row["date_acquired"] . "</td>
                                 <td>" . $row["asset_tag"] . "</td>
+                                <td>" . $row["location"] . "</td>
                                 <td>" . showdocuments($row["documents"]) . "</td>
                                 <td class='noprint'>
                                     <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
