@@ -132,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(in_array(strtolower($extension), $valid_extensions)) {
         ## Upload file
         if(move_uploaded_file($_FILES['documents']['tmp_name'][$i],$location)){
-            array_push($filename, $filename_array);
+            array_push($filename_array, $filename);
             $totalFileUploaded++;
         }
       }
