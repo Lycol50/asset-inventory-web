@@ -1,10 +1,9 @@
 <?php
-// Retrieve the asset tag numbers from asset.php
-$assetTags = []; // Initialize an array to store asset tag numbers
-
-// Fetch asset tag numbers from asset.php
-// Modify the code below based on your implementation in asset.php to retrieve the asset tag numbers
-// Example: $assetTags = ['ASSET-001', 'ASSET-002', 'ASSET-003'];
+include 'config.php';
+$assetTags = array();
+if (isset($_POST['print'])) {
+    $assetTags = $_POST['assetTags'];
+}
 
 ?>
 
