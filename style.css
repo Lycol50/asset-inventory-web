@@ -40,10 +40,3 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-button {
     display:none;
 }
-
-@media print {
-        .noprint {
-            display: block !important;
-            visibility: hidden !important;
-        }
-}

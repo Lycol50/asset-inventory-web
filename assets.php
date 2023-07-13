@@ -52,7 +52,7 @@ function showdocuments ($param) {
                             <th>Date Acquired</th>
                             <th>Location</th>
                             <th>Documents</th>
-                            <th class="noprint">Actions</th>
+                            <th class="d-print-none">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,7 +74,7 @@ function showdocuments ($param) {
                                 <td>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["location"] . "</td>
                                 <td>" . showdocuments($row["documents"]) . "</td>
-                                <td class='noprint'>
+                                <td class='d-print-none'>
                                     <a href='update_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a>
                                     <a href='delete_asset.php?asset_id=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a>
                                 </td>
@@ -86,7 +86,7 @@ function showdocuments ($param) {
                         ?>
                     </tbody>
                 </table>
-                <input type="button" onclick="window.print()" value="Print Everything" class="noprint btn btn-primary"/>
-                <a href="insert_asset.php" class="noprint btn btn-primary">Add Asset</a>
+                <input type="button" onclick="window.print()" value="Print Everything" class="d-print-none btn btn-primary"/>
+                <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
             </div>
         </div>
