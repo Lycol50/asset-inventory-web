@@ -27,7 +27,7 @@ if (!isset($_SESSION['loggedin'])) {
     <?php include 'nav.php'; ?>
     <div class="container">
     <h1>Dashboard</h1>
-        <div class="row row-cols-1 row-cols-md-2">
+        <div class="row row-cols-1 row-cols-md-3">
             <div class="col">
                 <div class="card text-white bg-primary mb-3" style="max-width: 20rem; text-align:center;">
                     <div class="card-header">Header</div>
