@@ -31,12 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $asset_type = trim($_POST["asset_type"]);
     }
 
-    // check if documents is empty
-    if (empty(trim($_POST["documents"]))) {
-        $documents_err = "Please insert documents.";
-    } else {
-        $documents = trim($_POST["documents"]);
-    }
 
     // check if brand is empty
     if (empty(trim($_POST["brand"]))) {
@@ -238,8 +232,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <br>
                     <br>
                     <label for="documents">Documents</label>
-                    <input type="file" name="documents[]" id="documents" class="form-control <?php echo (!empty($document_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $document; ?>" multiple>
-                    <span class="invalid-feedback"><?php echo $document_err; ?></span>
+                    <input type="file" name="documents[]" id="documents" class="form-control <?php echo (!empty($documents_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $documents; ?>" multiple>
+                    <span class="invalid-feedback"><?php echo $documents_err; ?></span>
                     <br>
                     <label for="remarks">Remarks</label>
                     <input type="text" name="remarks" id="remarks" class="form-control <?php echo (!empty($remarks_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $remarks; ?>">
