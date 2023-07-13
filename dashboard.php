@@ -29,9 +29,9 @@ if (!isset($_SESSION['loggedin'])) {
     //Depending on whether your page supports SSI (.shtml) or PHP (.php), UNCOMMENT the line below your page supports and COMMENT the one it does not:
     //Default is that SSI method is uncommented, and PHP is commented:
 
-    var currenttime =
+    // var currenttime =
         '<!--#config timefmt="%B %d, %Y %H:%M:%S"--><!--#echo var="DATE_LOCAL" -->' //SSI method of getting server date
-    //var currenttime = '<? print date("F d, Y H:i:s", time())?>' //PHP method of getting server date
+    var currenttime = '<? print date("F d, Y H:i:s", time())?>' //PHP method of getting server date
 
     ///////////Stop editting here/////////////////////////////////
 
