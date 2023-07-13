@@ -38,7 +38,6 @@ if (!isset($_SESSION['loggedin'])) {
                 <script>
                 // Get references to the input field and search button
                 var searchInput = document.getElementById('searchInput');
-                var searchButton = document.getElementById('searchButton');
 
                 // Add an input event listener to the search input
                 searchInput.addEventListener('input', function() {
@@ -60,8 +59,8 @@ if (!isset($_SESSION['loggedin'])) {
                         var assetName6 = rows[i].getElementsByTagName('td')[5];
                         var assetName7 = rows[i].getElementsByTagName('td')[6];
                         var assetName8 = rows[i].getElementsByTagName('td')[8];
-                        if (assetName1 || assetName2 || assetName3 || assetName4 || assetName5 || assetName6 ||
-                            assetName7 || assetName8) {
+                        if (assetName0 || assetName1 || assetName2 || assetName3 || assetName4 || assetName5 ||
+                            assetName6 || assetName8) {
                             var name = assetName.textContent || assetName.innerText;
                             if (name.toLowerCase().indexOf(query.toLowerCase()) > -1) {
                                 rows[i].style.display = '';
