@@ -30,7 +30,7 @@ if (!isset($_SESSION['loggedin'])) {
     //Default is that SSI method is uncommented, and PHP is commented:
 
     // var currenttime = '<!--#config timefmt="%B %d, %Y %H:%M:%S"--><!--#echo var="DATE_LOCAL" -->' //SSI method of getting server date
-    var currenttime = '<? print date("F d, Y H:i:s", time())?>' //PHP method of getting server date
+    var currenttime = '<?php print date("F d, Y H:i:s", time())?>' //PHP method of getting server date
 
     ///////////Stop editting here/////////////////////////////////
 
