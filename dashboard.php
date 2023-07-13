@@ -51,7 +51,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <div class="card-header">Header</div>
                     <div class="card-body">
                         <h3 class="card-title">Primary card title</h3>
-                        <h5 class="card-text">In Storage Assets in this building</h5>
+                        <h5 class="card-text" style="font-size:5vw;">In Storage Assets in this building</h5>
                     </div>
                 </div>
             </div>
