@@ -35,28 +35,32 @@ if (!isset($_SESSION['loggedin'])) {
                     <h5 class="card-text">All Assets in this building</h5>
                 </div>
             </div>
-            <div class="card text-white bg-primary mb-3">
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                 <div class="card-header">Header</div>
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <h3 class="card-title">Primary card title</h3>
+                    <h5 class="card-text">In Use Assets in this building</h5>
                 </div>
             </div>
-            <div class="card text-white bg-primary mb-3">
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                 <div class="card-header">Header</div>
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <h3 class="card-title">Primary card title</h3>
+                    <h5 class="card-text">In Storage Assets in this building</h5>
                 </div>
             </div>
-            <div class="card text-white bg-primary mb-3">
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
                 <div class="card-header">Header</div>
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <h3 class="card-title">Primary card title</h3>
+                    <h5 class="card-text">For Repair Assets in this building</h5>
+                </div>
+            </div>
+            <div class="card text-white bg-success mb-3" style="max-width: 20rem; text-align:center;">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                    <h3 class="card-title">Primary card title</h3>
+                    <h5 class="card-text">For Disposal Assets in this building</h5>
                 </div>
             </div>
         </div>

@@ -235,8 +235,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <select name="status" id="status"
                         class="form-control <?php echo (!empty($status_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $status; ?>">
-                        <option value="Available">Available</option>
-                        <option value="In Use">In Use</option>
+                        <option value="In User">In Use</option>
+                        <option value="In Storage">In Storage</option>
                         <option value="For Repair">For Repair</option>
                         <option value="For Disposal">For Disposal</option>
                     </select>
