@@ -92,68 +92,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </script>
                 <br>
                 <!-- table for assets -->
-                <div class="table-responsive d-print-none">
-                    <table class="table table-striped table-bordered border-start" id="assetsTable">
-                        <thead>
-                            <tr>
-                                <th>Asset Tag</th>
-                                <th>Asset Type</th>
-                                <th>Brand</th>
-                                <th>Model</th>
-                                <th>Equipment Name</th>
-                                <th>Serial Number</th>
-                                <th>Status</th>
-                                <th>Date Acquired</th>
-                                <th>Location</th>
-                                <th>Documents</th>
-                                <th class="d-print-none">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                        // include 'config.php';
-                        $sql = "SELECT * FROM assets";
-                        $result = $mysqli->query($sql);
-                        function showdocuments ($param) {
-                            $array = explode(",", $param);
-                            foreach ($array as $document) {
-                                echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary target='_blank'>$document</a>&nbsp;";
-                            }
-                        }
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $documents_row = $row["documents"];
-                                echo "<tr>
-                                <td style='font-family:consolas'>" . $row["asset_tag"] . "</td>
-                                <td>" . $row["asset_type"] . "</td>
-                                <td>" . $row["brand"] . "</td>
-                                <td>" . $row["model"] . "</td>
-                                <td>" . $row["equipment_name"] . "</td>
-                                <td>" . $row["serial_number"] . "</td>
-                                <td>" . $row["status"] . "</td>
-                                <td>" . $row["date_acquired"] . "</td>
-                                <td>" . $row["location_asset"] . "</td>
-                                <td>";
-                                    $param = $row["documents"];
-                                    $array = explode(",", $param);
-                                    foreach ($array as $document) {
-                                        echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
-                                    }
-                                echo "</td>
-                                <td class='d-print-none'>
-                                    <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                    <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
-                                </td>
-                                </tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='100%'><center>No Data Avaliable</center></td></tr>";
-                        }
-                        ?>
-                        </tbody>
-                    </table>
-                </div>
-                <table class="table table-striped table-bordered border-start d-none d-print-block" id="assetsTable">
+                    <table class="table table-striped table-bordered border-start table-responsive" id="assetsTable">
                         <thead>
                             <tr>
                                 <th>Asset Tag</th>
