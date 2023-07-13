@@ -127,10 +127,7 @@ if(isset($_POST['submit'])){
                 foreach ($_FILES['documents']['name'] as $key=>$val) {
                     $filename = basename($_FILES['files']['name'][$key]); 
                     $targetFilePath = $targetDir . $filename;
-
-                    if(move_uploaded_file($_FILES["documents"]["tmp_name"][$key], $targetFilePath)) {
-                        
-                    }
+                    move_uploaded_file($_FILES["documents"]["tmp_name"][$key], $targetFilePath);
                 }
             }
 
