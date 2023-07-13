@@ -47,8 +47,15 @@ if (!isset($_SESSION['loggedin'])) {
                     var rows = table.getElementsByTagName('tr');
 
                     for (var i = 0; i < rows.length; i++) {
-                        var assetName = rows[i].getElementsByTagName('td')[0];
-                        if (assetName) {
+                        var assetName1 = rows[i].getElementsByTagName('td')[0];
+                        var assetName2 = rows[i].getElementsByTagName('td')[1];
+                        var assetName3 = rows[i].getElementsByTagName('td')[2];
+                        var assetName4 = rows[i].getElementsByTagName('td')[3];
+                        var assetName5 = rows[i].getElementsByTagName('td')[4];
+                        var assetName6 = rows[i].getElementsByTagName('td')[5];
+                        var assetName7 = rows[i].getElementsByTagName('td')[6];
+                        var assetName8 = rows[i].getElementsByTagName('td')[8];
+                        if (assetName1 || assetName2 || assetName3 || assetName4 || assetName5 || assetName6 || assetName7 || assetName8) {
                             var name = assetName.textContent || assetName.innerText;
                             if (name.indexOf(query) > -1) {
                                 rows[i].style.display = '';
