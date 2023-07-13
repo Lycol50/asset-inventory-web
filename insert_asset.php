@@ -128,7 +128,7 @@ if(isset($_POST['submit'])){
             $stmt->bind_param("sssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents);
 
             // set parameters
-            $param_documents = implode(",", $filenames);
+            $param_documents = implode(",", $_FILES['documents']['name']);
             $param_asset_type = $asset_type;
             $param_brand = $brand;
             $param_model = $model;
