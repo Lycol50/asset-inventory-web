@@ -70,8 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col">
                 <h1>Update Asset</h1>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off"
-                    enctype='multipart/form-data'>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
                     <label for="asset_type">Asset Type</label>
                     <select name="asset_type" id="asset_type" class="form-control">
                         <option value="Office Equipment"
@@ -126,6 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="remarks" id="remarks" class="form-control"
                         value="<?php echo $row['remarks']; ?>">
                     <br>
+                    <input type="hidden" name="asset_tag" value="<?php echo $row['asset_tag']; ?>"> <!-- Hidden field for asset_tag -->
                     <input type="submit" class="btn btn-primary" value="Submit">
                     <a href="dashboard.php" class="btn btn-secondary ml-2">Cancel</a>
                 </form>
