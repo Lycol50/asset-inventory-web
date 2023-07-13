@@ -53,14 +53,24 @@ if (!isset($_SESSION['loggedin'])) {
                     var rows = table.getElementsByTagName('tr');
 
                     for (var i = 0; i < rows.length; i++) {
-                        var assetName = rows[i].getElementsByTagName('td')[0];
-                        if (assetName) {
-                            var name = assetName.textContent || assetName.innerText;
-                            if (name.toLowerCase().indexOf(query.toLowerCase()) > -1) {
-                                rows[i].style.display = '';
-                            } else {
-                                rows[i].style.display = 'none';
+                        var found = false;
+                        var cells = rows[i].getElementsByTagName('td');
+
+                        for (var j = 0; j < cells.length; j++) {
+                            // Check only the specified columns (0, 1, 2, 3, 4, 5, 6, and 8)
+                            if ([0, 1, 2, 3, 4, 5, 6, 8].includes(j)) {
+                                var name = cells[j].textContent || cells[j].innerText;
+                                if (name.toLowerCase().indexOf(query.toLowerCase()) > -1) {
+                                    found = true;
+                                    break;
+                                }
                             }
+                        }
+
+                        if (found) {
+                            rows[i].style.display = '';
+                        } else {
+                            rows[i].style.display = 'none';
                         }
                     }
                 }
