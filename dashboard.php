@@ -126,7 +126,7 @@ $total_disposed = $row['total'];
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-warning mb-3" style="min-height:91%; text-align:center;">
+                <div class="card text-white bg-danger mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">For Disposal</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title"><?php echo $total_disposed; ?></h3>
