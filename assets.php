@@ -50,11 +50,17 @@ if (!isset($_SESSION['loggedin'])) {
 
                 // Add an input event listener to the search input
                 searchInput.addEventListener('input', function() {
-                    assetType.addEventListener('change', function() {
-                        var searchQuery = searchInput.value;
-                        var selectedAssetType = assetType.value;
-                        searchAssets(searchQuery, selectedAssetType);
-                }});
+                    var searchQuery = searchInput.value;
+                    var selectedAssetType = assetType.value;
+                    searchAssets(searchQuery, selectedAssetType);
+                });
+
+                // Add a change event listener to the asset type dropdown
+                
+                    var searchQuery = searchInput.value;
+                    var selectedAssetType = assetType.value;
+                    searchAssets(searchQuery, selectedAssetType);
+                });
 
                 // Function to search assets
                 function searchAssets(query, assetType) {
@@ -70,7 +76,7 @@ if (!isset($_SESSION['loggedin'])) {
                             if ([0, 1, 2, 3, 4, 5, 6, 8].includes(j)) {
                                 var name = cells[j].textContent || cells[j].innerText;
                                 if ((name.toLowerCase().indexOf(query.toLowerCase()) > -1) &&
-                                    (assetType === '' || assetType === cells[2].textContent)) {
+                                    (assetType === '' || assetType === cells[1].textContent)) {
                                     found = true;
                                     break;
                                 }
