@@ -1,67 +1,37 @@
 <?php
-require('fpdf/fpdf.php');
+?>
 
-// Function to generate PDF and print immediately
-function generatePDFAndPrint($logoPath, $assetTags)
-{
-    // Create PDF object
-    $pdf = new FPDF();
-    
-    // Add a new page
-    $pdf->AddPage('P', array(8.5, 11));
-    
-    // Set font
-    $pdf->SetFont('Arial', '', 12);
-    
-    // Set table parameters
-    $tableWidth = 8; // Adjust the table width here
-    $cellHeight = 0.5; // Adjust the cell height here
-    $cellMargin = 0.2; // Adjust the cell margin here
-    
-    // Set initial position for table
-    $xPosition = 0.25; // Adjust the x-axis position here
-    $yPosition = 0.5; // Adjust the y-axis position here
-    
-    // Output asset tags in a table format
-    foreach ($assetTags as $assetTag) {
-        // Set position for current cell
-        $pdf->SetXY($xPosition, $yPosition);
-        
-        // Set logo
-        $pdf->Image($logoPath, $xPosition + 0.25, $yPosition, 1.5);
-        
-        // Output asset tag cell
-        $pdf->Cell($tableWidth - 1.75, $cellHeight, $assetTag, 1, 1, 'C');
-        
-        // Update y-position for the next cell
-        $yPosition += $cellHeight + $cellMargin;
-        
-        // Check if reaching the end of the page
-        if ($yPosition + $cellHeight + $cellMargin > 11) {
-            // Add a new page
-            $pdf->AddPage('P', array(8.5, 11));
-            
-            // Reset y-position for the new page
-            $yPosition = 0.5;
-        }
-    }
-    
-    // Output PDF
-    $pdf->Output('I', 'Asset_Tags.pdf');
-    
-    // Initiate print immediately
-    echo "<script type='text/javascript'>window.print();</script>";
-}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Management System</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link rel="icon" type="image/x-icon" href="white.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
 
-// Get the selected asset tags from the URL
-$selectedAssets = $_GET['selectedAssets'];
-
-// Convert the selected asset tags to an array
-$assetTags = explode(',', $selectedAssets);
-
-// Example usage
-$logoPath = 'logo_info.png';
-
-// Generate PDF and print
-generatePDFAndPrint($logoPath, $assetTags);
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="logo_info.png" alt="logo" class="logo">
+                <p>Asset Tag </p>
+            </div>
+            <div class="col">
+                <img src="logo_info.png" alt="logo" class="logo">
+                <p>Asset Tag </p>
+            </div>
+            <div class="col">
+                <img src="logo_info.png" alt="logo" class="logo">
+                <p>Asset Tag </p>
+            </div>
+        </div>
+    </div>
