@@ -129,7 +129,7 @@ if (!empty($_SERVER["REQUEST_METHOD"] == "POST")) {
                     $targetFilePath = $targetDir . $filename;
 
                     if(move_uploaded_file($_FILES["documents"]["tmp_name"][$key], $targetFilePath)) {
-                        $param_documents = implode(",", $filenames);
+                        $param_documents = implode("|", $filenames);
                     }
                 }
             }

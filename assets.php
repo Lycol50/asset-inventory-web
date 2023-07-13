@@ -8,7 +8,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 function showdocuments ($param) {
-    $array = explode(",", $param);
+    $array = explode("|", $param);
     foreach ($array as $document) {
         echo "<a href='uploads/$document' target='_blank'>$document</a>&nbsp;";
     }
