@@ -1,4 +1,11 @@
 <?php
+// Retrieve the asset tag numbers from asset.php
+$assetTags = []; // Initialize an array to store asset tag numbers
+
+// Fetch asset tag numbers from asset.php
+// Modify the code below based on your implementation in asset.php to retrieve the asset tag numbers
+// Example: $assetTags = ['ASSET-001', 'ASSET-002', 'ASSET-003'];
+
 ?>
 
 <!DOCTYPE html>
@@ -23,15 +30,12 @@
         <div class="row">
             <div class="col">
                 <img src="logo_info.png" alt="logo" class="logo" width="100px">
-                <p>Asset Tag </p>
-            </div>
-            <div class="col">
-                <img src="logo_info.png" alt="logo" width="100px">
-                <p>Asset Tag </p>
-            </div>
-            <div class="col">
-                <img src="logo_info.png" alt="logo" width="100px">
-                <p>Asset Tag </p>
+                <?php foreach ($assetTags as $assetTag) { ?>
+                    <p><?php echo $assetTag; ?></p>
+                <?php } ?>
             </div>
         </div>
     </div>
+</body>
+
+</html>
