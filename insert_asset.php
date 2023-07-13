@@ -149,7 +149,7 @@ if(isset($_POST['submit'])){
             if ($stmt->execute()) {
                 echo '<script>alert("Asset added successfully.");</script>';
             } else {
-                echo "Something went wrong. Please try again later.";
+                echo '<script>alert("Something went wrong.");</script>';
             }
         }
 
