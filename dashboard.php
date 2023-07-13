@@ -77,8 +77,8 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
                     <div class="card-header">Date and Time</div>
                     <div class="card-body d-flex flex-column">
-                        <h3 class="card-title"><?php date("h:i:s a");?></h3>
-                        <h5 class="card-text">Today is <?php date("l, F j, Y");?></h5>
+                        <h3 class="card-title"><?php echo date("h:i:s a");?></h3>
+                        <h5 class="card-text">Today is <?php echo date("l, F j, Y");?></h5>
                     </div>
                 </div>
             </div>
