@@ -1,7 +1,3 @@
-<html>
-    <head>
-</head>
-<body>
 <?php
 //include config
 require_once('config.php');
@@ -36,5 +32,3 @@ if (isset($_GET['asset_tag'])) {
     $stmt->close();
 }
 ?>
-</body>
-</html>
