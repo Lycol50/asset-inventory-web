@@ -145,6 +145,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["status"] . "</td>
                                         <td>" . $row["date_acquired"] . "</td>
                                         <td>" . $row["location_asset"] . "</td>
+                                        <td>" . $row["remarks"] . "</td>
                                         <td></td>
                                         <td class='d-print-none actions'>
                                             <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
