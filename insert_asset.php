@@ -8,7 +8,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "superadmin") {
-    echo '<script type="text/javascript">alert("'.$msg.'");</script>';
+    echo "<script type=\"text/javascript\">alert(\"".$msg."\");</script>";
     sleep(2);
     header('Location: dashboard.php');
 }
