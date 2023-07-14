@@ -99,6 +99,7 @@ if (!isset($_SESSION['loggedin'])) {
                                 <th>Status</th>
                                 <th>Date Acquired</th>
                                 <th>Location</th>
+                                <th>Remarks</th>
                                 <th>Documents</th>
                                 <th class="d-print-none actions">Actions</th>
                             </tr>
@@ -122,6 +123,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["status"] . "</td>
                                         <td>" . $row["date_acquired"] . "</td>
                                         <td>" . $row["location_asset"] . "</td>
+                                        <td>" . $row["remarks"] . "</td>
                                         <td>";
                                     foreach ($array as $document) {
                                         echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
