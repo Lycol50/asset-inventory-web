@@ -157,6 +157,12 @@ if (!isset($_SESSION['loggedin'])) {
         newDoc.close();
         newWin.print();
     }
+    
+    window.addEventListener('beforeunload', function(event) {
+            if (window.matchMedia && window.matchMedia('print').matches) {
+                window.close();
+            }
+        });
     </script>
 </body>
 
