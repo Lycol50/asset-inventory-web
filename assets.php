@@ -6,7 +6,6 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: login.php');
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -24,23 +23,71 @@ if (!isset($_SESSION['loggedin'])) {
     </script>
     <link rel="icon" type="image/x-icon" href="white.png">
     <link href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css" rel="stylesheet">
-
-<script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
 </head>
 
 <body>
-    <!-- create table that showing the list of assets in database -->
     <?php include 'nav.php'; ?>
     <div class="container">
         <div class="row">
             <div class="col">
                 <h1>Assets</h1>
-                
+                <input type="text" id="searchInput" class="form-control form-control-lg d-print-none"
+                    placeholder="Search for an asset..."><br>
+                <select id="assetType" class="form-select form-select d-print-none">
+                    <option value="">All</option>
+                    <option value="Office Equipment">Office Equipment</option>
+                    <option value="Furnitures and Fixtures">Furnitures and Fixtures</option>
+                    <option value="Aircon Equipment">Aircon Equipment</option>
+                </select>
+                <script>
+                var searchInput = document.getElementById('searchInput');
+                var assetType = document.getElementById('assetType');
+
+                searchInput.addEventListener('input', function() {
+                    var searchQuery = searchInput.value;
+                    var selectedAssetType = assetType.value;
+                    searchAssets(searchQuery, selectedAssetType);
+                });
+
+                assetType.addEventListener('change', function() {
+                    var searchQuery = searchInput.value;
+                    var selectedAssetType = assetType.value;
+                    searchAssets(searchQuery, selectedAssetType);
+                });
+
+                function searchAssets(query, assetType) {
+                    var table = document.getElementById('assetsTable');
+                    var rows = table.getElementsByTagName('tr');
+
+                    for (var i = 1; i < rows.length; i++) {
+                        var found = false;
+                        var cells = rows[i].getElementsByTagName('td');
+
+                        for (var j = 0; j < cells.length; j++) {
+                            if ([0, 1, 2, 3, 4, 5, 6, 8].includes(j)) {
+                                var name = cells[j].textContent || cells[j].innerText;
+                                if ((name.toLowerCase().indexOf(query.toLowerCase()) > -1) &&
+                                    (assetType === '' || assetType === cells[1].textContent)) {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (found) {
+                            rows[i].style.display = '';
+                        } else {
+                            rows[i].style.display = 'none';
+                        }
+                    }
+                }
+                </script>
                 <br>
-                <!-- table for assets -->
                 <div class="table-responsive">
-                    <table class="table table-striped table-bordered border-start" data-show-print="true" id="assetsTable">
+                    <table class="table table-striped table-bordered border-start" id="assetsTable"
+                        data-show-print="true">
                         <thead>
                             <tr>
                                 <th>Asset Tag</th>
@@ -58,18 +105,10 @@ if (!isset($_SESSION['loggedin'])) {
                         </thead>
                         <tbody>
                             <?php
-                        // include 'config.php';
                         $sql = "SELECT * FROM assets";
                         $result = $mysqli->query($sql);
-                        function showdocuments ($param) {
-                            $array = explode(",", $param);
-                            foreach ($array as $document) {
-                                echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary target='_blank'>$document</a>&nbsp;";
-                            }
-                        }
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                $documents_row = $row["documents"];
                                 echo "<tr>
                                 <td style='font-family:consolas'>" . $row["asset_tag"] . "</td>
                                 <td>" . $row["asset_type"] . "</td>
@@ -94,17 +133,28 @@ if (!isset($_SESSION['loggedin'])) {
                                 </tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='100%'><center>No Data Avaliable</center></td></tr>";
+                            echo "<tr><td colspan='100%'><center>No Data Available</center></td></tr>";
                         }
                         ?>
                         </tbody>
                     </table>
                 </div>
-                <input type="button" onclick="window.print()" value="Print Everything" class="d-print-none btn btn-primary"/>
+                <input type="button" onclick="printTable()" value="Print Everything" class="d-print-none btn btn-primary" />
                 <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
             </div>
         </div>
     </div>
+    <script>
+    function printTable() {
+        var table = document.getElementById("assetsTable");
+        var newWin = window.open("", "_blank");
+        var newDoc = newWin.document;
+        newDoc.open();
+        newDoc.write('<html><head><title>Print</title></head><body>' + table.outerHTML + '</body></html>');
+        newDoc.close();
+        newWin.print();
+    }
+    </script>
 </body>
 
 </html>
