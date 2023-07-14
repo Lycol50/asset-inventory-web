@@ -100,7 +100,7 @@ if (!isset($_SESSION['loggedin'])) {
                                 <th>Date Acquired</th>
                                 <th>Location</th>
                                 <th>Documents</th>
-                                <th class="d-print-none">Actions</th>
+                                <th class="d-print-none actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -126,7 +126,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
                                     }
                                 echo "</td>
-                                <td class='d-print-none'>
+                                <td class='d-print-none actions'>
                                     <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
                                     <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
                                 </td>
@@ -150,7 +150,10 @@ if (!isset($_SESSION['loggedin'])) {
         var newWin = window.open("", "_blank");
         var newDoc = newWin.document;
         newDoc.open();
-        newDoc.write('<html><head><title>Print</title></head><body>' + table.outerHTML + '</body></html>');
+        newDoc.write('<html><head><title>Print</title></head><body>');
+        newDoc.write('<style>@media print{.actions{display:none;}}</style>');
+        newDoc.write(table.outerHTML);
+        newDoc.write('</body></html>');
         newDoc.close();
         newWin.print();
     }
