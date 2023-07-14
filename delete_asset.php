@@ -10,7 +10,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 // check if user has permission to view only admin or superadmin can view this page
-if ($_SESSION['account_type'] === "admin" && $_SESSION['account_type'] !== "superadmin") {
+if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "superadmin") {
     echo '<script type="text/javascript">window.onload=function(){alert("You do not have permission to access this page.");};</script>';    header('Location: assets.php');
     exit;
 }
@@ -31,4 +31,4 @@ if (isset($_GET['asset_tag'])) {
     }
     $stmt->close();
 }
-?>
+
