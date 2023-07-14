@@ -109,28 +109,47 @@ if (!isset($_SESSION['loggedin'])) {
                         $result = $mysqli->query($sql);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                echo "<tr>
-                                <td style='font-family:consolas'>" . $row["asset_tag"] . "</td>
-                                <td>" . $row["asset_type"] . "</td>
-                                <td>" . $row["brand"] . "</td>
-                                <td>" . $row["model"] . "</td>
-                                <td>" . $row["equipment_name"] . "</td>
-                                <td>" . $row["serial_number"] . "</td>
-                                <td>" . $row["status"] . "</td>
-                                <td>" . $row["date_acquired"] . "</td>
-                                <td>" . $row["location_asset"] . "</td>
-                                <td>";
-                                    $param = $row["documents"];
-                                    $array = explode(",", $param);
+                                $param = $row["documents"];
+                                $array = explode(",", $param);
+                                if (!empty($param)) {
+                                    echo "<tr>
+                                        <td style='font-family: consolas'>" . $row["asset_tag"] . "</td>
+                                        <td>" . $row["asset_type"] . "</td>
+                                        <td>" . $row["brand"] . "</td>
+                                        <td>" . $row["model"] . "</td>
+                                        <td>" . $row["equipment_name"] . "</td>
+                                        <td>" . $row["serial_number"] . "</td>
+                                        <td>" . $row["status"] . "</td>
+                                        <td>" . $row["date_acquired"] . "</td>
+                                        <td>" . $row["location_asset"] . "</td>
+                                        <td>";
                                     foreach ($array as $document) {
                                         echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
                                     }
-                                echo "</td>
-                                <td class='d-print-none actions'>
-                                    <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                    <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
-                                </td>
-                                </tr>";
+                                    echo "</td>
+                                        <td class='d-print-none actions'>
+                                            <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
+                                            <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
+                                        </td>
+                                        </tr>";
+                                } else {
+                                    echo "<tr>
+                                        <td style='font-family: consolas'>" . $row["asset_tag"] . "</td>
+                                        <td>" . $row["asset_type"] . "</td>
+                                        <td>" . $row["brand"] . "</td>
+                                        <td>" . $row["model"] . "</td>
+                                        <td>" . $row["equipment_name"] . "</td>
+                                        <td>" . $row["serial_number"] . "</td>
+                                        <td>" . $row["status"] . "</td>
+                                        <td>" . $row["date_acquired"] . "</td>
+                                        <td>" . $row["location_asset"] . "</td>
+                                        <td></td>
+                                        <td class='d-print-none actions'>
+                                            <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
+                                            <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
+                                        </td>
+                                        </tr>";
+                                }
                             }
                         } else {
                             echo "<tr><td colspan='100%'><center>No Data Available</center></td></tr>";
