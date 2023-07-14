@@ -151,7 +151,7 @@ if (!isset($_SESSION['loggedin'])) {
         var newWin = window.open("", "_blank");
         var newDoc = newWin.document;
         newDoc.open();
-        newDoc.write('<html><head><title>Print</title></head><body>');
+        newDoc.write('<html><head><title>Print</title></head><style>font-family: sans-serif;</style><body>');
         newDoc.write('<style>@media print{.actions{display:none;}}</style><h1>Asset List</h1>');
         newDoc.write(table.outerHTML);
         newDoc.write('</body></html>');
