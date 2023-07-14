@@ -152,7 +152,7 @@ if (!isset($_SESSION['loggedin'])) {
         var newDoc = newWin.document;
         newDoc.open();
         newDoc.write('<html><head><title>Print</title></head><style>.body{font-family: sans-serif;}</style><body>');
-        newDoc.write('<style>@media print{.actions{display:none;}}</style><h1>Asset List</h1>');
+        newDoc.write('<style>@media print{.actions{display:none;} body{font-family:sans-serif;}}</style><h1>Asset List</h1>');
         newDoc.write(table.outerHTML);
         newDoc.write('</body></html>');
         newDoc.close();
