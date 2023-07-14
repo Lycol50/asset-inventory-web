@@ -3,6 +3,8 @@
 $cmd = "mkdir uploads && chmod 777 uploads";
 system($cmd);
 
+$msg = "You do not have permission to access this page.";
+
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 define('DB_SERVER', "localhost");
