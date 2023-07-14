@@ -139,7 +139,8 @@ if (!isset($_SESSION['loggedin'])) {
                         </tbody>
                     </table>
                 </div>
-                <input type="button" onclick="printTable()" value="Print Everything" class="d-print-none btn btn-primary" />
+                <input type="button" onclick="printTable()" value="Print Everything"
+                    class="d-print-none btn btn-primary" />
                 <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
             </div>
         </div>
@@ -155,14 +156,11 @@ if (!isset($_SESSION['loggedin'])) {
         newDoc.write(table.outerHTML);
         newDoc.write('</body></html>');
         newDoc.close();
+        newWin.onafterprint = function() {
+            newWin.close();
+        };
         newWin.print();
     }
-    
-    window.addEventListener('beforeunload', function(event) {
-            if (window.matchMedia && window.matchMedia('print').matches) {
-                window.close();
-            }
-        });
     </script>
 </body>
 
