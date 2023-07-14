@@ -3,8 +3,7 @@ include 'config.php';
 
 session_start();
 if ($_SESSION['account_type'] !== "superadmin") {
-    echo '<!DOCTYPE html><html><head><title>Asset Management System</title><script type="text/javascript">window.onload=function(){alert("You do not have permission to access this page.");};</script></head><body></body></html>';
-    sleep(2);
+    echo '<script type="text/javascript">window.onload=function(){alert("You do not have permission to access this page.");};</script>';    sleep(2);
     header('Location: dashboard.php');
 }
 
