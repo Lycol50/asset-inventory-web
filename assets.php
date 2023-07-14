@@ -96,7 +96,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </script>
                 <br>
                 <!-- table for assets -->
-                <div class="table-responsive d-print-none">
+                <div class="table-responsive">
                     <table class="table table-striped table-bordered border-start" data-show-print="true" id="assetsTable">
                         <thead>
                             <tr>
