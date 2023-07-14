@@ -23,6 +23,10 @@ if (!isset($_SESSION['loggedin'])) {
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <link rel="icon" type="image/x-icon" href="white.png">
+    <link href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css" rel="stylesheet">
+
+<script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
 </head>
 
 <body>
@@ -92,8 +96,8 @@ if (!isset($_SESSION['loggedin'])) {
                 </script>
                 <br>
                 <!-- table for assets -->
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered border-start" id="assetsTable">
+                <div class="table-responsive d-print-none">
+                    <table class="table table-striped table-bordered border-start" data-show-print="true" id="assetsTable">
                         <thead>
                             <tr>
                                 <th>Asset Tag</th>
