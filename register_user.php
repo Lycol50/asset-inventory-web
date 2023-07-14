@@ -4,6 +4,7 @@ include 'config.php';
 session_start();
 if ($_SESSION['account_type'] !== "superadmin") {
     echo "<script>alert('You do not have permission to access this page.')</script>";
+    sleep(2);
     header('Location: dashboard.php');
 }
 
