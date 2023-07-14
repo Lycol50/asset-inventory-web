@@ -97,9 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <br>
                     <label for="status">Status</label>
                     <select name="status" id="status" class="form-control">
-                        <option value="Available" <?php if ($row['status'] === 'Available') echo 'selected'; ?>>Available
+                        <option value="In Use" <?php if ($row['status'] === 'In Use') echo 'selected'; ?>>Available
                         </option>
-                        <option value="In Use" <?php if ($row['status'] === 'In Use') echo 'selected'; ?>>In Use</option>
+                        <option value="In Storage" <?php if ($row['status'] === 'In Storage') echo 'selected'; ?>>In Use</option>
                         <option value="For Repair" <?php if ($row['status'] === 'For Repair') echo 'selected'; ?>>For Repair
                         </option>
                         <option value="For Disposal" <?php if ($row['status'] === 'For Disposal') echo 'selected'; ?>>For
