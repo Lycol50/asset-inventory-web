@@ -11,7 +11,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 // check if user has permission to view only admin or superadmin can view this page
 if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "superadmin") {
-    echo "<script>alert('You do not have permission to access this page.')</script>";
+    echo '<script type="text/javascript">alert("You do not have permission to access this page.")</script>';
     sleep(2);
     header('Location: assets.php');
     exit;
