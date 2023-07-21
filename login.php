@@ -107,10 +107,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h1>Login to the system</h1>
                 <p>Please fill in your code to login.</p>
 
-                <div class="alert alert-danger" role="alert">
-                        <?php echo $username_err; ?>
-                        <?php echo $password_err; ?>
-                </div>
+                <?php
+                if (!empty($username_err) || !empty($password_err)) {
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo $username_err;
+                    echo $password_err;
+                    echo '</div>';
+                ?>
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <label class="form-label">Username</label>
