@@ -105,13 +105,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h1>Login to the system</h1>
                 <p>Please fill in your code to login.</p>
 
+                <div class="alert alert-danger" role="alert">
+                        <?php echo $username_err; ?>
+                        <?php echo $password_err; ?>
+                </div>
+
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <label class="form-label">Username</label>
                     <input type="text" name="username" class="form-control">
-                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
                     <label class="form-label">Password</label>
                     <input type="password" name="pass_word" class="form-control">
-                    <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
                     <input type="submit" class="btn btn-primary mb-3" value="Login">
                     <button type="button" class="btn btn-link mb-3" onclick="window.location.href='forgotpass.php';">Forgot Password?</button>
                 </form>
