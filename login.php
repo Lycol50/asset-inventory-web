@@ -7,6 +7,8 @@ if (isset($_SESSION['loggedin'])) {
     exit;
 }
 
+$username_err = $password_err = "";
+
 // processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // check if username is empty
