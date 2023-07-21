@@ -16,7 +16,4 @@ $insert_asset = '<a class="nav-item nav-link" href="insert_asset.php">Insert Ass
       <a class="nav-item nav-link" href="logout.php">Logout</a>
     </div>
   </div>
-  <span class="navbar-text" style="font-family: Kanit, sans-serif;">
-      
-  </span>
 </nav>
