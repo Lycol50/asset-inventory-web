@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($firstname_err) && empty($lastname_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
         
         // prepare an insert statement
-        $sql = "INSERT INTO users (firstname, lastname, username, pass_word, password_reset_code, account_type) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (firstname, lastname, username, pass_word, account_type) VALUES (?, ?, ?, ?, ?, ?)";
         
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
@@ -93,19 +93,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_lastname = $lastname;
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // creates a password hash
-            $param_password_reset_code = substr(md5($username), 0, 13);
             $param_account_type = $_POST["account_type"];
-            
-            // attempt to execute the prepared statement
-            if ($stmt->execute()) {
-                // redirect to login page
-                echo "<script>alert('User $firstname $lastname has been registered.')</script>";
-                header("register_user.php");
-            } else {
-                echo "Something went wrong. Please try again later.";
+
+            // insert password reset code into password_reset table
+            $sql2 = "INSERT INTO password_reset (password_reset_code, user_id) VALUES (?, ?)";
+            if ($stmt2 = $mysqli->prepare($sql2)) {
+                // bind variables to the prepared statement as parameters
+                $stmt2->bind_param("si", $param_password_reset_code, $param_user_id);
+                
+                // set parameters
+                $param_password_reset_code = substr(md5($username), 0, 13);
+                // set param user_id from username
+                $sql3 = "SELECT user_id FROM users WHERE username = '$username'";
+                $result = $mysqli->query($sql3);
+                $row = $result->fetch_assoc();
+                $param_user_id = $row['user_id'];
+
+                
+                // attempt to execute the prepared statement
+                if ($stmt2->execute()) {
+                    // redirect to login page
+                    echo "<script>alert('User $firstname $lastname has been registered.')</script>";
+                    header("register_user.php");
+                } else {
+                    echo "Something went wrong. Please try again later.";
+                }
             }
+
         }
-        
+            
         // close statement
         $stmt->close();
     }

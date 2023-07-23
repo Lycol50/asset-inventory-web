@@ -27,7 +27,6 @@ if($mysqli === false){
         `firstname` varchar(255) NOT NULL,
         `lastname` varchar(255) NOT NULL,
         `pass_word` varchar(255) NOT NULL,
-        `password_reset_code` varchar(255) NOT NULL,
         `account_type` varchar(255) NOT NULL DEFAULT 'user',
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (`user_id`)
@@ -54,11 +53,27 @@ if($mysqli === false){
         PRIMARY KEY (`asset_id`),
         FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+
+    // create table for password reset code
+    $sql3 = "CREATE TABLE IF NOT EXISTS `password_reset` (
+        `password_reset_id` int(255) NOT NULL AUTO_INCREMENT,
+        `password_reset_code` varchar(255) NOT NULL,
+        `user_id` int(255) NOT NULL,
+        `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (`password_reset_id`),
+        FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+
     // execute query
     if ($mysqli->query($sql) === TRUE) {
         // echo "Table created successfully";
         if ($mysqli->query($sql2) === TRUE) {
             // echo "Table created successfully";
+            if ($mysqli->query($sql3) === TRUE) {
+                // echo "Table created successfully";
+            } else {
+                echo "Error creating table: " . $mysqli->error;
+            }
         } else {
             echo "Error creating table: " . $mysqli->error;
         }
