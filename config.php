@@ -50,8 +50,7 @@ if($mysqli === false){
         `documents` text NOT NULL,
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated_at` text NOT NULL,
-        `user_id` int(13) NOT NULL FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-        PRIMARY KEY (`user_id`)
+        `user_id` int(13) NOT NULL FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
     // execute query
     if ($mysqli->query($sql) === TRUE) {
