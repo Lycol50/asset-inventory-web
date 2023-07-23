@@ -108,7 +108,7 @@ if($mysqli === false){
                         $sql2 = "INSERT INTO password_reset (password_reset_code, user_id) VALUES (?, ?)";
                      if ($stmt = $mysqli->prepare($sql2)) {
                     // bind variables to the prepared statement as parameters
-                    $stmt2->bind_param("si", $param_password_reset_code, $param_user_id);
+                    $stmt->bind_param("si", $param_password_reset_code, $param_user_id);
                     
                     // set parameters
                     $param_password_reset_code = $superadmin_reset_code;
