@@ -95,7 +95,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_password = password_hash($password, PASSWORD_DEFAULT); // creates a password hash
             $param_account_type = $_POST["account_type"];
 
-            // insert password reset code into password_reset table
+                
+                // attempt to execute the prepared statement
+                if ($stmt2->execute()) {
+                     // insert password reset code into password_reset table
             $sql2 = "INSERT INTO password_reset (password_reset_code, user_id) VALUES (?, ?)";
             if ($stmt2 = $mysqli->prepare($sql2)) {
                 // bind variables to the prepared statement as parameters
@@ -108,10 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $result = $mysqli->query($sql3);
                 $row = $result->fetch_assoc();
                 $param_user_id = $row['user_id'];
-
                 
-                // attempt to execute the prepared statement
-                if ($stmt2->execute()) {
                     // redirect to login page
                     echo "<script>alert('User $firstname $lastname has been registered.')</script>";
                     header("register_user.php");
