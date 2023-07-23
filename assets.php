@@ -101,6 +101,7 @@ if (!isset($_SESSION['loggedin'])) {
                                 <th>Location</th>
                                 <th>Remarks</th>
                                 <th>Documents</th>
+                                <th>Date Updated and User</th>
                                 <th class="d-print-none actions">Actions</th>
                             </tr>
                         </thead>
@@ -124,6 +125,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["date_acquired"] . "</td>
                                         <td>" . $row["location_asset"] . "</td>
                                         <td>" . $row["remarks"] . "</td>
+                                        <td>" . $row["updated_at"] . " by " . $row["user_id"] . "</td>;
                                         <td>";
                                     foreach ($array as $document) {
                                         echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";

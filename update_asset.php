@@ -19,10 +19,10 @@ $row = mysqli_fetch_array($result);
 
 // parse update data to mysql
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sql = "UPDATE assets SET brand=?, model=?, serial_number=?, asset_tag=?, asset_type=?, status=?, equipment_name=?, location_asset=?, price_value=?, date_acquired=?, remarks=? WHERE asset_tag=?";
+    $sql = "UPDATE assets SET brand=?, model=?, serial_number=?, asset_tag=?, asset_type=?, status=?, equipment_name=?, location_asset=?, price_value=?, date_acquired=?, remarks=?, user_id=?, updated_at=? WHERE asset_tag=?";
 
     if ($stmt = $mysqli->prepare($sql)) {
-        $stmt->bind_param("ssssssssssss", $brand, $model, $serial_number, $asset_tag, $asset_type, $status, $equipment_name, $location_asset, $price_value, $date_acquired, $remarks, $asset_tag);
+        $stmt->bind_param("ssssssssssssss", $brand, $model, $serial_number, $asset_tag, $asset_type, $status, $equipment_name, $location_asset, $price_value, $date_acquired, $remarks, $asset_tag, $user_id, $updated_at);
 
         $brand = $_POST['brand'];
         $model = $_POST['model'];
@@ -35,6 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $price_value = $_POST['price_value'];
         $date_acquired = $_POST['date_acquired'];
         $remarks = $_POST['remarks'];
+        $user_id = $_SESSION['id'];
+        $updated_at = date("Y-m-d H:i:s");
 
         if ($stmt->execute()) {
             header('Location: assets.php');

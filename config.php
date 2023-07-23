@@ -22,7 +22,7 @@ if($mysqli === false){
 } else {
     // create table if not exists
     $sql = "CREATE TABLE IF NOT EXISTS `users` (
-        `id` int(13) NOT NULL AUTO_INCREMENT,
+        `user_id` int(13) NOT NULL AUTO_INCREMENT,
         `username` varchar(255) NOT NULL,
         `firstname` varchar(255) NOT NULL,
         `lastname` varchar(255) NOT NULL,
@@ -35,7 +35,7 @@ if($mysqli === false){
 
     // create table for assets
     $sql2 = "CREATE TABLE IF NOT EXISTS `assets` (
-        `id` int(255) NOT NULL AUTO_INCREMENT,
+        `asset_id` int(255) NOT NULL AUTO_INCREMENT,
         `brand` varchar(255) NOT NULL,
         `model` varchar(255) NOT NULL,
         `serial_number` varchar(255) NOT NULL,
@@ -49,6 +49,8 @@ if($mysqli === false){
         `remarks` text NOT NULL,
         `documents` text NOT NULL,
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        `updated_at` text NOT NULL,
+        `user_id` int(13) NOT NULL FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
         PRIMARY KEY (`id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
     // execute query
