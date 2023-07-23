@@ -30,7 +30,7 @@ if($mysqli === false){
         `password_reset_code` varchar(255) NOT NULL,
         `account_type` varchar(255) NOT NULL DEFAULT 'user',
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (`id`)
+        PRIMARY KEY (`user_id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
 
     // create table for assets
