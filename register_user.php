@@ -100,9 +100,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->execute()) {
                      // insert password reset code into password_reset table
             $sql2 = "INSERT INTO password_reset (password_reset_code, user_id) VALUES (?, ?)";
-            if ($stmt2 = $mysqli->prepare($sql2)) {
+            if ($stmt = $mysqli->prepare($sql2)) {
                 // bind variables to the prepared statement as parameters
-                $stmt2->bind_param("si", $param_password_reset_code, $param_user_id);
+                $stmt->bind_param("si", $param_password_reset_code, $param_user_id);
                 
                 // set parameters
                 $param_password_reset_code = substr(md5($username), 0, 13);
