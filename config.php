@@ -51,6 +51,7 @@ if($mysqli === false){
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated_at` text NOT NULL,
         `user_id` int(13) NOT NULL FOREIGN KEY REFERENCES users(user_id),
+        PRIMARY KEY (`asset_id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
     // execute query
     if ($mysqli->query($sql) === TRUE) {
