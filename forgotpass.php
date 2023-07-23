@@ -32,17 +32,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password_reset = trim($_POST["password_reset"]);
     }
 
-    // validate credentials
+    // validate credentials from password reset code table
     if (empty($username_err) && empty($password_err) && empty($password_reset_err)) {
         // prepare a select statement
-        $sql = "SELECT user_id, username, password_reset_code FROM users WHERE username = ? AND password_reset_code = ?";
+        $sql = "SELECT password_reset_id, password_reset_code, user_id FROM password_reset WHERE password_reset_code = ?";
         
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("ss", $param_username, $param_password_reset);
+            $stmt->bind_param("s", $param_password_reset);
             
             // set parameters
-            $param_username = $username;
             $param_password_reset = $password_reset;
             
             // attempt to execute the prepared statement
@@ -54,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // check if username exists, if yes then verify password reset code
                 if ($stmt->num_rows == 1) {
                     // bind result variables
-                    $stmt->bind_result($id, $username);
+                    $stmt->bind_result($id, $password_reset_code, $user_id);
                     if ($stmt->fetch()) {
                         // password reset code is correct, so change the password in db
                         $sql = "UPDATE users SET pass_word = ? WHERE user_id = ?";
@@ -65,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             
                             // set parameters
                             $param_password = password_hash($password, PASSWORD_DEFAULT);
-                            $param_id = $id;
+                            $param_id = $user_id;
                             
                             // attempt to execute the prepared statement
                             if ($stmt->execute()) {
@@ -81,13 +80,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 } else {
                     // display an error message if username doesn't exist
-                    $password_reset_err = "No account found with that username and password reset code.";
+                    $password_reset_err = "No account found with that username.";
                 }
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
+        } else {
+            $password_reset_err = "Invalid Password Reset Code.";
         }
-        
         // close statement
         $stmt->close();
     }
