@@ -69,8 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             // attempt to execute the prepared statement
                             if ($stmt->execute()) {
                                 // password updated successfully. destroy the session, and redirect to login page
-                                $password_recovered = "Password recovered successfully. Please login.";
-                                header("location: login.php");
+                                $password_recovered = "Password recovered successfully. Please <a href='login.php'>login</a>.";
                                 exit();
                             } else {
                                 $password_reset_err = "Invalid Password Reset Code.";
