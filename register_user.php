@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username_err = "Please enter a username.";
     } else {
         // prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
+        $sql = "SELECT user_id FROM users WHERE username = ?";
         
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
@@ -82,34 +82,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($firstname_err) && empty($lastname_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
         
         // prepare an insert statement
-        $sql = "INSERT INTO users (firstname, lastname, username, pass_word, password_reset_code, account_type) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (firstname, lastname, username, pass_word, account_type) VALUES (?, ?, ?, ?, ?)";
         
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssssss", $param_firstname, $param_lastname, $param_username, $param_password, $param_password_reset_code, $param_account_type);
+            $stmt->bind_param("sssss", $param_firstname, $param_lastname, $param_username, $param_password, $param_account_type);
             
             // set parameters
             $param_firstname = $firstname;
             $param_lastname = $lastname;
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // creates a password hash
-            $param_password_reset_code = substr(md5($username), 0, 13);
             $param_account_type = $_POST["account_type"];
-            
-            // attempt to execute the prepared statement
-            if ($stmt->execute()) {
-                // redirect to login page
-                echo "<script>alert('User $firstname $lastname has been registered.')</script>";
-                header("register_user.php");
-            } else {
-                echo "Something went wrong. Please try again later.";
-            }
-        }
-        
+
+                
+                // attempt to execute the prepared statement
+                if ($stmt->execute()) {
+                    // insert password reset code into password_reset table
+                    $sql2 = "INSERT INTO password_reset (password_reset_code, user_id) VALUES (?, ?)";
+                    if ($stmt2 = $mysqli->prepare($sql2)) {
+                        // bind variables to the prepared statement as parameters
+                        $stmt2->bind_param("si", $param_password_reset_code, $param_user_id);
+                        
+                        // set parameters
+                        $param_password_reset_code = substr(md5($username), 0, 13);
+                        $param_user_id = $mysqli->insert_id;
+                        
+                        // attempt to execute the prepared statement
+                        if ($stmt2->execute()) {
+                            // do nothing
+                        } else {
+                            echo "<script>alert('Something went wrong. Please try again later.')</script>";
+                        }
+                    } 
+                    // redirect to login page
+                    echo "<script>alert('User $firstname $lastname has been registered.')</script>";
+                    header("register_user.php");
+                } else {
+                    echo "<script>alert('Something went wrong. Please try again later.')</script>";
+                }
+            }        
         // close statement
         $stmt->close();
     }
 }
+
 ?>
 
 <!DOCTYPE html>

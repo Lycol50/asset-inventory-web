@@ -101,6 +101,7 @@ if (!isset($_SESSION['loggedin'])) {
                                 <th>Location</th>
                                 <th>Remarks</th>
                                 <th>Documents</th>
+                                <th>Date Updated and User</th>
                                 <th class="d-print-none actions">Actions</th>
                             </tr>
                         </thead>
@@ -110,6 +111,9 @@ if (!isset($_SESSION['loggedin'])) {
                         $result = $mysqli->query($sql);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
+                                $sql2 = "SELECT * FROM users WHERE user_id = '" . $row["user_id"] . "'";
+                                $result2 = $mysqli->query($sql2);
+                                $row2 = $result2->fetch_assoc();
                                 $param = $row["documents"];
                                 $array = explode(",", $param);
                                 if (!empty($param)) {
@@ -124,6 +128,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["date_acquired"] . "</td>
                                         <td>" . $row["location_asset"] . "</td>
                                         <td>" . $row["remarks"] . "</td>
+                                        <td>" . $row["updated_at"] . " by " . $row2["firstname"] . "</td>;
                                         <td>";
                                     foreach ($array as $document) {
                                         echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
