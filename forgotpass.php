@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // validate credentials
     if (empty($username_err) && empty($password_err) && empty($password_reset_err)) {
         // prepare a select statement
-        $sql = "SELECT id, username, password_reset_code FROM users WHERE username = ? AND password_reset_code = ?";
+        $sql = "SELECT user_id, username, password_reset_code FROM users WHERE username = ? AND password_reset_code = ?";
         
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bind_result($id, $username);
                     if ($stmt->fetch()) {
                         // password reset code is correct, so change the password in db
-                        $sql = "UPDATE users SET pass_word = ? WHERE id = ?";
+                        $sql = "UPDATE users SET pass_word = ? WHERE user_id = ?";
 
                         if ($stmt = $mysqli->prepare($sql)) {
                             // bind variables to the prepared statement as parameters
