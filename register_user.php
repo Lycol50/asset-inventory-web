@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 
                 // attempt to execute the prepared statement
-                if ($stmt2->execute()) {
+                if ($stmt->execute()) {
                      // insert password reset code into password_reset table
             $sql2 = "INSERT INTO password_reset (password_reset_code, user_id) VALUES (?, ?)";
             if ($stmt2 = $mysqli->prepare($sql2)) {
@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $result = $mysqli->query($sql3);
                 $row = $result->fetch_assoc();
                 $param_user_id = $row['user_id'];
-                
+
                     // redirect to login page
                     echo "<script>alert('User $firstname $lastname has been registered.')</script>";
                     header("register_user.php");
