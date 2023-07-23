@@ -86,10 +86,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $password_reset_err = "No account found with that username.";
                 }
             } else {
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "<script>alert('Something went wrong.')</script>";
             }
         // close statement
         $stmt->close();
+    } else {
+        echo "<script>alert('Something went wrong.')</script>";
     }
 }
 }
