@@ -90,7 +90,7 @@ if($mysqli === false){
             // do nothing
         } else {
             $sql3 = "INSERT INTO users (`user_id`, `username`, `firstname`, `lastname`, `pass_word`, `created_at`, `account_type`) VALUES
-            (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, 'superadmin');";
+            (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, 'superadmin');";
             if ($stmt = $mysqli->prepare($sql3)) {
                 $stmt->bind_param("ssssss", $param_id, $param_username, $param_firstname, $param_lastname, $param_pass_word, $param_password_reset_code);
                 
