@@ -112,11 +112,7 @@ if($mysqli === false){
                     
                     // set parameters
                     $param_password_reset_code = $superadmin_reset_code;
-                    // set param user_id from username
-                    $sql3 = "SELECT user_id FROM users WHERE username = 'superadmin'";
-                    $result = $mysqli->query($sql3);
-                    $row = $result->fetch_assoc();
-                    $param_user_id = $row['user_id'];
+                    $param_user_id = 1;
                         // redirect to login page
                         // echo "<script>alert('User $firstname $lastname has been registered.')</script>";
                         // header("register_user.php");
