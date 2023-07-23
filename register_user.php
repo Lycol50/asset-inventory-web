@@ -112,14 +112,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         if ($stmt2->execute()) {
                             // do nothing
                         } else {
-                            echo "Something went wrong. Please try again later.";
+                            echo "<script>alert('Something went wrong. Please try again later.')</script>";
                         }
                     } 
                     // redirect to login page
                     echo "<script>alert('User $firstname $lastname has been registered.')</script>";
                     header("register_user.php");
                 } else {
-                    echo "Something went wrong. Please try again later.";
+                    echo "<script>alert('Something went wrong. Please try again later.')</script>";
                 }
             }        
         // close statement

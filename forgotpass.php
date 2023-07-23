@@ -72,7 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 // attempt to execute the prepared statement
                                 if ($stmt3->execute()) {
-                                    $password_recovered = "Your password has been recovered. <a href='login.php'>Please login</a>";
+                                    echo "<script>alert('Your password has been recovered. Please login')</script>";
+                                    header("login.php");
                                 }
                             }
                         } else {
