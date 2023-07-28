@@ -161,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_remarks = $remarks;
             $param_asset_tag = $asset_number;
             $param_user_id = $_SESSION['id'];
-            $parm_updated_at = date("Y-m-d H:i:s");
+            $param_updated_at = date("Y-m-d H:i:s");
 
             // attempt to execute the prepared statement
             if ($stmt->execute()) {
