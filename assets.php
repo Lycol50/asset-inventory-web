@@ -100,8 +100,8 @@ if (!isset($_SESSION['loggedin'])) {
                                 <th>Date Acquired</th>
                                 <th>Location</th>
                                 <th>Remarks</th>
-                                <th>Documents</th>
                                 <th>Date Updated and User</th>
+                                <th>Documents</th>
                                 <th class="d-print-none actions">Actions</th>
                             </tr>
                         </thead>
