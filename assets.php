@@ -141,8 +141,8 @@ if (!isset($_SESSION['loggedin'])) {
                                     if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                         echo "<td class='d-print-none actions'>
                                             <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                            <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='DeleteData(" . $row["asset_tag"] . ")'><br>
-                                        </td>
+                                            <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='redirect('update_asset.php?asset_tag=" . $row["asset_tag"] . "')><br>
+                                            </td>
                                         </tr>";
                                     } else {
                                         echo "</tr>";
@@ -165,7 +165,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                             echo "<td class='d-print-none actions'>
                                                 <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                                <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='DeleteData(" . $row["asset_tag"] . ")'><br>
+                                                <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='redirect('update_asset.php?asset_tag=" . $row["asset_tag"] . "')><br>
                                             </td>
                                             </tr>";
                                         } else {
@@ -207,12 +207,11 @@ if (!isset($_SESSION['loggedin'])) {
         newWin.print();
     }
 
-    function DeleteData(data) {
-        if (confirm("Are you sure you want to delete this asset?") == true) {
-            location.href = "delete_asset.php?asset_tag=" + data + "";
-        } else {
-            return false;
+    void redirect(url) {
+        if (confirm('Are you sure you want to delete this data')) {
+            window.location.href = url;
         }
+        return false;
     }
     </script>
 </body>
