@@ -8,9 +8,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "superadmin") {
-    echo '<script type="text/javascript">window.onload=function(){alert("You do not have permission to access this page.");};</script>';
-    sleep(2);
-    header('Location: assets.php');
+    header('Location: 404.php');
 }
 
 function test_input($data) {
