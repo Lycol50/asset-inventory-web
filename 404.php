@@ -26,7 +26,7 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
 </head>
-<body style="body { background-color: white !important; }">
+<body style="background-color: white !important;">
         <div class="d-flex align-items-center justify-content-center vh-100">
             <div class="text-center">
                 <h1 class="display-1 fw-bold">404</h1>
