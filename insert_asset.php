@@ -273,8 +273,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         class="form-control <?php echo (!empty($location_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $location_asset; ?>">
                     <br>
+                    <label for="price_value">Price Value</label>
                     <div class="input-group">
-                        <label for="price_value">Price Value</label>
                         <div class="input-group-prepend">
                             <span class="input-group-text">₱</span>
                         </div>
