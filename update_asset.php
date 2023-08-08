@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 
     $sql = "UPDATE assets SET brand=?, model=?, serial_number=?, asset_type=?, status=?, equipment_name=?, location_asset=?, price_value=?, date_acquired=?, remarks=?, user_id=?, updated_at=? WHERE asset_tag = " . $_GET['asset_tag'] . " ";
     if ($stmt = $mysqli->prepare($sql)) {
-        $stmt->bind_param("sssssssssssss", $brand, $model, $serial_number, $asset_type, $status, $equipment_name, $location_asset, $price_value, $date_acquired, $remarks, $user_id, $updated_at, $_GET['asset_tag']);
+        $stmt->bind_param("ssssssssssss", $brand, $model, $serial_number, $asset_type, $status, $equipment_name, $location_asset, $price_value, $date_acquired, $remarks, $user_id, $updated_at);
 
         $brand =  $_POST['brand'];
         $model =  $_POST['model'];
