@@ -59,7 +59,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </ul>
                 <h3>Assets Details</h3>
                 <p>Here you can see the details of your assets, as well as edit and delete per asset data.</p>
-                <img class="img-fluid" src="imgs/6.png"><br>
+                <img class="img-fluid" src="imgs/6.png"><br><br>
                 <h3>Print Everything</h3>
                 <p>Here you can print the assets data.</p>
                 <div class="alert alert-warning" role="alert">

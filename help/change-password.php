@@ -42,10 +42,10 @@ if (!isset($_SESSION['loggedin'])) {
                 <ol>
                     <li>Open any of your favorite browsers, then visit the Asset Inventory System Page by <b>finding the
                             IP Address of your Web server.</b><br>And they will greet you with this:<br><img
-                            class="img-fluid" src="imgs/1.png"><br></li>
+                            class="img-fluid" src="imgs/1.png"><br><br></li>
                     <li>Press the <b>Forgot Password</b> button</li>
                     <li>And you will be redirected to the <b>Forgot Password</b> page<br><img class="img-fluid"
-                            src="imgs/3.png"><br></li>
+                            src="imgs/3.png"><br><br></li>
                     <li>Enter your Username and New Password in the form</li>
                     <li>Enter your <b>Password Reset Code</b><br>
                         <div class="alert alert-warning" role="alert">

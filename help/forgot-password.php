@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <br>
                 <div class="alert alert-danger" role="alert">
                     <h4 class="alert-heading">Please Read me First!</h4>
-                    <p>Please try to remember the password and perform login multiple time until you got into the login.
+                    <p>Please try to remember the password and perform login multiple times until you got into the login.
                         <br>So that you can minimize time for acquring your password reset code from your System
                         Administrator.
                     </p>
@@ -45,10 +45,10 @@ if (!isset($_SESSION['loggedin'])) {
                 <ol>
                     <li>Open any of your favorite browsers, then visit the Asset Inventory System Page by <b>finding the
                             IP Address of your Web server.</b><br>And they will greet you with this:<br><img
-                            class="img-fluid" src="imgs/1.png"><br></li>
+                            class="img-fluid" src="imgs/1.png"><br<br></li>
                     <li>Press the <b>Forgot Password</b> button</li>
                     <li>And you will be redirected to the <b>Forgot Password</b> page<br><img class="img-fluid"
-                            src="imgs/3.png"><br></li>
+                            src="imgs/3.png"><br><br></li>
                     <li>Enter your Username and New Password in the form</li>
                     <li>Enter your <b>Password Reset Code</b><br>
                         <div class="alert alert-warning" role="alert">
