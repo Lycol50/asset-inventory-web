@@ -132,7 +132,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td> ₱" . number_format(intval($row["price_value"]), 2) . "</td>
                                         <td>" . $row["location_asset"] . "</td>
                                         <td>" . $row["remarks"] . "</td>
-                                        <td>" . $row["updated_at"] . " by " . $row2["firstname"] . "</td>;
+                                        <td>" . $row["updated_at"] . " by " . $row2["firstname"] . "</td>
                                         <td>";
                                     foreach ($array as $document) {
                                         echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
