@@ -1,6 +1,6 @@
 <?php
 $pathInPieces = explode(DIRECTORY_SEPARATOR , __FILE__);
-include $pathInPieces[0].DIRECTORY_SEPARATOR . '/config.php';
+include $pathInPieces[0].DIRECTORY_SEPARATOR . 'config.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
