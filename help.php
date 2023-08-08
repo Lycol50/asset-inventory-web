@@ -42,20 +42,29 @@ $firstname = $row['firstname'];
                 <br>
 
                 <h3>Login and Forgot Password</h3>
-                <a href="help/login.php">Logging in to the system</a>
-                <a href="help/forgot-password.php">I forgot my password</a>
+                <ul>
+                    <li><a href="help/login.php">Logging in to the system</a></li>
+                    <li><a href="help/forgot-password.php">I forgot my password</a>
+                    <li><a href="help/change-password.php">I want to change my password</a>
+                </ul>
                 <hr>
                 <h3>Dashboard</h3>
-                <a href="help/dashboard.php">An overview of the dashboard</a>
+                <ul>
+                    <li><a href="help/dashboard.php">An overview of the dashboard</a></li>
+                </ul>
                 <hr>
                 <h3>Assets</h3>
-                <a href="help/assets.php">An overview of the assets page</a>
-                <a href="help/addassets.php">Adding assets into the system</a>
-                <a href="help/editdeleteassets.php">Editing and Deleting assets in the system</a>
+                <ul>
+                    <li><a href="help/assets.php">An overview of the assets page</a></li>
+                    <li><a href="help/addassets.php">Adding assets into the system</a></li>
+                    <li><a href="help/editdeleteassets.php">Editing and Deleting assets in the system</a></li>
+                </ul>
                 <hr>
                 <h3>System Admin Guide</h3>
-                <a href="help/register.php">Registering a new user</a>
-                <a href="help/forgothelp.php">Helping user with forgotten password</a>
+                <ul>
+                    <li><a href="help/register.php">Registering a new user</a></li>
+                    <li><a href="help/forgothelp.php">Helping user with forgotten password</a></li>
+                </ul>
             </div>
         </div>
     </div>
