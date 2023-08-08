@@ -98,6 +98,7 @@ if (!isset($_SESSION['loggedin'])) {
                                 <th>Serial Number</th>
                                 <th>Status</th>
                                 <th>Date Acquired</th>
+                                <th>Price Value</th>
                                 <th>Location</th>
                                 <th>Remarks</th>
                                 <th>Date Updated and User</th>
@@ -118,6 +119,7 @@ if (!isset($_SESSION['loggedin'])) {
                                 $row2 = $result2->fetch_assoc();
                                 $param = $row["documents"];
                                 $array = explode(",", $param);
+                                $pricevalue = number_format($row["price_value"], 2);
                                 if (!empty($param)) {
                                     echo "<tr>
                                         <td style='font-family: consolas'>" . $row["asset_tag"] . "</td>
@@ -128,6 +130,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["serial_number"] . "</td>
                                         <td>" . $row["status"] . "</td>
                                         <td>" . $row["date_acquired"] . "</td>
+                                        <td> ₱" . $pricevalue . "</td>
                                         <td>" . $row["location_asset"] . "</td>
                                         <td>" . $row["remarks"] . "</td>
                                         <td>" . $row["updated_at"] . " by " . $row2["firstname"] . "</td>;
@@ -156,6 +159,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["serial_number"] . "</td>
                                         <td>" . $row["status"] . "</td>
                                         <td>" . $row["date_acquired"] . "</td>
+                                        <td> ₱" . $pricevalue . "</td>
                                         <td>" . $row["location_asset"] . "</td>
                                         <td>" . $row["remarks"] . "</td>
                                         <td>" . $row["updated_at"] . " by " . $row2["firstname"] . "</td>

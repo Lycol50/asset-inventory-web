@@ -274,11 +274,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         class="form-control <?php echo (!empty($location_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $location_asset; ?>">
                     <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">₱</span>
+                        </div>
                     <label for="price_value">Price Value</label>
                     <input type="number" name="price_value" id="price_value"
                         class="form-control <?php echo (!empty($price_value_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $price_value; ?>">
                     <span class="invalid-feedback"><?php echo $price_value_err; ?></span>
+                    </div>
                     <br>
                     <label for="date_acquired">Date Acquired</label>
                     <input type="date" name="date_acquired" id="date_acquired"
