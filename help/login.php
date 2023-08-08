@@ -1,9 +1,9 @@
 <?php
-include 'config.php';
+include dirname(__FILE__) . '/config.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: login.php');
+    header("Location: dirname(__FILE__) . 'login.php'");
     exit;
 }
 ?>
@@ -42,7 +42,7 @@ if (!isset($_SESSION['loggedin'])) {
             <h1>Logging out of the system</h1>
             <br>
             <ol>
-                <li>Click the <b>Log Out</b> button on the navigation bar<br><img class="img-fluid" src="img/2.png"></li>
+                <li>Click the <b>Log Out</b> button on the navigation bar<br><img class="img-fluid" src="imgs/2.png"></li>
                 <li>And you will be redirected to the <b>Log In</b> page<br><img class="img-fluid" src="imgs/1.png"></li>
         </div>
     </div>
