@@ -26,26 +26,32 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
 </head>
+
 <body>
     <?php include 'nav.php'; ?>
     <div class="container">
         <div class="row">
             <div class="col">
-            <h1>Logging in to the system</h1>
-            <p>Logging into the system is easy as slicing paper with sharp knife.</p>
-            <br>
-            <ol>
-                <li>Open any of your favorite browsers, then visit the Asset Inventory System Page by <b>finding the IP Address of your Web server.</b><br>And they will greet you with this:<br><img class="img-fluid" src="imgs/1.png"><br></li>
-                <li>Start inserting your credentials provided by your System Administrator</li>
-                <li>Click the <b>Log In</b> button</li>
-                <li>And you will be redirected to the <b>Dashboard</b> page</li>
-            </ol>
-            <br>
-            <h1>Logging out of the system</h1>
-            <br>
-            <ol>
-                <li>Click the <b>Log Out</b> button on the navigation bar<br><img class="img-fluid" src="imgs/2.png"><br></li>
-                <li>And you will be redirected to the <b>Log In</b> page<br><img class="img-fluid" src="imgs/1.png"><br></li>
+                <h1>Logging in to the system</h1>
+                <p>Logging into the system is easy as slicing paper with sharp knife.</p>
+                <br>
+                <ol>
+                    <li>Open any of your favorite browsers, then visit the Asset Inventory System Page by <b>finding the
+                            IP Address of your Web server.</b><br>And they will greet you with this:<br><img
+                            class="img-fluid" src="imgs/1.png"><br></li>
+                    <li>Start inserting your credentials provided by your System Administrator</li>
+                    <li>Click the <b>Log In</b> button</li>
+                    <li>And you will be redirected to the <b>Dashboard</b> page</li>
+                </ol>
+                <br>
+                <h1>Logging out of the system</h1>
+                <br>
+                <ol>
+                    <li>Click the <b>Log Out</b> button on the navigation bar<br><img class="img-fluid"
+                            src="imgs/2.png"><br></li>
+                    <li>And you will be redirected to the <b>Log In</b> page<br><img class="img-fluid"
+                            src="imgs/1.png"><br></li>
+                </ol>
             </div>
         </div>
     </div>
