@@ -35,7 +35,7 @@ if (!isset($_SESSION['loggedin'])) {
             <p>Logging into the system is easy as slicing paper with sharp knife.</p>
             <br>
             <ol>
-                <li>Open any of your favorite browsers, then visit the Asset Inventory System Page by <b>finding the IP Address of your Web server.</b><br>And they will greet you with this:<br><img class="img-fluid" src="imgs/1.png"></li>
+                <li>Open any of your favorite browsers, then visit the Asset Inventory System Page by <b>finding the IP Address of your Web server.</b><br>And they will greet you with this:<br><img class="img-fluid" src="imgs/1.png"><br></li>
                 <li>Start inserting your credentials provided by your System Administrator</li>
                 <li>Click the <b>Log In</b> button</li>
                 <li>And you will be redirected to the <b>Dashboard</b> page</li>
@@ -44,8 +44,8 @@ if (!isset($_SESSION['loggedin'])) {
             <h1>Logging out of the system</h1>
             <br>
             <ol>
-                <li>Click the <b>Log Out</b> button on the navigation bar<br><img class="img-fluid" src="imgs/2.png"></li>
-                <li>And you will be redirected to the <b>Log In</b> page<br><img class="img-fluid" src="imgs/1.png"></li>
+                <li>Click the <b>Log Out</b> button on the navigation bar<br><img class="img-fluid" src="imgs/2.png"><br></li>
+                <li>And you will be redirected to the <b>Log In</b> page<br><img class="img-fluid" src="imgs/1.png"><br></li>
             </div>
         </div>
     </div>
