@@ -25,6 +25,11 @@ if (!isset($_SESSION['loggedin'])) {
     <link href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css" rel="stylesheet">
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
+    <script>
+        function confirmAction() {
+            return confirm("Are you sure?");
+        }
+    </script>
 </head>
 
 <body>
@@ -141,7 +146,7 @@ if (!isset($_SESSION['loggedin'])) {
                                     if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                         echo "<td class='d-print-none actions'>
                                             <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                            <input class='btn btn-sm btn-outline-secondary' type='button' value='Delete' onclick='parse('delete_asset.php?asset_tag=" . $row["asset_tag"] . "');' />
+                                            <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary' onclick='return confirmAction();'>Delete</a><br>
                                             </td>
                                         </tr>";
                                     } else {
@@ -165,7 +170,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                             echo "<td class='d-print-none actions'>
                                                 <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                                <input class='btn btn-sm btn-outline-secondary' type='button' value='Delete' onclick='parse('delete_asset.php?asset_tag=" . $row["asset_tag"] . "');' />
+                                                <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary' onclick='return confirmAction();'>Delete</a><br>
                                                 </td>
                                             </tr>";
                                         } else {
@@ -188,11 +193,6 @@ if (!isset($_SESSION['loggedin'])) {
         </div>
     </div>
     <script>
-    function parse(url) { 
-        if (confirm('Are you sure you want to delete this Asset Data?'))
-        window.location.href=' + url + ';
-    }
-
     function printTable() {
         var table = document.getElementById("assetsTable");
         var newWin = window.open("", "_blank");
