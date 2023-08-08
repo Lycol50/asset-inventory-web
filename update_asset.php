@@ -47,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: assets.php');
             echo "<script>alert('The Asset has been sucessfully updated.')</script>";
         } else {
-            header('Location: assets.php');
             echo "<script>alert('Something went wrong. Please try again!')</script>";
         }
     }
