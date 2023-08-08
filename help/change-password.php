@@ -37,11 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <br>
                 <div class="alert alert-danger" role="alert">
                     <h4 class="alert-heading">Please Read me First!</h4>
-                    <p>Changing your password is <b>same as your forgot your password</b></p><hr>
-                    <p>Please try to remember the password and perform login multiple time until you got into the login.
-                        <br>So that you can minimize time for acquring your password reset code from your System
-                        Administrator.
-                    </p>
+                    <p>Changing your password is <b>same as you forgot your password</b></p>
                 </div>
                 <ol>
                     <li>Open any of your favorite browsers, then visit the Asset Inventory System Page by <b>finding the
