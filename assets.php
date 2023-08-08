@@ -119,7 +119,6 @@ if (!isset($_SESSION['loggedin'])) {
                                 $row2 = $result2->fetch_assoc();
                                 $param = $row["documents"];
                                 $array = explode(",", $param);
-                                $pricevalue = number_format($row["price_value"], 2);
                                 if (!empty($param)) {
                                     echo "<tr>
                                         <td style='font-family: consolas'>" . $row["asset_tag"] . "</td>
@@ -130,7 +129,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["serial_number"] . "</td>
                                         <td>" . $row["status"] . "</td>
                                         <td>" . $row["date_acquired"] . "</td>
-                                        <td> ₱" . $pricevalue . "</td>
+                                        <td> ₱" . number_format(intval($row["price_value"]), 2) . "</td>
                                         <td>" . $row["location_asset"] . "</td>
                                         <td>" . $row["remarks"] . "</td>
                                         <td>" . $row["updated_at"] . " by " . $row2["firstname"] . "</td>;
@@ -159,7 +158,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["serial_number"] . "</td>
                                         <td>" . $row["status"] . "</td>
                                         <td>" . $row["date_acquired"] . "</td>
-                                        <td> ₱" . $pricevalue . "</td>
+                                        <td> ₱" . number_format(intval($row["price_value"]), 2) . "</td>
                                         <td>" . $row["location_asset"] . "</td>
                                         <td>" . $row["remarks"] . "</td>
                                         <td>" . $row["updated_at"] . " by " . $row2["firstname"] . "</td>
