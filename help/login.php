@@ -1,9 +1,9 @@
 <?php
-include dirname(__FILE__, 1) . '/config.php';
+include dirname(__FILE__, 0) . '/config.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    header("Location: dirname(__FILE__, 1) . 'login.php'");
+    header("Location: dirname(__FILE__, 0) . 'login.php'");
     exit;
 }
 ?>
