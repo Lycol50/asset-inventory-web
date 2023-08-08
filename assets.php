@@ -208,9 +208,8 @@ if (!isset($_SESSION['loggedin'])) {
     }
 
     function DeleteData(data) {
-        if (confirm("Are you sure you want to delete this asset?")) {
-            window.location.href = "delete_asset.php?asset_tag=" + data + "";
-            return true;
+        if (confirm("Are you sure you want to delete this asset?") == true) {
+            location.href = "delete_asset.php?asset_tag=" + data + "";
         } else {
             return false;
         }

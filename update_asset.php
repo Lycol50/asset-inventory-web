@@ -127,11 +127,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="location_asset" id="location_asset" class="form-control"
                         value="<?php echo $row['location_asset']; ?>">
                     <br>
+                    <label for="price_value">Price Value</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">₱</span>
                         </div>
-                        <label for="price_value">Price Value</label>
                         <input type="number" name="price_value" id="price_value" class="form-control"
                             value="<?php echo $row['price_value']; ?>">
                     </div>
