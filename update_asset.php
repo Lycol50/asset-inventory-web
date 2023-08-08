@@ -118,8 +118,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="equipment_name">Equipment Name</label>
                     <input type="text" name="equipment_name" id="equipment_name" class="form-control" value="<?php echo htmlspecialchars($row['equipment_name']); ?>">
                     <br>
-                    <label for="location">Location</label>
-                    <input type="text" name="location" id="location" class="form-control" value="<?php echo htmlspecialchars($row['location']); ?>">
+                    <label for="location_asset">Location</label>
+                    <input type="text" name="location_asset" id="location_asset" class="form-control" value="<?php echo htmlspecialchars($row['location_asset']); ?>">
                     <br>
                     <label for="price_value">Price Value</label>
                     <div class="input-group">
