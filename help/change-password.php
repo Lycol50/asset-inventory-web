@@ -39,7 +39,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <h4 class="alert-heading">Please Read me First!</h4>
                     <p>Changing your password is <b>same as your forgot your password</b></p><hr>
                     <p>Please try to remember the password and perform login multiple time until you got into the login.
-                        <br><br> So that you can minimize time for acquring your password reset code from your System
+                        <br>So that you can minimize time for acquring your password reset code from your System
                         Administrator.
                     </p>
                 </div>
