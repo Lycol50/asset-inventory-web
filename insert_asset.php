@@ -12,6 +12,13 @@ if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "supe
     header('Location: dashboard.php');
 }
 
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
 
 // insert variables for asset
 $brand = $model = $serial_number = $status = $equipment_name = $location_asset = $price_value = $date_acquired = $remarks = $asset_type = "";
@@ -25,71 +32,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["asset_type"]))) {
         $assettype_err = "Please enter asset type.";
     } else {
-        $asset_type = trim($_POST["asset_type"]);
+        $asset_type = trim(test_input($_POST["asset_type"]));
     }
 
     // check if brand is empty
     if (empty(trim($_POST["brand"]))) {
         $brand_err = "Please enter brand.";
     } else {
-        $brand = trim($_POST["brand"]);
+        $brand = trim(test_input($_POST["brand"]));
+    }
+
+    //validate asset type
+    if (empty(trim($_POST["asset_type"]))) {
+        $asset_type_err = "Please select an asset type.";
+    } else {
+        $asset_type = trim(test_input($_POST["asset_type"]));
+    }
+
+    // validate status
+    if (empty(trim($_POST["status"]))) {
+        $status_err = "Please select a status.";
+    } else {
+        $status = trim(test_input($_POST["status"]));
     }
 
     // check if model is empty
     if (empty(trim($_POST["model"]))) {
         $model_err = "Please enter model.";
     } else {
-        $model = trim($_POST["model"]);
+        $model = trim(test_input($_POST["model"]));
     }
 
     // check if serial number is empty
     if (empty(trim($_POST["serial_number"]))) {
         $serial_number_err = "Please enter serial number.";
     } else {
-        $serial_number = trim($_POST["serial_number"]);
+        $serial_number = trim(test_input($_POST["serial_number"]), " ");
     }
 
     // check if status is empty
     if (empty(trim($_POST["status"]))) {
         $status_err = "Please enter status.";
     } else {
-        $status = trim($_POST["status"]);
+        $status = trim(test_input($_POST["status"]));
     }
 
     // check if equipment name is empty
     if (empty(trim($_POST["equipment_name"]))) {
         $equipment_name_err = "Please enter equipment name.";
     } else {
-        $equipment_name = trim($_POST["equipment_name"]);
+        $equipment_name = trim(test_input($_POST["equipment_name"]));
     }
 
     // check if location is empty
     if (empty(trim($_POST["location_asset"]))) {
         $location_err = "Please enter location.";
     } else {
-        $location_asset = trim($_POST["location_asset"]);
+        $location_asset = trim(test_input($_POST["location_asset"]));
     }
 
     // check if price value is empty
     if (empty(trim($_POST["price_value"]))) {
         $price_value_err = "Please enter price value.";
     } else {
-        $price_value = trim($_POST["price_value"]);
+        $price_value = trim(test_input($_POST["price_value"]), " ");
     }
 
     // check if date acquired is empty
     if (empty(trim($_POST["date_acquired"]))) {
         $date_acquired_err = "Please enter date acquired.";
     } else {
-        $date_acquired = trim($_POST["date_acquired"]);
+        $date_acquired = trim(test_input($_POST["date_acquired"]));
     }
 
-    // check if remarks is empty
-    if (empty(trim($_POST["remarks"]))) {
-        $remarks_err = "Please enter remarks.";
-    } else {
-        $remarks = trim($_POST["remarks"]);
-    }
+    $remarks = trim(test_input($_POST["remarks"]));
+    
     
     function generateRandomLetter($length = 1) {
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -145,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssssssssssssss", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents, $param_user_id, $param_updated_at);
+            $stmt->bind_param("ssssssisssssis", $param_brand, $param_model, $param_serial_number, $param_status, $param_equipment_name, $param_location, $param_price_value, $param_date_acquired, $param_remarks, $param_asset_tag, $param_asset_type, $param_documents, $param_user_id, $param_updated_at);
 
             // set parameters
             $param_documents = implode(",", $filename_array);
@@ -209,6 +226,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <select name="asset_type" id="asset_type"
                         class="form-control <?php echo (!empty($assettype_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $asset_type; ?>">
+                        <option value="">---Select Asset Type---</option>
                         <option value="Office Equipment">Office Equipment</option>
                         <option value="Furnitures and Fixtures">Furnitures and Fixtures</option>
                         <option value="Aircon Equipment">Aircon Equipment</option>
@@ -237,6 +255,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <select name="status" id="status"
                         class="form-control <?php echo (!empty($status_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $status; ?>">
+                        <option value="">---Select Status---</option>
                         <option value="In Use">In Use</option>
                         <option value="In Storage">In Storage</option>
                         <option value="For Repair">For Repair</option>
@@ -256,7 +275,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         value="<?php echo $location_asset; ?>">
                     <br>
                     <label for="price_value">Price Value</label>
-                    <input type="text" name="price_value" id="price_value"
+                    <input type="number" name="price_value" id="price_value"
                         class="form-control <?php echo (!empty($price_value_err)) ? 'is-invalid' : ''; ?>"
                         value="<?php echo $price_value; ?>">
                     <span class="invalid-feedback"><?php echo $price_value_err; ?></span>
@@ -276,7 +295,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         value="<?php echo $remarks; ?>">
                     <span class="invalid-feedback"><?php echo $remarks_err; ?></span>
                     <br>
-                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="submit" class="btn btn-primary" value="Submit" onClick="return confirm('Confirm to Register this Asset?')">
                     <a href="dashboard.php" class="btn btn-secondary ml-2">Cancel</a>
                 </form>
             </div>

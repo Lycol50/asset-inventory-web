@@ -102,7 +102,9 @@ if (!isset($_SESSION['loggedin'])) {
                                 <th>Remarks</th>
                                 <th>Date Updated and User</th>
                                 <th>Documents</th>
-                                <th class="d-print-none actions">Actions</th>
+                                <?php if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
+                                    echo "<th class='d-print-none'>Actions</th>";
+                                } ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -133,12 +135,17 @@ if (!isset($_SESSION['loggedin'])) {
                                     foreach ($array as $document) {
                                         echo "<a href='uploads/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
                                     }
-                                    echo "</td>
-                                        <td class='d-print-none actions'>
+                                    echo "</td>";
+                                    if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
+                                        echo "<td class='d-print-none actions'>
                                             <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                            <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
+                                            <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary' onClick='return confirm('Delete This Asset Data?')'>Delete</a><br>
                                         </td>
                                         </tr>";
+                                    } else {
+                                        echo "<td></td>
+                                        </tr>";
+                                    }
                                 } else {
                                     echo "<tr>
                                         <td style='font-family: consolas'>" . $row["asset_tag"] . "</td>
@@ -151,12 +158,18 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["date_acquired"] . "</td>
                                         <td>" . $row["location_asset"] . "</td>
                                         <td>" . $row["remarks"] . "</td>
-                                        <td></td>
-                                        <td class='d-print-none actions'>
-                                            <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                            <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Delete</a><br>
-                                        </td>
-                                        </tr>";
+                                        <td>" . $row["updated_at"] . " by " . $row2["firstname"] . "</td>
+                                        <td></td>";
+                                        if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
+                                            echo "<td class='d-print-none actions'>
+                                                <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
+                                                <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary' onClick='return confirm('Delete This Asset Data?')'>Delete</a><br>
+                                            </td>
+                                            </tr>";
+                                        } else {
+                                            echo "<td></td>
+                                            </tr>";
+                                        }
                                 }
                             }
                         } else {

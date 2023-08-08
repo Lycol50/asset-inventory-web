@@ -104,9 +104,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Login to the system</h1>
-                <p>Please fill in your code to login.</p>
-
+                <h1 class="text-center">Asset Management System</h1>
+                <p>Please fill credentials to login.</p>
                 <?php
                 if (!empty($username_err) || !empty($password_err)) {
                     echo '<div class="alert alert-danger" role="alert">';
@@ -125,6 +124,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="submit" class="btn btn-primary mb-3" value="Login">
                     <button type="button" class="btn btn-link mb-3" onclick="window.location.href='forgotpass.php';">Forgot Password?</button>
                 </form>
+            </div>
+            <div class="col">
+                <img src="https://em-content.zobj.net/source/joypixels/340/regional-indicator-symbol-letter-i_1f1ee.png" alt="logo" class="img-fluid">
             </div>
         </div>
     </div>

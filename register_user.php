@@ -7,6 +7,13 @@ if ($_SESSION['account_type'] !== "superadmin") {
     header('Location: dashboard.php');
 }
 
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
 $firstname = $lastname = $username = $password = $confirm_password = "";
 
 $firstname_err = $lastname_err = $username_err = $password_err = $confirm_password_err = "";
@@ -16,14 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["firstname"]))) {
         $firstname_err = "Please enter your first name.";
     } else {
-        $firstname = trim($_POST["firstname"]);
+        $firstname = trim(test_input($_POST["firstname"]));
     }
     
     // validate lastname
     if (empty(trim($_POST["lastname"]))) {
         $lastname_err = "Please enter your last name.";
     } else {
-        $lastname = trim($_POST["lastname"]);
+        $lastname = trim(test_input($_POST["lastname"]));
+    }
+
+    //validate account type
+    if (empty(trim($_POST["account_type"]))) {
+        $account_type_err = "Please select an account type.";
+    } else {
+        $account_type = trim(test_input($_POST["account_type"]));
     }
     
     // validate username
@@ -48,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->num_rows == 1) {
                     $username_err = "This username is already taken.";
                 } else {
-                    $username = trim($_POST["username"]);
+                    $username = trim(test_input($_POST["username"]));
                 }
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
@@ -150,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col">
                 <h1>Register to the system</h1>
-                <p>Please fill to register user.</p>
+                <p>Please fill information.</p>
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
                     <label class="form-label">Username</label>
@@ -163,13 +177,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="lastname" class="form-control">
                     <span class="invalid-feedback"><?php echo $lastname_err; ?></span>
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control">
+                    <input type="password" name="password" class="form-control" data-toggle="tooltip" data-placement="right" title="Password must have 6 Characters">
                     <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
                     <label class="form-label">Confirm Password</label>
                     <input type="password" name="confirm_password" class="form-control">
                     <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span><br>
                     <label class="form-label">User Type</label>
                     <select name="account_type" class="form-select">
+                        <option value="">---Select---</option>
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                     </select><br>
