@@ -50,7 +50,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <li>Select User Type for that user</li>
                     <div class="alert alert-info" role="alert">
                         <p>Here are the Permissions Table for user</p>
-                        <table>
+                        <table class="table table-striped table-bordered border-start">
                             <tr>
                                 <th>Permissions</th>
                                 <th>Admin</th>
