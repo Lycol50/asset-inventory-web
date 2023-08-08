@@ -1,9 +1,9 @@
 <?php
-include dirname(__FILE__) . '/config.php';
+include rootManager::rootDirectory() . '/config.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    header("Location: dirname(__FILE__) . 'login.php'");
+    header("Location: rootManager::rootDirectory() . 'login.php'");
     exit;
 }
 ?>
