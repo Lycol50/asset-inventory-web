@@ -35,9 +35,9 @@ if (!isset($_SESSION['loggedin'])) {
                 <h1>Editing and Deleting Asset</h1>
                 <p>Here you can edit and delete the asset</p>
                 <br>
-                <p>Go the the <b>List Assets</b> Page and here you can perform actions
-                    <img class="img-fluid" src="imgs/7.png"><br>
-                    <br>
+                <p>Go the the <b>List Assets</b> Page and here you can perform actions</p>
+                <img class="img-fluid" src="imgs/7.png"><br>
+                <br>
                 <div class="alert alert-danger" role="alert">
                     <h4 class="alert-heading">User Limitations</h4>
                     <p>Only the <b>Admin and SuperAdmin</b> can edit and delete the asset, the <b>User</b> can only view
