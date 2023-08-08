@@ -1,4 +1,5 @@
 <?php
+use help\rootManager;
 include rootManager::rootDirectory() . '/config.php';
 
 session_start();
