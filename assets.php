@@ -140,8 +140,8 @@ if (!isset($_SESSION['loggedin'])) {
                                     echo "</td>";
                                     if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                         echo "<td class='d-print-none actions'>
-                                            <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                            <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary' onClick='return confirm('Delete This Asset Data?')'>Delete</a><br>
+                                        <input type='button' class='btn btn-sm btn-outline-secondary' value='Edit' onClick='window.location.href='update_asset.php?asset_tag=" . $row["asset_tag"] . "'><br>
+                                        <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='return confirm('Delete This Asset Data?'); window.location.href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "'><br>
                                         </td>
                                         </tr>";
                                     } else {
@@ -164,8 +164,8 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td></td>";
                                         if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                             echo "<td class='d-print-none actions'>
-                                                <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                                <a href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary' onClick='return confirm('Delete This Asset Data?')'>Delete</a><br>
+                                                <input type='button' class='btn btn-sm btn-outline-secondary' value='Edit' onClick='window.location.href='update_asset.php?asset_tag=" . $row["asset_tag"] . "'><br>
+                                                <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='return confirm('Delete This Asset Data?'); window.location.href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "'><br>
                                             </td>
                                             </tr>";
                                         } else {
@@ -182,7 +182,8 @@ if (!isset($_SESSION['loggedin'])) {
                 </div>
                 <input type="button" onclick="printTable()" value="Print Everything"
                     class="d-print-none btn btn-primary" />
-                <a href="insert_asset.php" class="d-print-none btn btn-primary">Add Asset</a>
+                <input type="button" onclick="window.location.href='insert_asset.php'"
+                    class="d-print-none btn btn-primary" value="Add Asset" />
             </div>
         </div>
     </div>
@@ -192,8 +193,11 @@ if (!isset($_SESSION['loggedin'])) {
         var newWin = window.open("", "_blank");
         var newDoc = newWin.document;
         newDoc.open();
-        newDoc.write('<html><head><title>Print</title></head><style>.body{font-family: sans-serif; text-align: left;}</style><body>');
-        newDoc.write('<style>@media print{.actions{display:none;} body{font-family:sans-serif;}}</style><h1>Asset List</h1>');
+        newDoc.write(
+            '<html><head><title>Print</title></head><style>.body{font-family: sans-serif; text-align: left;}</style><body>'
+        );
+        newDoc.write(
+            '<style>@media print{.actions{display:none;} body{font-family:sans-serif;}}</style><h1>Asset List</h1>');
         newDoc.write(table.outerHTML);
         newDoc.write('</body></html>');
         newDoc.close();
