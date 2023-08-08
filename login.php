@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="text-center">Asset Management System</h1>
+                <h1>Asset Management System</h1>
                 <p>Please fill credentials to login.</p>
                 <?php
                 if (!empty($username_err) || !empty($password_err)) {
