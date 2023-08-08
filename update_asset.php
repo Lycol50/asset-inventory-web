@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <br>
                     <input type="hidden" name="asset_tag" value="<?php echo $row['asset_tag']; ?>">
                     <!-- Hidden field for asset_tag -->
-                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Submit">
                     <a href="assets.php" class="btn btn-secondary ml-2"
                         onClick="return confirm('Do you want to go back? All inserted data here before submitting will be gone!')">Cancel</a>
                 </form>
