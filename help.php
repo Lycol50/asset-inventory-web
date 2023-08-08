@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 // get the firstname of the user and save to variable
 $id = $_SESSION['id'];
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id = '$id'");
+$result = mysqli_query($mysqli, "SELECT * FROM users WHERE user_id = '$id'");
 $row = mysqli_fetch_array($result);
 $firstname = $row['firstname'];
 ?>
