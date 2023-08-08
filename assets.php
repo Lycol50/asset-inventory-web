@@ -66,7 +66,7 @@ if (!isset($_SESSION['loggedin'])) {
                         var cells = rows[i].getElementsByTagName('td');
 
                         for (var j = 0; j < cells.length; j++) {
-                            if ([0, 1, 2, 3, 4, 5, 6, 8, 9, 10].includes(j)) {
+                            if ([0, 1, 2, 3, 4, 5, 6, 9, 10].includes(j)) {
                                 var name = cells[j].textContent || cells[j].innerText;
                                 if ((name.toLowerCase().indexOf(query.toLowerCase()) > -1) &&
                                     (assetType === '' || assetType === cells[1].textContent)) {
