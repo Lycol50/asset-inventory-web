@@ -1,10 +1,10 @@
 <?php
 $pathInPieces = explode(DIRECTORY_SEPARATOR , __FILE__);
-include $pathInPieces[0].DIRECTORY_SEPARATOR . 'config.php';
+include $pathInPieces[1].DIRECTORY_SEPARATOR . 'config.php';
 
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    header("Location: $pathInPieces[0].DIRECTORY_SEPARATOR . 'login.php'");
+    header("Location: $pathInPieces[1].DIRECTORY_SEPARATOR . 'login.php'");
     exit;
 }
 ?>
