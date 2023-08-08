@@ -12,17 +12,22 @@ if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "supe
 }
 
 // show results from database using the url parameter
-$query = "SELECT * FROM assets WHERE asset_tag = '".$_GET['asset_tag']."'";
-$result = mysqli_query($mysqli, $query);
-$row = mysqli_fetch_array($result);
+$query = "SELECT * FROM assets WHERE asset_tag = ?";
+if ($stmt = $mysqli->prepare($query)) {
+    $stmt->bind_param("s", $_GET['asset_tag']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+}
+
 
 // parse update data to mysql
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $sql = "UPDATE assets SET brand=?, model=?, serial_number=?, asset_tag=?, asset_type=?, status=?, equipment_name=?, location_asset=?, price_value=?, date_acquired=?, remarks=?, user_id=?, updated_at=? WHERE asset_tag = '".$_GET['asset_tag']."'";
 
+    $sql = "UPDATE assets SET brand=?, model=?, serial_number=?, asset_type=?, status=?, equipment_name=?, location_asset=?, price_value=?, date_acquired=?, remarks=?, user_id=?, updated_at=? WHERE asset_tag = ?";
     if ($stmt = $mysqli->prepare($sql)) {
-        $stmt->bind_param("ssssssssssssss", $brand, $model, $serial_number, $asset_tag, $asset_type, $status, $equipment_name, $location_asset, $price_value, $date_acquired, $remarks, $asset_tag, $user_id, $updated_at);
+        $stmt->bind_param("sssssssssssss", $brand, $model, $serial_number, $asset_type, $status, $equipment_name, $location_asset, $price_value, $date_acquired, $remarks, $user_id, $updated_at, $_GET['asset_tag']);
 
         $brand =  $_POST['brand'];
         $model =  $_POST['model'];
@@ -88,16 +93,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </select>
                     <br>
                     <label for="brand">Brand</label>
-                    <input type="text" name="brand" id="brand" class="form-control"
-                        value="<?php echo $row['brand']; ?>">
+                    <input type="text" name="brand" id="brand" class="form-control" value="<?php echo htmlspecialchars($row['brand']); ?>">
                     <br>
                     <label for="model">Model</label>
-                    <input type="text" name="model" id="model" class="form-control"
-                        value="<?php echo $row['model']; ?>">
+                    <input type="text" name="model" id="model" class="form-control" value="<?php echo htmlspecialchars($row['model']); ?>">
                     <br>
                     <label for="serial_number">Serial Number</label>
-                    <input type="text" name="serial_number" id="serial_number" class="form-control"
-                        value="<?php echo $row['serial_number']; ?>">
+                    <input type="text" name="serial_number" id="serial_number" class="form-control" value="<?php echo htmlspecialchars($row['serial_number']); ?>">
                     <br>
                     <label for="status">Status</label>
                     <select name="status" id="status" class="form-control">
@@ -114,29 +116,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </select>
                     <br>
                     <label for="equipment_name">Equipment Name</label>
-                    <input type="text" name="equipment_name" id="equipment_name" class="form-control"
-                        value="<?php echo $row['equipment_name']; ?>">
+                    <input type="text" name="equipment_name" id="equipment_name" class="form-control" value="<?php echo htmlspecialchars($row['equipment_name']); ?>">
                     <br>
                     <label for="location">Location</label>
-                    <input type="text" name="location_asset" id="location_asset" class="form-control"
-                        value="<?php echo $row['location_asset']; ?>">
+                    <input type="text" name="location" id="location" class="form-control" value="<?php echo htmlspecialchars($row['location']); ?>">
                     <br>
                     <label for="price_value">Price Value</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">₱</span>
                         </div>
-                        <input type="number" name="price_value" id="price_value" class="form-control"
-                            value="<?php echo $row['price_value']; ?>">
+                        <input type="text" name="price_value" id="price_value" class="form-control" value="<?php echo htmlspecialchars($row['price_value']); ?>">
                     </div>
                     <br>
                     <label for="date_acquired">Date Acquired</label>
-                    <input type="date" name="date_acquired" id="date_acquired" class="form-control"
-                        value="<?php echo $row['date_acquired']; ?>">
+                    <input type="text" name="date_acquired" id="date_acquired" class="form-control" value="<?php echo htmlspecialchars($row['date_acquired']); ?>">
                     <br>
                     <label for="remarks">Remarks</label>
-                    <input type="text" name="remarks" id="remarks" class="form-control"
-                        value="<?php echo $row['remarks']; ?>">
+                    <textarea name="remarks" id="remarks" class="form-control"><?php echo htmlspecialchars($row['remarks']); ?></textarea>
                     <br>
                     <input type="hidden" name="asset_tag" value="<?php echo $row['asset_tag']; ?>">
                     <!-- Hidden field for asset_tag -->
