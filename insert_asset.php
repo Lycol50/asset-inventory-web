@@ -274,14 +274,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         value="<?php echo $location_asset; ?>">
                     <br>
                     <div class="input-group">
+                        <label for="price_value">Price Value</label>
                         <div class="input-group-prepend">
                             <span class="input-group-text">₱</span>
                         </div>
-                    <label for="price_value">Price Value</label>
-                    <input type="number" name="price_value" id="price_value"
-                        class="form-control <?php echo (!empty($price_value_err)) ? 'is-invalid' : ''; ?>"
-                        value="<?php echo $price_value; ?>">
-                    <span class="invalid-feedback"><?php echo $price_value_err; ?></span>
+                        <input type="number" name="price_value" id="price_value"
+                            class="form-control <?php echo (!empty($price_value_err)) ? 'is-invalid' : ''; ?>"
+                            value="<?php echo $price_value; ?>">
+                        <span class="invalid-feedback"><?php echo $price_value_err; ?></span>
                     </div>
                     <br>
                     <label for="date_acquired">Date Acquired</label>
@@ -299,8 +299,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         value="<?php echo $remarks; ?>">
                     <span class="invalid-feedback"><?php echo $remarks_err; ?></span>
                     <br>
-                    <input type="submit" class="btn btn-primary" value="Submit" onClick="return confirm('Confirm to Register this Asset?')">
-                    <a href="dashboard.php" class="btn btn-secondary ml-2">Cancel</a>
+                    <input type="submit" class="btn btn-primary" value="Submit"
+                        onClick="return confirm('Confirm to Register this Asset?')">
+                    <a href="dashboard.php" class="btn btn-secondary ml-2"
+                        onClick="return confirm('Do you want to go back? All inserted data here before submitting will be gone!')">Cancel</a>
                 </form>
             </div>
         </div>
