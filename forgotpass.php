@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col">
                 <h1>Reset Password</h1>
-                <p>Please try to remember your password first, then proceed her if you forgot totally.</p>
+                <p>Please try to remember your password first, then proceed here if you forgot totally.</p>
 
                 <?php
                 if (isset($password_recovered)) {
