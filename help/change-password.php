@@ -43,7 +43,6 @@ if (!isset($_SESSION['loggedin'])) {
                         Administrator.
                     </p>
                 </div>
-                <br>
                 <ol>
                     <li>Open any of your favorite browsers, then visit the Asset Inventory System Page by <b>finding the
                             IP Address of your Web server.</b><br>And they will greet you with this:<br><img
@@ -52,7 +51,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <li>And you will be redirected to the <b>Forgot Password</b> page<br><img class="img-fluid"
                             src="imgs/3.png"><br></li>
                     <li>Enter your Username and New Password in the form</li>
-                    <li>Enter your <b>Password Reset Code</b>
+                    <li>Enter your <b>Password Reset Code</b><br>
                         <div class="alert alert-warning" role="alert">
                             <h4 class="alert-heading">How to get Password Reset Code</h4>
                             <p>Please approach your System Administrator, provide him your Username and they will give
