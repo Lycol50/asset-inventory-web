@@ -82,12 +82,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="asset_type">Asset Type</label>
                     <select name="asset_type" id="asset_type" class="form-control">
                         <option value="Office Equipment"
-                            <?php if ($row['asset_type'] === 'Office Equipment') echo 'selected'; ?>>Office Equipment</option>
+                            <?php if ($row['asset_type'] === 'Office Equipment') echo 'selected'; ?>>Office Equipment
+                        </option>
                         <option value="Furnitures and Fixtures"
-                            <?php if ($row['asset_type'] === 'Furnitures and Fixtures') echo 'selected'; ?>>Furnitures and
+                            <?php if ($row['asset_type'] === 'Furnitures and Fixtures') echo 'selected'; ?>>Furnitures
+                            and
                             Fixtures</option>
                         <option value="Aircon Equipment"
-                            <?php if ($row['asset_type'] === 'Aircon Equipment') echo 'selected'; ?>>Aircon Equipment</option>
+                            <?php if ($row['asset_type'] === 'Aircon Equipment') echo 'selected'; ?>>Aircon Equipment
+                        </option>
                     </select>
                     <br>
                     <label for="brand">Brand</label>
@@ -106,10 +109,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <select name="status" id="status" class="form-control">
                         <option value="In Use" <?php if ($row['status'] === 'In Use') echo 'selected'; ?>>In Use
                         </option>
-                        <option value="In Storage" <?php if ($row['status'] === 'In Storage') echo 'selected'; ?>>In Storage</option>
-                        <option value="For Repair" <?php if ($row['status'] === 'For Repair') echo 'selected'; ?>>For Repair
+                        <option value="In Storage" <?php if ($row['status'] === 'In Storage') echo 'selected'; ?>>In
+                            Storage</option>
+                        <option value="For Repair" <?php if ($row['status'] === 'For Repair') echo 'selected'; ?>>For
+                            Repair
                         </option>
-                        <option value="For Disposal" <?php if ($row['status'] === 'For Disposal') echo 'selected'; ?>>For
+                        <option value="For Disposal" <?php if ($row['status'] === 'For Disposal') echo 'selected'; ?>>
+                            For
                             Disposal</option>
                     </select>
                     <br>
@@ -125,9 +131,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="input-group-prepend">
                             <span class="input-group-text">₱</span>
                         </div>
-                    <label for="price_value">Price Value</label>
-                    <input type="number" name="price_value" id="price_value" class="form-control"
-                        value="<?php echo $row['price_value']; ?>">
+                        <label for="price_value">Price Value</label>
+                        <input type="number" name="price_value" id="price_value" class="form-control"
+                            value="<?php echo $row['price_value']; ?>">
                     </div>
                     <br>
                     <label for="date_acquired">Date Acquired</label>
@@ -138,9 +144,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="remarks" id="remarks" class="form-control"
                         value="<?php echo $row['remarks']; ?>">
                     <br>
-                    <input type="hidden" name="asset_tag" value="<?php echo $row['asset_tag']; ?>"> <!-- Hidden field for asset_tag -->
-                    <input type="submit" class="btn btn-primary" value="Submit" onClick="return confirm('Confirm to Update this Asset?')">
-                    <a href="assets.php" class="btn btn-secondary ml-2">Cancel</a>
+                    <input type="hidden" name="asset_tag" value="<?php echo $row['asset_tag']; ?>">
+                    <!-- Hidden field for asset_tag -->
+                    <input type="submit" class="btn btn-primary" value="Submit"
+                        onClick="return confirm('Confirm to Update this Asset?')">
+                    <a href="assets.php" class="btn btn-secondary ml-2"
+                        onClick="return confirm('Do you want to go back? All inserted data here before submitting will be gone!')">Cancel</a>
                 </form>
             </div>
         </div>
