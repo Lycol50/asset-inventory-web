@@ -145,8 +145,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         </td>
                                         </tr>";
                                     } else {
-                                        echo "<td></td>
-                                        </tr>";
+                                        echo "</tr>";
                                     }
                                 } else {
                                     echo "<tr>
@@ -170,8 +169,7 @@ if (!isset($_SESSION['loggedin'])) {
                                             </td>
                                             </tr>";
                                         } else {
-                                            echo "<td></td>
-                                            </tr>";
+                                            echo "</tr>;
                                         }
                                 }
                             }
