@@ -27,8 +27,10 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
 </head>
 <body>
+    <?php include 'nav.php'; ?>
     <div class="container">
         <div class="row">
+            <div class="col">
             <h1>Logging in to the system</h1>
             <p>Logging into the system is easy as slicing paper with sharp knife.</p>
             <br>
@@ -44,6 +46,7 @@ if (!isset($_SESSION['loggedin'])) {
             <ol>
                 <li>Click the <b>Log Out</b> button on the navigation bar<br><img class="img-fluid" src="imgs/2.png"></li>
                 <li>And you will be redirected to the <b>Log In</b> page<br><img class="img-fluid" src="imgs/1.png"></li>
+            </div>
         </div>
     </div>
 </body>
