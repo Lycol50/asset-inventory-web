@@ -140,8 +140,8 @@ if (!isset($_SESSION['loggedin'])) {
                                     echo "</td>";
                                     if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                         echo "<td class='d-print-none actions'>
-                                        <input type='button' class='btn btn-sm btn-outline-secondary' value='Edit' onClick='window.location.href='update_asset.php?asset_tag=" . $row["asset_tag"] . "'><br>
-                                        <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='return confirm('Delete This Asset Data?'); window.location.href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "'><br>
+                                            <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
+                                            <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='DeleteData(" . $row["asset_tag"] . ")'><br>
                                         </td>
                                         </tr>";
                                     } else {
@@ -164,8 +164,8 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td></td>";
                                         if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                             echo "<td class='d-print-none actions'>
-                                                <input type='button' class='btn btn-sm btn-outline-secondary' value='Edit' onClick='window.location.href='update_asset.php?asset_tag=" . $row["asset_tag"] . "'><br>
-                                                <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='return confirm('Delete This Asset Data?'); window.location.href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "'><br>
+                                                <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
+                                                <input type='button' class='btn btn-sm btn-outline-secondary' value='Delete' onClick='DeleteData(" . $row["asset_tag"] . ")'><br>
                                             </td>
                                             </tr>";
                                         } else {
@@ -205,6 +205,15 @@ if (!isset($_SESSION['loggedin'])) {
             newWin.close();
         };
         newWin.print();
+    }
+
+    function DeleteData(data) {
+        if (confirm("Are you sure you want to delete this asset?")) {
+            window.location.href = "delete_asset.php?asset_tag=" + data + "";
+            return true;
+        } else {
+            return false;
+        }
     }
     </script>
 </body>
