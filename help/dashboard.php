@@ -36,7 +36,6 @@ if (!isset($_SESSION['loggedin'])) {
                 <p>Here you will see the glimpse of your assets.</p>
                 <br>
                 <p>After you logged in, the first thing will appear is your <b>Dashboard</b></p>
-                <br>
                 <img class="img-fluid" src="imgs/4.png"><br>
                 <br>
                 <h3>Navigation bar</h3>
