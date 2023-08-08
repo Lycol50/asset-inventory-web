@@ -11,13 +11,6 @@ if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "supe
     header('Location: 404.php');
 }
 
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-
 // show results from database using the url parameter
 $result = mysqli_query($mysqli, "SELECT * FROM assets WHERE asset_tag = '".$_GET['asset_tag']."'");
 $row = mysqli_fetch_array($result);
@@ -29,17 +22,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt = $mysqli->prepare($sql)) {
         $stmt->bind_param("ssssssssssssss", $brand, $model, $serial_number, $asset_tag, $asset_type, $status, $equipment_name, $location_asset, $price_value, $date_acquired, $remarks, $asset_tag, $user_id, $updated_at);
 
-        $brand = test_input($_POST['brand']);
-        $model = test_input($_POST['model']);
-        $serial_number = test_input($_POST['serial_number']);
-        $asset_tag = test_input($_POST['asset_tag']);
-        $asset_type = test_input($_POST['asset_type']);
-        $status = test_input($_POST['status']);
-        $equipment_name = test_input($_POST['equipment_name']);
-        $location_asset = test_input($_POST['location_asset']);
-        $price_value = test_input($_POST['price_value']);
-        $date_acquired = test_input($_POST['date_acquired']);
-        $remarks = test_input($_POST['remarks']);
+        $brand =  $_POST['brand'];
+        $model =  $_POST['model'];
+        $serial_number =  $_POST['serial_number'];
+        $asset_tag =  $_POST['asset_tag'];
+        $asset_type =  $_POST['asset_type'];
+        $status =  $_POST['status'];
+        $equipment_name =  $_POST['equipment_name'];
+        $location_asset =  $_POST['location_asset'];
+        $price_value =  $_POST['price_value'];
+        $date_acquired =  $_POST['date_acquired'];
+        $remarks =  $_POST['remarks'];
         $user_id = $_SESSION['id'];
         $updated_at = date("Y-m-d H:i:s");
 
