@@ -31,9 +31,33 @@ $firstname = $row['firstname'];
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
 </head>
+
 <body>
     <?php include 'nav.php'; ?>
-    <h1>Help Center</h1>
-    <p>Hello <?php echo $firstname; ?>, Anything you need to know?</p>
-    <br>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Help Center</h1>
+                <br>
+
+                <h3>Login and Forgot Password</h3>
+                <a href="help/login.php">Logging in to the system</a>
+                <a href="help/forgot-password.php">I forgot my password</a>
+                <hr>
+                <h3>Dashboard</h3>
+                <a href="help/dashboard.php">An overview of the dashboard</a>
+                <hr>
+                <h3>Assets</h3>
+                <a href="help/assets.php">An overview of the assets page</a>
+                <a href="help/addassets.php">Adding assets into the system</a>
+                <a href="help/editdeleteassets.php">Editing and Deleting assets in the system</a>
+                <hr>
+                <h3>System Admin Guide</h3>
+                <a href="help/register.php">Registering a new user</a>
+                <a href="help/forgothelp.php">Helping user with forgotten password</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
