@@ -119,7 +119,6 @@ if (!isset($_SESSION['loggedin'])) {
                                 $row2 = $result2->fetch_assoc();
                                 $param = $row["documents"];
                                 $array = explode(",", $param);
-                                $encode = htmlentities("<input class='btn btn-sm btn-outline-secondary' type='button' value='Delete' onclick='if (confirm('Are you sure you want to delete this data?')) window.location.href='delete_asset.php?asset_tag=" . $row["asset_tag"] . "';' />");
                                 if (!empty($param)) {
                                     echo "<tr>
                                         <td style='font-family: consolas'>" . $row["asset_tag"] . "</td>
@@ -142,7 +141,7 @@ if (!isset($_SESSION['loggedin'])) {
                                     if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                         echo "<td class='d-print-none actions'>
                                             <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                            " . html_entity_decode($encode) . "
+                                            <input class='btn btn-sm btn-outline-secondary' type='button' value='Delete' onclick='parse('delete_asset.php?asset_tag=" . $row["asset_tag"] . "');' />
                                             </td>
                                         </tr>";
                                     } else {
@@ -166,7 +165,8 @@ if (!isset($_SESSION['loggedin'])) {
                                         if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                             echo "<td class='d-print-none actions'>
                                                 <a href='update_asset.php?asset_tag=" . $row["asset_tag"] . "' class='btn btn-sm btn-outline-secondary'>Edit</a><br>
-                                                " . html_entity_decode($encode) . "                                                </td>
+                                                <input class='btn btn-sm btn-outline-secondary' type='button' value='Delete' onclick='parse('delete_asset.php?asset_tag=" . $row["asset_tag"] . "');' />
+                                                </td>
                                             </tr>";
                                         } else {
                                             echo "</tr>";
@@ -188,6 +188,11 @@ if (!isset($_SESSION['loggedin'])) {
         </div>
     </div>
     <script>
+    function parse(url) { 
+        if (confirm('Are you sure you want to delete this Asset Data?'))
+        window.location.href=' + url + ';
+    }
+
     function printTable() {
         var table = document.getElementById("assetsTable");
         var newWin = window.open("", "_blank");
