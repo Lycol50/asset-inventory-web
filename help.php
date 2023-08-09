@@ -45,7 +45,7 @@ $firstname = $row['firstname'];
                 <ul>
                     <li><a href="help/login.php">Logging in to the system</a></li>
                     <li><a href="help/forgot-password.php">I forgot my password</a>
-                    <li><a href="help/change-password.php">Changing password</a>
+                    <li><a href="help/change-password.php">I want to change my password</a>
                 </ul>
                 <hr>
                 <h3>Dashboard</h3>

@@ -32,7 +32,7 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Forgotten Password</h1>
+                <h1>Changing Password</h1>
                 <p>Please follow this guide to reset your password.</p>
                 <br>
                 <div class="alert alert-danger" role="alert">
