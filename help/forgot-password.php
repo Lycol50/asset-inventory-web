@@ -60,7 +60,7 @@ if (!isset($_SESSION['loggedin'])) {
                         </div>
                     </li>
                     <li>Click the <b>Reset Password</b> button</li>
-                    <li>A Alert box will apprear, click <b>OK</b></li>
+                    <li>An Alert box will apprear, click <b>OK</b></li>
                     <li>Click the <b>Remember Password</b> to redirect to Login Page</li>
                     <li>Login to the system with your new password</li>
                 </ol>

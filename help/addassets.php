@@ -60,7 +60,7 @@ if (!isset($_SESSION['loggedin'])) {
                     </li>
                     <li>Insert any Remarks for that Asset</li>
                     <li>Click the <b>Submit</b> button to insert the asset into the system</li>
-                    <li>And a popup will appear that the Asset has been inserted successfully, and number o files uploaded.</li>
+                    <li>And a popup will appear that the Asset has been inserted successfully, and number of files uploaded.</li>
                     <li>Clicking <b>Cancel</b> will go back to dashboard and will erase any data inserted before submitting</li>
                 </ol>
             </div>
