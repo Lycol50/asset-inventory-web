@@ -1,5 +1,5 @@
 # Forked Version for Personal Purposes
-This forked version of AIS is for personal use only, new features will be added but not reflect on the original repository.
+This forked version of AIS is for personal use only, new features will be added but will not reflect on the original repository.
 
 ### Install
 #### How to use this system
