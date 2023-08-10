@@ -1,9 +1,5 @@
-# V1.1.1
-**Full Changelog**: https://github.com/princepines/asset-inventory-web/compare/1.1.0...1.1.1
-
-## Changes (In general)
-- Fixed Editing Asset
-- Fixed Help
+# Forked Version for Personal Purposes
+This forked version of AIS is for personal use only, new features will be added but not reflect on the original repository.
 
 ### Install
 #### How to use this system
