@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
-    <title>Asset Management System</title>
+    <title>CCF Alabang Inventory System (Live Prod)</title>
     <link rel="stylesheet" href="style.css?v=1.1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -97,14 +97,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <link rel="icon" type="image/x-icon" href="white.png">
+    <link rel="icon" type="image/x-icon" href="https://events.ccf.org.ph/assets/app/ccf-logos/ccf-logo-full-white-logo-size.png">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Asset Management System</h1>
+                <h1>Live Prod - Inventory System</h1>
                 <p>Please fill credentials to login.</p>
                 <?php
                 if (!empty($username_err) || !empty($password_err)) {
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </form>
             </div>
             <div class="col">
-                <img src="https://em-content.zobj.net/source/joypixels/340/regional-indicator-symbol-letter-i_1f1ee.png" alt="logo" class="img-fluid">
+                <img src="https://events.ccf.org.ph/assets/app/ccf-logos/ccf-logo-full-teal-logo-size.png" alt="logo" class="img-fluid" style="display: block; margin-left: auto; margin-right: auto">
             </div>
         </div>
     </div>

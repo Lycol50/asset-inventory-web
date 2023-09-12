@@ -15,7 +15,7 @@ function test_input($data) {
 
 $firstname = $lastname = $username = $password = $confirm_password = "";
 
-$firstname_err = $lastname_err = $username_err = $password_err = $confirm_password_err = "";
+$firstname_err = $lastname_err = $username_err = $password_err = $confirm_password_err = $account_type_err = $email_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // validate firstname
@@ -37,6 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $account_type_err = "Please select an account type.";
     } else {
         $account_type = trim(test_input($_POST["account_type"]));
+    }
+
+    // validate email
+    if (empty(trim($_POST["email"]))) {
+        $email_err = "Please enter your email.";
+    } else {
+        $email = trim(test_input($_POST["email"]));
     }
     
     // validate username
@@ -92,19 +99,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // check input errors before inserting in database
-    if (empty($firstname_err) && empty($lastname_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
+    if (empty($firstname_err) && empty($lastname_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($account_type_err) && empty($email_err)) {
         
         // prepare an insert statement
-        $sql = "INSERT INTO users (firstname, lastname, username, pass_word, account_type) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (firstname, lastname, username, pass_word, account_type, email) VALUES (?, ?, ?, ?, ?, ?)";
         
         if ($stmt = $mysqli->prepare($sql)) {
             // bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssss", $param_firstname, $param_lastname, $param_username, $param_password, $param_account_type);
+            $stmt->bind_param("ssssss", $param_firstname, $param_lastname, $param_username, $param_password, $param_account_type, $param_email);
             
             // set parameters
             $param_firstname = $firstname;
             $param_lastname = $lastname;
             $param_username = $username;
+            $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // creates a password hash
             $param_account_type = $_POST["account_type"];
 
@@ -147,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
-    <title>Asset Management System</title>
+    <title>CCF Alabang Inventory System (Live Prod)</title>
     <link rel="stylesheet" href="style.css?v=1.1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -155,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <link rel="icon" type="image/x-icon" href="white.png">
+    <link rel="icon" type="image/x-icon" href="https://events.ccf.org.ph/assets/app/ccf-logos/ccf-logo-full-white-logo-size.png">
 </head>
 
 <body>
@@ -175,12 +183,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label class="form-label">Last Name</label>
                     <input type="text" name="lastname" class="form-control">
                     <span class="invalid-feedback"><?php echo $lastname_err; ?></span>
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <span class="invalid-feedback"><?php echo $email_err; ?></span>
                     <label class="form-label">Password</label>
                     <input type="password" name="password" class="form-control" data-toggle="tooltip" data-placement="right" title="Password must have 6 Characters">
-                    <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
                     <label class="form-label">Confirm Password</label>
                     <input type="password" name="confirm_password" class="form-control">
-                    <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span><br>
+                    <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                     <label class="form-label">User Type</label>
                     <select name="account_type" class="form-select">
                         <option value="">---Select---</option>

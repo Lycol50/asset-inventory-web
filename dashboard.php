@@ -13,22 +13,22 @@ $result = mysqli_query($mysqli, $sql);
 $row = mysqli_fetch_assoc($result);
 $total_assets = $row['total'];
 
-$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'In Use'";
+$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'Operational'";
 $result = mysqli_query($mysqli, $sql);
 $row = mysqli_fetch_assoc($result);
 $total_in_use = $row['total'];
 
-$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'In Storage'";
+$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'Idle'";
 $result = mysqli_query($mysqli, $sql);
 $row = mysqli_fetch_assoc($result);
 $total_in_storage = $row['total'];
 
-$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'For Repair'";
+$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'For repair'";
 $result = mysqli_query($mysqli, $sql);
 $row = mysqli_fetch_assoc($result);
 $total_for_repair = $row['total'];
 
-$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'Disposed'";
+$sql = "SELECT COUNT(*) AS total FROM assets WHERE status = 'For disposal'";
 $result = mysqli_query($mysqli, $sql);
 $row = mysqli_fetch_assoc($result);
 $total_disposed = $row['total'];
@@ -38,7 +38,7 @@ $total_disposed = $row['total'];
 
 <head>
     <meta charset="UTF-8">
-    <title>Asset Management System</title>
+    <title>CCF Alabang Inventory System (Live Prod)</title>
     <link rel="stylesheet" href="style.css?v=1.1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -46,7 +46,7 @@ $total_disposed = $row['total'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <link rel="icon" type="image/x-icon" href="white.png">
+    <link rel="icon" type="image/x-icon" href="https://events.ccf.org.ph/assets/app/ccf-logos/ccf-logo-full-white-logo-size.png">
     <script type="text/javascript">
     // Current Server Time script (SSI or PHP)- By JavaScriptKit.com (http://www.javascriptkit.com)
     // For this and over 400+ free scripts, visit JavaScript Kit- http://www.javascriptkit.com/
@@ -100,7 +100,7 @@ $total_disposed = $row['total'];
             </div>
             <div class="col">
                 <div class="card text-white bg-success mb-3" style="min-height:91%; text-align:center;">
-                    <div class="card-header">In Use</div>
+                    <div class="card-header">Operational</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title"><?php echo $total_in_use; ?></h3>
                         <h5 class="card-text">In Use Assets in this building</h5>
@@ -109,7 +109,7 @@ $total_disposed = $row['total'];
             </div>
             <div class="col">
                 <div class="card text-white bg-info mb-3" style="min-height:91%; text-align:center;">
-                    <div class="card-header">In Storage</div>
+                    <div class="card-header">Idle</div>
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title"><?php echo $total_in_storage; ?></h3>
                         <h5 class="card-text">In Storage Assets in this building</h5>

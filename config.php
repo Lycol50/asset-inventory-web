@@ -10,7 +10,7 @@ server with default setting (user 'root' with no password) */
 define('DB_SERVER', "localhost");
 define('DB_USERNAME', "root");
 define('DB_PASSWORD', "");
-define('DB_NAME', "asset-inv");
+define('DB_NAME', "asset-inv-development");
 define('DB_PORT', 3306);
  
 /* Attempt to connect to MySQL database */
@@ -27,6 +27,7 @@ if($mysqli === false){
         `firstname` varchar(255) NOT NULL,
         `lastname` varchar(255) NOT NULL,
         `pass_word` varchar(255) NOT NULL,
+        `email` varchar(255) NOT NULL,
         `account_type` varchar(255) NOT NULL DEFAULT 'user',
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (`user_id`)
@@ -35,21 +36,26 @@ if($mysqli === false){
     // create table for assets
     $sql2 = "CREATE TABLE IF NOT EXISTS `assets` (
         `asset_id` int(255) NOT NULL AUTO_INCREMENT,
-        `brand` varchar(255) NOT NULL,
-        `model` varchar(255) NOT NULL,
+        `asset_tag_number` text NOT NULL,
+        `status` text NOT NULL,
+        `category` text NOT NULL,
+        `description` text NOT NULL,
+        `asset_type` text NOT NULL,
         `serial_number` varchar(255) NOT NULL,
-        `asset_tag` varchar(255) NOT NULL,
-        `asset_type` varchar(255) NOT NULL,
-        `status` varchar(255) NOT NULL,
-        `equipment_name` varchar(255) NOT NULL,
-        `location_asset` varchar(255) NOT NULL,
-        `price_value` int(255) NOT NULL,
-        `date_acquired` varchar(255) NOT NULL,
-        `remarks` text NOT NULL,
-        `documents` text NOT NULL,
+        `number_of_units` int(255) NOT NULL,
+        `asset_cost` double NOT NULL,
+        `level` text NOT NULL,
+        `location_unit` text NOT NULL,
+        `remarks` text,
+        `date_placed` text NOT NULL,
+        `physical_proof` text,
+        `date_updated_user` text,
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        `updated_at` text NOT NULL,
-        `user_id` int(255) NOT NULL,
+        `updated` int(1) NOT NULL DEFAULT '0',
+        `user_id` int(255) NOT NULL DEFAULT '1',
+        `inv_check` int(1) NOT NULL DEFAULT '0',
+        `inv_check_date` text,
+
         PRIMARY KEY (`asset_id`),
         FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
@@ -89,16 +95,17 @@ if($mysqli === false){
         if ($result->num_rows > 0) {
             // do nothing
         } else {
-            $sql3 = "INSERT INTO users (`user_id`, `username`, `firstname`, `lastname`, `pass_word`, `created_at`, `account_type`) VALUES
-            (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, 'superadmin');";
+            $sql3 = "INSERT INTO users (`user_id`, `username`, `firstname`, `lastname`, `pass_word`, `created_at`, `account_type`, `email`) VALUES
+            (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, 'superadmin', ?);";
             if ($stmt = $mysqli->prepare($sql3)) {
-                $stmt->bind_param("sssss", $param_id, $param_username, $param_firstname, $param_lastname, $param_pass_word);
+                $stmt->bind_param("ssssss", $param_id, $param_username, $param_firstname, $param_lastname, $param_pass_word, $param_email);
                 
                 // set parameters
                 $param_id = 1;
                 $param_username = "superadmin";
                 $param_firstname = "superadmin";
                 $param_lastname = "superadmin";
+                $param_email = "superadmin@email.com";
                 $param_pass_word = $superadmin_hash;
                 
                     // attempt to execute the prepared statement

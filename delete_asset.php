@@ -18,7 +18,7 @@ if ($_SESSION['account_type'] !== "admin" && $_SESSION['account_type'] !== "supe
 // delete the the asset id from database using the url parameter
 if (isset($_GET['asset_tag'])) {
     $id = $_GET['asset_tag'];
-    $sql = "DELETE FROM assets WHERE asset_tag = ?";
+    $sql = "DELETE FROM assets WHERE asset_tag_number = ?";
     if ($stmt = $mysqli->prepare($sql)) {
         $stmt->bind_param("s", $id);
         if ($stmt->execute()) {
