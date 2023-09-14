@@ -21,6 +21,8 @@ if ($stmt = $mysqli->prepare($query)) {
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
+
+    $row['asset_cost1'] = (float) $row['asset_cost'];
 }
 
 // validate asset to if no cents
@@ -64,7 +66,6 @@ $level_err = $location_err = $description_err = $serial_number_err = $number_of_
 
 // define variables and set to empty values
 $level = $location = $description = $serial_number = $number_of_units = $asset_cost = $status = "";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +80,8 @@ $level = $location = $description = $serial_number = $number_of_units = $asset_c
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <link rel="icon" type="image/x-icon" href="https://events.ccf.org.ph/assets/app/ccf-logos/ccf-logo-full-white-logo-size.png">
+    <link rel="icon" type="image/x-icon"
+        href="https://events.ccf.org.ph/assets/app/ccf-logos/ccf-logo-full-white-logo-size.png">
 </head>
 
 <body>
@@ -198,7 +200,7 @@ $level = $location = $description = $serial_number = $number_of_units = $asset_c
                     <label for="asset_cost">Asset Cost</label>
                     <input type="number" step="0.01" name="asset_cost" id="asset_cost"
                         class="form-control <?php echo (!empty($asset_cost_err)) ? 'is-invalid' : ''; ?>"
-                        value="<?php echo htmlspecialchars($row['asset_cost']); ?>">
+                        value="<?php echo htmlspecialchars(floatval($row['asset_cost1'])); ?>">
                     <span class="invalid-feedback"><?php echo $asset_cost_err; ?></span>
                     <br>
                     <label for="level">Level</label>
