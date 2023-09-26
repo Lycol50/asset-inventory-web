@@ -137,7 +137,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         } else {
                                             echo "<td style='font-family: consolas, Inconsolata; color: red; font-weight: bold'>No</td>";
                                         }
-                                    echo "<td style='font-family: consolas'>" . $row["asset_tag_number"] . "</td>
+                                    echo "<td style='font-family: consolas, Inconsolata'>" . $row["asset_tag_number"] . "</td>
                                     <td>" . $row["status"] . "</td>
                                     <td>" . $row["category"] . "</td>
                                     <td>" . $row["description"] . "</td>
