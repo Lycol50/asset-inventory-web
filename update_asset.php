@@ -223,7 +223,7 @@ $level = $location = $description = $serial_number = $number_of_units = $asset_c
                     <input type="hidden" name="asset_tag_number" value="<?php echo $asset_tag ?>">
                     <input type="submit" name="update" class="btn btn-primary" value="Update"
                         onClick="return confirm('Confirm to Update this Asset?')">
-                    <a href="dashboard.php" class="btn btn-secondary ml-2"
+                    <a href="assets.php" class="btn btn-secondary ml-2"
                         onClick="return confirm('Do you want to go back? All inserted data here before submitting will be gone!')">Cancel</a>
                 </form>
             </div>

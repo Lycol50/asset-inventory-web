@@ -3,8 +3,8 @@ $register = '<a class="nav-item nav-link" href="register_user.php">Register User
 $insert_asset = '<a class="dropdown-item" href="insert_asset.php">Insert Asset</a>';
 ?>
 <nav class="d-print-none navbar navbar-expand-lg navbar-dark bg-dark">
-  <img src="https://events.ccf.org.ph/assets/app/ccf-logos/ccf-logo-full-white-logo-size.png" alt="" width="35" height="35" class="d-inline-block align-text-top">&nbsp;&nbsp;&nbsp;
-  <a class="navbar-brand" href="#" style="font-family: Kanit, sans-serif;">Asset Inventory System</a>
+  <img src="https://events.ccf.org.ph/assets/app/ccf-logos/ccf-logo-full-white-logo-size.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+  <a class="navbar-brand" href="#" style="font-family: Kanit, sans-serif;">&nbsp;&nbsp;Asset Inventory System</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

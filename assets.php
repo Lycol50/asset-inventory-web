@@ -30,6 +30,7 @@ if (!isset($_SESSION['loggedin'])) {
         return confirm("Are you sure?");
     }
     </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 </head>
 
 <body>
@@ -68,7 +69,7 @@ if (!isset($_SESSION['loggedin'])) {
                                 <th>Location</th>
                                 <th>Remarks</th>
                                 <th>Date Placed</th>
-                                <th>Physical Proof</th>
+                                <th class="d-print-none actions">Physical Proof</th>
                                 <?php if ($_SESSION['account_type'] === "admin" || $_SESSION['account_type'] === "superadmin") {
                                     echo '<th class="d-print-none actions">Actions</th>';
                                 } ?>
@@ -93,11 +94,11 @@ if (!isset($_SESSION['loggedin'])) {
                                             echo "<td style='font-family: consolas; color: red; font-weight: bold'>No</td>";
                                         }
                                         if ($row['inv_check'] === "1") {
-                                            echo "<td style='font-family: consolas; color: green; font-weight: bold'>Yes " . $row['inv_check_date'] . "</td>";
+                                            echo "<td style='font-family: consolas, Inconsolata; color: green; font-weight: bold'>Yes " . $row['inv_check_date'] . "</td>";
                                         } else {
-                                            echo "<td style='font-family: consolas; color: red; font-weight: bold'>No</td>";
+                                            echo "<td style='font-family: consolas, Inconsolata; color: red; font-weight: bold'>No</td>";
                                         }
-                                    echo "<td style='font-family: consolas'>" . $row["asset_tag_number"] . "</td>
+                                    echo "<td style='font-family: consolas, Inconsolata'>" . $row["asset_tag_number"] . "</td>
                                         <td>" . $row["status"] . "</td>
                                         <td>" . $row["category"] . "</td>
                                         <td>" . $row["description"] . "</td>
@@ -109,7 +110,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         <td>" . $row["location_unit"] . "</td>
                                         <td>" . $row["remarks"] . "</td>
                                         <td>" . $row["date_placed"] . "</td>
-                                        <td>";
+                                        <td class='d-print-none actions'>";
                                     foreach ($array as $document) {
                                         echo "<a href='uploads/" . $row['asset_tag_number'] . "/$document' class='btn btn-sm btn-outline-secondary' target='_blank'>$document</a><br>";
                                     }
@@ -126,15 +127,15 @@ if (!isset($_SESSION['loggedin'])) {
                                 } else {
                                     echo "<tr>";
                                         if ($row['updated'] === "1") {
-                                            echo "<td style='font-family: consolas; color: green; font-weight: bold'>Yes</td>";
+                                            echo "<td style='font-family: consolas, Inconsolata; color: green; font-weight: bold'>Yes</td>";
                                         } else {
-                                            echo "<td style='font-family: consolas; color: red; font-weight: bold'>No</td>";
+                                            echo "<td style='font-family: consolas, Inconsolata; color: red; font-weight: bold'>No</td>";
                                         }
                                         if ($row['inv_check'] === "1") {
 
-                                            echo "<td style='font-family: consolas; color: green; font-weight: bold'>Yes " . $row['inv_check_date'] . "</td>";
+                                            echo "<td style='font-family: consolas, Inconsolata; color: green; font-weight: bold'>Yes " . $row['inv_check_date'] . "</td>";
                                         } else {
-                                            echo "<td style='font-family: consolas; color: red; font-weight: bold'>No</td>";
+                                            echo "<td style='font-family: consolas, Inconsolata; color: red; font-weight: bold'>No</td>";
                                         }
                                     echo "<td style='font-family: consolas'>" . $row["asset_tag_number"] . "</td>
                                     <td>" . $row["status"] . "</td>
@@ -232,10 +233,10 @@ if (!isset($_SESSION['loggedin'])) {
         var newDoc = newWin.document;
         newDoc.open();
         newDoc.write(
-            '<html><head><title>CCF Alabang Inventory List</title></head><style>.body{font-family: sans-serif; text-align: left;}</style><body>'
+            '<html><head><title>CCF Alabang Inventory List</title></head><style>.body{font-family: sans-serif, Inconsolata; text-align: left;}</style><body>'
         );
         newDoc.write(
-            '<style>@media print {.actions{display:none;} body{font-family:sans-serif; font-size: 12px;} table {width: 100%; font-size: 90%;} th, td {word-break: break-all; max-width: 100%;}}</style><h1>Asset List</h1>'
+            '<style>@media print {.actions{display:none;} body{font-family:sans-serif, Inconsolata; font-size: 12px;} table {width: 100%; font-size: 90%;} th, td {word-break: break-all; max-width: 100%;}}</style><h1>Asset List</h1>'
         );
         newDoc.write(table.outerHTML);
         newDoc.write('</body></html>');

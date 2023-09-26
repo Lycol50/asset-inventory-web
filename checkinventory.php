@@ -26,11 +26,12 @@ if (isset($_POST['submit'])) {
             $stmt->close();
             $update_message = "Inventory check successful.";
         } else {
-            // Use prepared statements to prevent SQL injection
+            /* Use prepared statements to prevent SQL injection
             $stmt = $mysqli->prepare("UPDATE assets SET inv_check = '0' WHERE asset_tag_number = ?");
             $stmt->bind_param("s", $row['asset_tag_number']);
             $stmt->execute();
             $stmt->close();
+            */
         }
     }
 
